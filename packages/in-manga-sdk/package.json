@@ -1,0 +1,21 @@
+{
+  "name": "in-manga-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "clean:node_modules": "rimraf node_modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "tsconfig": "*",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*"
+  }
+}

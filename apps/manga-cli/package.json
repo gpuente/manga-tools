@@ -1,0 +1,28 @@
+{
+  "name": "manga-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "manga": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist build",
+    "build:cli": "pkg . --output dist/manga",
+    "clean:node_modules": "rimraf node_modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "in-manga-sdk": "*"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "pkg": "^5.8.0",
+    "tsconfig": "*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
