@@ -1,0 +1,13 @@
+{
+  "name": "jest-config",
+  "main": "jest.config.js",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "files": ["jest.config.js"],
+  "publishConfig": {
+    "access": "public"
+  }
+}
