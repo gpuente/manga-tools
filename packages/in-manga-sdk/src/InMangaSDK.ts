@@ -1,6 +1,6 @@
 import axios from 'axios';
-import cheerio, { load,  } from 'cheerio';
-import { SearchResult } from './types';
+import { load } from 'cheerio';
+import { Chapter, SearchResult } from './types';
 import { getMangaStatus, normalizeText } from './utils';
 
 export class InMangaSDK {
@@ -8,6 +8,8 @@ export class InMangaSDK {
   private PROVIDER_REFERER_URL = `${this.PROVIDER_URL}/manga/consult?suggestion={{search_value}}`;
   private SEARCH_URL = `${this.PROVIDER_URL}/manga/getMangasConsultResult`;
   private SARCH_DATA_STRING = 'filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=10&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=';
+  private CHAPTERS_URL = `${this.PROVIDER_URL}/chapter/getall`;
+  private CHEPTERS_URL_PARAM_KEY = 'mangaIdentification';
 
   private debug: boolean;
 
@@ -51,6 +53,38 @@ export class InMangaSDK {
       }
     } finally {
       return results;
+    }
+  }
+
+  async getChaptersInfo(mangaId: string): Promise<Chapter[]> {
+    const chapters: Chapter[] = [];
+
+    try {
+      const res = await axios.get(this.CHAPTERS_URL, {
+        params: {
+          [this.CHEPTERS_URL_PARAM_KEY]: mangaId,
+        },
+      });
+
+      const chaptersData = JSON.parse(res.data.data);
+
+      chaptersData.result.forEach((chapter: any) => {
+        if (chapter.Identification && chapter.PagesCount && chapter.Number) {
+          chapters.push({
+            id: chapter.Identification,
+            name: chapter.FriendlyMangaName,
+            number: chapter.Number,
+            pages: chapter.PagesCount,
+          });
+        }
+      });
+
+    } catch (error) {
+      if (this.debug) {
+        console.error(error);
+      }
+    } finally {
+      return chapters.sort((a, b) => a.number - b.number);
     }
   }
 }

@@ -10,3 +10,10 @@ export interface SearchResult {
   chapters?: number;
   status?: MangaStatus;
 }
+
+export interface Chapter {
+  id: string;
+  name?: string;
+  number: number;
+  pages: number;
+}

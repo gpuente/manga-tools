@@ -8,15 +8,22 @@
   },
   "scripts": {
     "build": "tsc",
+    "dev": "ts-node src/index.ts",
     "clean": "rimraf dist build",
     "build:cli": "pkg . --output dist/manga",
     "clean:node_modules": "rimraf node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "in-manga-sdk": "*"
+    "commander": "^10.0.0",
+    "in-manga-sdk": "*",
+    "inquirer": "8.2.5",
+    "nanospinner": "^1.1.0",
+    "pdfkit": "0.7.2"
   },
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
+    "@types/pdfkit": "^0.12.8",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "pkg": "^5.8.0",
@@ -24,5 +31,15 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "pkg": {
+    "targets": [
+      "node16-macos-x64",
+      "node16-linux-x64",
+      "node16-win-x64"
+    ],
+    "assets": [
+      "../../node_modules/pdfkit/js/font/data/Helvetica.afm"
+    ]
+  }
 }

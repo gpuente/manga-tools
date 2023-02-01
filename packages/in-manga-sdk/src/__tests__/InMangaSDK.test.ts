@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { InMangaSDK } from '../InMangaSDK';
 import { MangaStatus } from '../types';
-import { SEARCH_AXIOS_NOT_FOUND_RESPONSE, SEARCH_AXIOS_RESPONSE } from './utils';
+import { CHAPTERS_RESPONSE, SEARCH_AXIOS_NOT_FOUND_RESPONSE, SEARCH_AXIOS_RESPONSE } from './utils';
 
 jest.mock('axios');
 
@@ -39,5 +39,17 @@ describe('InMangaSDK', () => {
     const result = await inMangaSDK.search(searchValue);
 
     expect(result.length).toEqual(0);
+  });
+
+  it('should return chapters info for a valid manga id', async () => {
+    const inMangaSDK = new InMangaSDK();
+    const mangaId = '8605de4e-e860-4f02-b5ff-154ed08fe6ef';
+    (axios.get as jest.Mock).mockResolvedValueOnce({ data: CHAPTERS_RESPONSE });
+
+    const result = await inMangaSDK.getChaptersInfo(mangaId);
+
+    console.log(result[2]);
+
+    expect(result.length > 0).toEqual(true);
   });
 });
