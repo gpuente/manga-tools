@@ -17,3 +17,9 @@ export interface Chapter {
   number: number;
   pages: number;
 }
+
+export interface Page {
+  id: string;
+  url: string;
+  number: number;
+}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { load } from 'cheerio';
-import { Chapter, SearchResult } from './types';
+import { Chapter, Page, SearchResult } from './types';
 import { getMangaStatus, normalizeText } from './utils';
 
 export class InMangaSDK {
@@ -8,8 +8,9 @@ export class InMangaSDK {
   private PROVIDER_REFERER_URL = `${this.PROVIDER_URL}/manga/consult?suggestion={{search_value}}`;
   private SEARCH_URL = `${this.PROVIDER_URL}/manga/getMangasConsultResult`;
   private SARCH_DATA_STRING = 'filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=10&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=';
-  private CHAPTERS_URL = `${this.PROVIDER_URL}/chapter/getall`;
-  private CHEPTERS_URL_PARAM_KEY = 'mangaIdentification';
+  private CHAPTERS_URL = `${this.PROVIDER_URL}/chapter/getall?mangaIdentification={{manga_id}}`;
+  private CHAPTER_PAGES_URL = `${this.PROVIDER_URL}/chapter/chapterIndexControls?identification={{chapter_id}}`;
+  private PAGE_URL = `${this.PROVIDER_URL}/page/getPageImage/?identification={{page_id}}`;
 
   private debug: boolean;
 
@@ -60,11 +61,7 @@ export class InMangaSDK {
     const chapters: Chapter[] = [];
 
     try {
-      const res = await axios.get(this.CHAPTERS_URL, {
-        params: {
-          [this.CHEPTERS_URL_PARAM_KEY]: mangaId,
-        },
-      });
+      const res = await axios.get(this.CHAPTERS_URL.replace('{{manga_id}}', mangaId));
 
       const chaptersData = JSON.parse(res.data.data);
 
@@ -85,6 +82,32 @@ export class InMangaSDK {
       }
     } finally {
       return chapters.sort((a, b) => a.number - b.number);
+    }
+  }
+
+  async getChapterPages(chapterId: string): Promise<Page[]> {
+    const pages: Page[] = [];
+
+    try {
+      const res = await axios.get(this.CHAPTER_PAGES_URL.replace('{{chapter_id}}', chapterId));
+      const bodyResponse = load(res.data);
+
+      bodyResponse('#PageList:first > option').each((index, el) => {
+        const number = load(el).text();
+        const id = el.attribs.value;
+
+        pages.push({
+          id,
+          number: Number(number),
+          url: this.PAGE_URL.replace('{{page_id}}', id),
+        });
+      });
+    } catch (error) {
+      if (this.debug) {
+        console.error(error);
+      }
+    } finally {
+      return pages;
     }
   }
 }
