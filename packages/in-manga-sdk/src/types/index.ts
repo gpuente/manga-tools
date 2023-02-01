@@ -23,3 +23,7 @@ export interface Page {
   url: string;
   number: number;
 }
+
+export interface FullChapter extends Chapter {
+  pagesMetadata: Page[];
+}

@@ -1,9 +1,10 @@
-import { InMangaSDK } from 'in-manga-sdk';
+import { FullChapter, InMangaSDK } from 'in-manga-sdk';
 import inquirer from 'inquirer';
 import { Command } from 'commander';
 import PDFDocument from 'pdfkit';
 import fs from 'fs';
 import { createSpinner } from 'nanospinner';
+import { downloadImage } from './features';
 
 const program = new Command();
 
@@ -62,11 +63,37 @@ async function main() {
     }
   ]);
 
-  console.log('chaptersFrom', chaptersFrom);
-  console.log('chapterFrom', chapters[chaptersFrom - 1]);
-  console.log('chaptersTo', chaptersTo);
-  console.log('chapterTo', chapters[chaptersTo - 1]);
-}
+
+  const chaptersToDownload = chapters.filter((chapter) => chapter.number >= chaptersFrom && chapter.number <= chaptersTo);
+
+  const promises = chaptersToDownload.map(async (chapter): Promise<FullChapter> => {
+    const pages = await inMangaSDK.getChapterPages(chapter.id);
+
+    return {
+      ...chapter,
+      pagesMetadata: pages,
+    };
+  });
+
+  const chaptersPagesSpinner = createSpinner(`Getting chapters pages...`).start();
+  const result = await Promise.all(promises);
+  chaptersPagesSpinner.success();
+
+  console.log('promises', result.length);
+
+  for (let chapterIndex = 0; chapterIndex < result.length; chapterIndex++) {
+    const chapter = result[chapterIndex];
+
+    for (let pageIndex = 0; pageIndex < chapter.pagesMetadata.length; pageIndex++) {
+      const url = chapter.pagesMetadata[pageIndex].url;
+      const filepath = `./.cache/${mangaId}/${chapter.number}/${chapter.pagesMetadata[pageIndex].number}`;
+
+      console.log('downloading', url, 'to', filepath);
+
+      await downloadImage(url, filepath);
+    }
+  }
+};
 
 main();
 
