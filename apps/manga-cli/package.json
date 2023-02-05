@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "axios": "0.27.2",
+    "boxen": "5.1.2",
     "cli-progress": "^3.11.2",
     "commander": "^10.0.0",
     "figlet": "^1.5.2",

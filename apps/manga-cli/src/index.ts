@@ -12,6 +12,7 @@ import {
   openFile,
   imagesToPDF,
   downloadImage,
+  printDonationBox,
   getChaptersPrompt,
   getSearchValuePrompt,
   getDownloadPathPrompt,
@@ -67,7 +68,7 @@ async function main() {
   console.log(gradient.instagram(i18n.translate('general.chaptersAvailable', { chapters: chapters.length })));
 
   const { chaptersFrom, chaptersTo } = await getChaptersPrompt(chapters.length);
-
+  const { downloadPath } = await getDownloadPathPrompt();
 
   const chaptersToDownload = chapters.filter((chapter) => chapter.number >= chaptersFrom && chapter.number <= chaptersTo);
 
@@ -116,15 +117,15 @@ async function main() {
     title: selectedManga.name,
   });
 
-  const { downloadPath } = await getDownloadPathPrompt();
 
   const outputPath = path.join(downloadPath, fileName);
 
   imagesToPDF(filePaths, outputPath);
 
-  console.log(gradient.instagram(i18n.translate('general.openFile', { filePath: outputPath })));
+  console.log(gradient.vice(i18n.translate('general.openFile', { filePath: outputPath })));
 
   openFile(outputPath);
+  printDonationBox();
 };
 
 main();

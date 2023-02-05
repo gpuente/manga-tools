@@ -4,7 +4,8 @@
     "progress": "Progreso",
     "files": "archivos",
     "downloadPath": "Dónde te gustaría guardar el manga descargado? (por defecto: directorio actual)",
-    "openFile": "Opening file: ${filePath}"
+    "openFile": "Opening file: ${filePath}",
+    "donation": "Si te gusta este proyecto, considera hacer una donación para ayudar a mantenerlo activo"
   },
   "prompt": {
     "searchManga": "Que manga te gustaría buscar?",
