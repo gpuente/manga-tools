@@ -16,6 +16,10 @@ export const imagesToPDF = (images: string[], path: string): void => {
     }
   });
 
+  if (doc.length < 1) {
+    throw new Error('No images to convert');
+  }
+
   doc.pipe(fs.createWriteStream(path));
   doc.end();
 };

@@ -5,8 +5,7 @@ import PDFDocument from 'pdfkit';
 import fs from 'fs';
 import { createSpinner } from 'nanospinner';
 import cliProgress from 'cli-progress';
-import { downloadImage, imagesToPDF } from './features';
-import { openFile } from './features/openFile';
+import { downloadImage, imagesToPDF, openFile, getChaptersPrompt, getMangaSelectionPrompt, searchValuePrompt } from './features';
 
 const program = new Command();
 
@@ -18,52 +17,27 @@ program
 async function main() {
   const inMangaSDK = new InMangaSDK();
 
-  const { searchValue } = await inquirer.prompt([
-    {
-      type: 'input',
-      name: 'searchValue',
-      message: 'What manga do you want to download?',
-    },
-  ]);
+  const { searchValue } = await searchValuePrompt;
 
   const spinner = createSpinner(`Searching for "${searchValue}"...`).start();
   const results = await inMangaSDK.search(searchValue);
 
   spinner.success();
 
-  const { mangaId } = await inquirer.prompt([
-    {
-      type: 'list',
-      name: 'mangaId',
-      message: 'Select the manga you want to download',
-      choices: results.map((result) => ({
-        name: `${result.name} (${result.status})`,
-        value: result.id,
-      })),
-    },
-  ]);
+  const { selectedManga } = await getMangaSelectionPrompt(results);
+  const { id: mangaId } = selectedManga;
+
+  console.log('selectedManga: ', selectedManga);
+  console.log('mangaId: ', mangaId);
 
   const chaptersSpinner = createSpinner(`Getting chapters info...`).start();
   const chapters = await inMangaSDK.getChaptersInfo(mangaId);
 
   chaptersSpinner.success();
 
-  console.log('there are', chapters.length, 'chapters available');
+  console.log('There are', chapters.length, 'chapters available');
 
-  const { chaptersFrom, chaptersTo } = await inquirer.prompt([
-    {
-      type: 'number',
-      name: 'chaptersFrom',
-      message: 'From which chapter do you want to download?',
-      default: 1,
-    },
-    {
-      type: 'number',
-      name: 'chaptersTo',
-      message: 'To which chapter do you want to download?',
-      default: chapters.length,
-    }
-  ]);
+  const { chaptersFrom, chaptersTo } = await getChaptersPrompt(chapters.length);
 
 
   const chaptersToDownload = chapters.filter((chapter) => chapter.number >= chaptersFrom && chapter.number <= chaptersTo);
