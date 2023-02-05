@@ -4,7 +4,9 @@ import { Command } from 'commander';
 import PDFDocument from 'pdfkit';
 import fs from 'fs';
 import { createSpinner } from 'nanospinner';
-import { downloadImage } from './features';
+import cliProgress from 'cli-progress';
+import { downloadImage, imagesToPDF } from './features';
+import { openFile } from './features/openFile';
 
 const program = new Command();
 
@@ -79,7 +81,17 @@ async function main() {
   const result = await Promise.all(promises);
   chaptersPagesSpinner.success();
 
-  console.log('promises', result.length);
+  // console.log('promises', result.length);
+
+  const filePaths: string[] = [];
+
+  const bar = new cliProgress.SingleBar({
+    format: 'Progress {bar} | Downloading ({value}/{total}) files',
+  }, cliProgress.Presets.shades_classic);
+
+  const totalFiles = result.reduce((acc, chapter) => acc + chapter.pagesMetadata.length, 0);
+
+  bar.start(totalFiles, 0);
 
   for (let chapterIndex = 0; chapterIndex < result.length; chapterIndex++) {
     const chapter = result[chapterIndex];
@@ -88,11 +100,22 @@ async function main() {
       const url = chapter.pagesMetadata[pageIndex].url;
       const filepath = `./.cache/${mangaId}/${chapter.number}/${chapter.pagesMetadata[pageIndex].number}`;
 
-      console.log('downloading', url, 'to', filepath);
+      // console.log('downloading', url, 'to', filepath);
 
-      await downloadImage(url, filepath);
+      const filePath = await downloadImage(url, filepath);
+      bar.increment();
+      filePaths.push(filePath);
     }
   }
+
+  bar.stop();
+
+  const outputPath = `./.cache/${mangaId}/manga.pdf`;
+  imagesToPDF(filePaths, outputPath);
+
+  console.log('Opening file: ', outputPath);
+
+  openFile(outputPath);
 };
 
 main();

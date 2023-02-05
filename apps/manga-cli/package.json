@@ -16,13 +16,16 @@
   },
   "dependencies": {
     "axios": "0.27.2",
+    "cli-progress": "^3.11.2",
     "commander": "^10.0.0",
+    "image-size": "^1.0.2",
     "in-manga-sdk": "*",
     "inquirer": "8.2.5",
     "nanospinner": "^1.1.0",
     "pdfkit": "0.7.2"
   },
   "devDependencies": {
+    "@types/cli-progress": "^3.11.0",
     "@types/inquirer": "^9.0.3",
     "@types/pdfkit": "^0.12.8",
     "eslint": "^7.32.0",

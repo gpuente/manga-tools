@@ -10,7 +10,7 @@ const imageContentTypeToExtension = {
 };
 
 
-export const downloadImage = async (url: string, filepath: string) => {
+export const downloadImage = async (url: string, filepath: string): Promise<string> => {
   const dirName = path.dirname(filepath);
 
   if (!fs.existsSync(dirName)) {
@@ -30,4 +30,6 @@ export const downloadImage = async (url: string, filepath: string) => {
   const fullPath = path.join(dirName, fileName);
 
   fs.writeFileSync(fullPath, res.data);
+
+  return path.resolve(fullPath);
 };
