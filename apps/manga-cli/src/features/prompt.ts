@@ -16,7 +16,11 @@ interface ChaptersAnswers {
   chaptersFrom: number;
 }
 
-export const searchValuePrompt = inquirer.prompt<SearchValueAnswer>([
+interface DownloadPathAnswer {
+  downloadPath: string;
+}
+
+export const getSearchValuePrompt = () => inquirer.prompt<SearchValueAnswer>([
   {
     type: 'input',
     name: 'searchValue',
@@ -67,4 +71,13 @@ export const getChaptersPrompt = (totalChapters: number) => inquirer.prompt<Chap
       return true;
     },
   }
+]);
+
+export const getDownloadPathPrompt = () => inquirer.prompt<DownloadPathAnswer>([
+  {
+    type: 'input',
+    name: 'downloadPath',
+    message: i18n.translate('general.downloadPath'),
+    default: '.',
+  },
 ]);

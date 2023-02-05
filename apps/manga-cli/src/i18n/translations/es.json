@@ -1,8 +1,20 @@
 {
+  "general": {
+    "chaptersAvailable": "${chapters} capítulo/s disponible/s",
+    "progress": "Progreso",
+    "files": "archivos",
+    "downloadPath": "Dónde te gustaría guardar el manga descargado? (por defecto: directorio actual)",
+    "openFile": "Opening file: ${filePath}"
+  },
   "prompt": {
     "searchManga": "Que manga te gustaría buscar?",
     "mangaSelection": "Selecciona el manga que quieres descargar",
     "fromChapter": "Desde que capítulo te gustaría comenzar a descargar",
     "toChapter": "Hasta que capítulo te gustaría descargar"
+  },
+  "spinners": {
+    "searching": "Buscando resultados para \"${searchValue}\"...",
+    "getChaptersInfo": "Obteniendo información de los capítulos...",
+    "getChapterPages": "Obteniendo información de páginas..."
   }
 }

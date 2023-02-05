@@ -1,16 +1,20 @@
-import fs from 'fs';
-import PDFDocument from 'pdfkit';
 import { Command } from 'commander';
 import cliProgress from 'cli-progress';
 import { createSpinner } from 'nanospinner';
 import { FullChapter, InMangaSDK } from 'in-manga-sdk';
+import figlet from 'figlet';
+import gradient from 'gradient-string';
+import path from 'path';
 
+import { i18n, I18N } from './i18n';
+import { getFileName, sleep } from './utils';
 import {
   openFile,
   imagesToPDF,
   downloadImage,
   getChaptersPrompt,
-  searchValuePrompt,
+  getSearchValuePrompt,
+  getDownloadPathPrompt,
   getMangaSelectionPrompt,
 } from './features';
 
@@ -18,15 +22,36 @@ const program = new Command();
 
 program
   .option('-i, --init', 'Start manga downloader assistant')
+  .option('--lang <language>', 'Set CLI language (available "en" and "es")')
   .parse(process.argv);
 
 
 async function main() {
+  const options = program.opts();
+
+
+  figlet.text('Manga CLI', {
+    font: 'ANSI Regular',
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
+    width: 80
+  }, (err, data) => {
+    if (err) return;
+    console.clear();
+    console.log(gradient('red', 'blue')(data));
+  });
+
+  await sleep(1000);
+
+  if (options.lang && Object.values(I18N.AVAILABLE_LANGUAGES).includes(options.lang.toLowerCase())) {
+    i18n.changeLanguage(options.lang);
+  }
+
   const inMangaSDK = new InMangaSDK();
 
-  const { searchValue } = await searchValuePrompt;
+  const { searchValue } = await getSearchValuePrompt();
 
-  const spinner = createSpinner(`Searching for "${searchValue}"...`).start();
+  const spinner = createSpinner(i18n.translate('spinners.searching', { searchValue })).start();
   const results = await inMangaSDK.search(searchValue);
 
   spinner.success();
@@ -34,15 +59,12 @@ async function main() {
   const { selectedManga } = await getMangaSelectionPrompt(results);
   const { id: mangaId } = selectedManga;
 
-  console.log('selectedManga: ', selectedManga);
-  console.log('mangaId: ', mangaId);
-
-  const chaptersSpinner = createSpinner(`Getting chapters info...`).start();
+  const chaptersSpinner = createSpinner(i18n.translate('spinners.getChaptersInfo')).start();
   const chapters = await inMangaSDK.getChaptersInfo(mangaId);
 
   chaptersSpinner.success();
 
-  console.log('There are', chapters.length, 'chapters available');
+  console.log(gradient.instagram(i18n.translate('general.chaptersAvailable', { chapters: chapters.length })));
 
   const { chaptersFrom, chaptersTo } = await getChaptersPrompt(chapters.length);
 
@@ -58,16 +80,14 @@ async function main() {
     };
   });
 
-  const chaptersPagesSpinner = createSpinner(`Getting chapters pages...`).start();
+  const chaptersPagesSpinner = createSpinner(i18n.translate('spinners.getChapterPages')).start();
   const result = await Promise.all(promises);
   chaptersPagesSpinner.success();
-
-  // console.log('promises', result.length);
 
   const filePaths: string[] = [];
 
   const bar = new cliProgress.SingleBar({
-    format: 'Progress {bar} | Downloading ({value}/{total}) files',
+    format: `${i18n.translate('general.progress')} {bar} | Downloading ({value}/{total}) ${i18n.translate('general.files')}`,
   }, cliProgress.Presets.shades_classic);
 
   const totalFiles = result.reduce((acc, chapter) => acc + chapter.pagesMetadata.length, 0);
@@ -81,8 +101,6 @@ async function main() {
       const url = chapter.pagesMetadata[pageIndex].url;
       const filepath = `./.cache/${mangaId}/${chapter.number}/${chapter.pagesMetadata[pageIndex].number}`;
 
-      // console.log('downloading', url, 'to', filepath);
-
       const filePath = await downloadImage(url, filepath);
       bar.increment();
       filePaths.push(filePath);
@@ -91,46 +109,22 @@ async function main() {
 
   bar.stop();
 
-  const outputPath = `./.cache/${mangaId}/manga.pdf`;
+  const fileName = getFileName({
+    ext: 'pdf',
+    to: chaptersTo,
+    from: chaptersFrom,
+    title: selectedManga.name,
+  });
+
+  const { downloadPath } = await getDownloadPathPrompt();
+
+  const outputPath = path.join(downloadPath, fileName);
+
   imagesToPDF(filePaths, outputPath);
 
-  console.log('Opening file: ', outputPath);
+  console.log(gradient.instagram(i18n.translate('general.openFile', { filePath: outputPath })));
 
   openFile(outputPath);
 };
 
 main();
-
-const createPDF = () => {
-  // Create a document
-  const doc = new PDFDocument();
-
-  // Pipe its output somewhere, like to a file or HTTP response
-  // See below for browser usage
-  doc.pipe(fs.createWriteStream('output.pdf'));
-
-  // Add another page
-  doc
-    .addPage()
-    .fontSize(25)
-    .text('Here is some vector graphics...', 100, 100);
-
-  // Draw a triangle
-  doc
-    .save()
-    .moveTo(100, 150)
-    .lineTo(100, 250)
-    .lineTo(200, 250)
-    .fill('#FF3300');
-
-  // Add some text with annotations
-  doc
-    .addPage()
-    .fillColor('blue')
-    .text('Here is a link!', 100, 100)
-    .underline(100, 100, 160, 27, { color: '#0000FF' })
-    .link(100, 100, 160, 27, 'http://google.com/');
-
-  // Finalize PDF file
-  doc.end();
-}

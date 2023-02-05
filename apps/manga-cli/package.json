@@ -18,6 +18,8 @@
     "axios": "0.27.2",
     "cli-progress": "^3.11.2",
     "commander": "^10.0.0",
+    "figlet": "^1.5.2",
+    "gradient-string": "^2.0.2",
     "image-size": "^1.0.2",
     "in-manga-sdk": "*",
     "inquirer": "8.2.5",
@@ -28,6 +30,8 @@
   },
   "devDependencies": {
     "@types/cli-progress": "^3.11.0",
+    "@types/figlet": "^1.5.5",
+    "@types/gradient-string": "^1.1.2",
     "@types/inquirer": "^9.0.3",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.template": "^4.5.1",
@@ -47,7 +51,8 @@
       "node16-win-x64"
     ],
     "assets": [
-      "../../node_modules/pdfkit/js/font/data/Helvetica.afm"
+      "../../node_modules/pdfkit/js/font/data/Helvetica.afm",
+      "../../node_modules/figlet/fonts/ANSI Regular.flf"
     ]
   }
 }
