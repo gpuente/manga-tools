@@ -3,7 +3,8 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es2020",
-        "outDir": "./build"
+        "outDir": "./build",
+        "resolveJsonModule": true
     },
     "include": ["src/**/*", "node_modules/**/*"]
 }

@@ -1,0 +1,8 @@
+{
+  "prompt": {
+    "searchManga": "Que manga te gustaría buscar?",
+    "mangaSelection": "Selecciona el manga que quieres descargar",
+    "fromChapter": "Desde que capítulo te gustaría comenzar a descargar",
+    "toChapter": "Hasta que capítulo te gustaría descargar"
+  }
+}

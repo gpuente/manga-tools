@@ -1,6 +1,8 @@
 import { SearchResult } from 'in-manga-sdk';
 import inquirer from 'inquirer';
 
+import { i18n } from '../i18n';
+
 interface SearchValueAnswer {
   searchValue: string;
 }
@@ -18,7 +20,7 @@ export const searchValuePrompt = inquirer.prompt<SearchValueAnswer>([
   {
     type: 'input',
     name: 'searchValue',
-    message: 'What manga do you want to download?',
+    message: i18n.translate('prompt.searchManga'),
   },
 ]);
 
@@ -26,7 +28,7 @@ export const getMangaSelectionPrompt = (mangaList: SearchResult[]) => inquirer.p
   {
     type: 'list',
     name: 'selectedManga',
-    message: 'Select the manga you want to download',
+    message: i18n.translate('prompt.mangaSelection'),
     choices: mangaList.map((manga) => ({
       name: `${manga.name} (${manga.status})`,
       value: manga,
@@ -38,7 +40,7 @@ export const getChaptersPrompt = (totalChapters: number) => inquirer.prompt<Chap
   {
     type: 'number',
     name: 'chaptersFrom',
-    message: 'From which chapter do you want to download?',
+    message: i18n.translate('prompt.fromChapter'),
     default: 1,
     validate: (input: number) => {
       if (input < 1 || input > totalChapters) {
@@ -51,7 +53,7 @@ export const getChaptersPrompt = (totalChapters: number) => inquirer.prompt<Chap
   {
     type: 'number',
     name: 'chaptersTo',
-    message: 'To which chapter do you want to download?',
+    message: i18n.translate('prompt.toChapter'),
     default: totalChapters,
     validate: (input: number, answers: ChaptersAnswers) => {
       if (input < answers.chaptersFrom) {

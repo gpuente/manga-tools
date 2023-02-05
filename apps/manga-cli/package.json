@@ -21,12 +21,16 @@
     "image-size": "^1.0.2",
     "in-manga-sdk": "*",
     "inquirer": "8.2.5",
+    "lodash.get": "^4.4.2",
+    "lodash.template": "^4.5.0",
     "nanospinner": "^1.1.0",
     "pdfkit": "0.7.2"
   },
   "devDependencies": {
     "@types/cli-progress": "^3.11.0",
     "@types/inquirer": "^9.0.3",
+    "@types/lodash.get": "^4.4.7",
+    "@types/lodash.template": "^4.5.1",
     "@types/pdfkit": "^0.12.8",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
