@@ -1,11 +1,18 @@
-import { FullChapter, InMangaSDK } from 'in-manga-sdk';
-import inquirer from 'inquirer';
-import { Command } from 'commander';
-import PDFDocument from 'pdfkit';
 import fs from 'fs';
-import { createSpinner } from 'nanospinner';
+import PDFDocument from 'pdfkit';
+import { Command } from 'commander';
 import cliProgress from 'cli-progress';
-import { downloadImage, imagesToPDF, openFile, getChaptersPrompt, getMangaSelectionPrompt, searchValuePrompt } from './features';
+import { createSpinner } from 'nanospinner';
+import { FullChapter, InMangaSDK } from 'in-manga-sdk';
+
+import {
+  openFile,
+  imagesToPDF,
+  downloadImage,
+  getChaptersPrompt,
+  searchValuePrompt,
+  getMangaSelectionPrompt,
+} from './features';
 
 const program = new Command();
 
