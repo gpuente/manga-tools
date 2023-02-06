@@ -1,5 +1,5 @@
 {
   "cache": {
-    "directory": "./.cache"
+    "directory": "./.manga-cli-cache"
   }
 }
