@@ -11,8 +11,7 @@
     "dev": "ts-node src/index.ts",
     "clean": "rimraf dist build",
     "build:cli": "pkg . --output dist/manga",
-    "clean:node_modules": "rimraf node_modules",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean:node_modules": "rimraf node_modules"
   },
   "dependencies": {
     "axios": "0.27.2",
