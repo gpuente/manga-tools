@@ -9,7 +9,7 @@ describe('utils -> normalizeText', () => {
 
 describe('utils -> getMangaStatus', () => {
   it('should return MangaStatus.OnGoing', () => {
-    expect(getMangaStatus('En emisión')).toBe('OnGoing');
+    expect(getMangaStatus('En emisión')).toBe('OnGoingFailed');
   });
 
   it('should return MangaStatus.Finished', () => {
