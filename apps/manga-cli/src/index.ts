@@ -26,8 +26,8 @@ global.debugEnabled = false;
 const program = new Command();
 
 program
-  .option('-i, --init', 'Start manga downloader assistant')
-  .option('-c, --clear ', 'Clear downloaded chapters cache')
+  .description('CLI tool to download mangas from internet and store them in PDF files')
+  .option('-c, --clear-cache ', 'Clear downloaded chapters cache', false)
   .option('-d, --debug', 'Enable debug mode')
   .option('-s, --skip-open', 'Skip open downloaded file after download completes', false)
   .option('--lang <language>', 'Set CLI language (available "en" and "es")')
@@ -134,7 +134,7 @@ async function main() {
 
   imagesToPDF(filePaths, outputPath);
 
-  if (options.clear) {
+  if (options.clearCache) {
     await clearCache();
   }
 
