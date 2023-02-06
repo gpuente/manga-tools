@@ -88,7 +88,7 @@ async function main() {
   const filePaths: string[] = [];
 
   const bar = new cliProgress.SingleBar({
-    format: `${i18n.translate('general.progress')} {bar} | Downloading ({value}/{total}) ${i18n.translate('general.files')}`,
+    format: `${i18n.translate('general.progress')} {bar} {percentage}% | Downloading ({value}/{total}) ${i18n.translate('general.files')}`,
   }, cliProgress.Presets.shades_classic);
 
   const totalFiles = result.reduce((acc, chapter) => acc + chapter.pagesMetadata.length, 0);
