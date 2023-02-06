@@ -16,6 +16,7 @@
   "spinners": {
     "searching": "Searching for \"${searchValue}\"...",
     "getChaptersInfo": "Getting chapters info...",
-    "getChapterPages": "Getting chapters pages..."
+    "getChapterPages": "Getting chapters pages...",
+    "clearCache": "Clearing cache..."
   }
 }
