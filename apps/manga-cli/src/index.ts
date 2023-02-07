@@ -14,9 +14,9 @@ import {
   clearCache,
   imagesToPDF,
   downloadImage,
+  promptAndSearch,
   printDonationBox,
   getChaptersPrompt,
-  getSearchValuePrompt,
   getDownloadPathPrompt,
   getMangaSelectionPrompt,
 } from './features';
@@ -60,12 +60,7 @@ async function main() {
 
   const inMangaSDK = new InMangaSDK();
 
-  const { searchValue } = await getSearchValuePrompt();
-
-  const spinner = createSpinner(i18n.translate('spinners.searching', { searchValue })).start();
-  const results = await inMangaSDK.search(searchValue);
-
-  spinner.success();
+  const results = await promptAndSearch(inMangaSDK);
 
   const { selectedManga } = await getMangaSelectionPrompt(results);
   const { id: mangaId } = selectedManga;

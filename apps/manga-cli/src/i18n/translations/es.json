@@ -15,6 +15,7 @@
   },
   "spinners": {
     "searching": "Buscando resultados para \"${searchValue}\"...",
+    "searchingNotFound": "No se encontraron resultados para \"${searchValue}\"",
     "getChaptersInfo": "Obteniendo información de los capítulos...",
     "getChapterPages": "Obteniendo información de páginas...",
     "clearCache": "Limpiando cache...",
