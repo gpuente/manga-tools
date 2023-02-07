@@ -17,6 +17,9 @@
     "searching": "Buscando resultados para \"${searchValue}\"...",
     "getChaptersInfo": "Obteniendo información de los capítulos...",
     "getChapterPages": "Obteniendo información de páginas...",
-    "clearCache": "Limpiando cache..."
+    "clearCache": "Limpiando cache...",
+    "clearCacheError": "Error al limpiar cache (habilite el modo debug para más información)",
+    "generatePDF": "Generando PDF...",
+    "generatePDFError": "Error al generar PDF (habilite el modo debug para más información)"
   }
 }

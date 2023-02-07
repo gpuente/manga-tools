@@ -15,7 +15,7 @@ export const clearCache = async (): Promise<void> => {
     await fs.promises.rm(config.cache.directory, { recursive: true, force: true });
     spinner.success();
   } catch (error) {
-    spinner.error({ text: 'Error while clearing cache (enable debug mode to see more details)' });
+    spinner.error({ text: i18n.translate('spinners.clearCacheError') });
     if (global.debugEnabled) {
       console.error(`Error while clearing cache: ${error}`);
     }
