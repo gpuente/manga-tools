@@ -2,7 +2,7 @@ import fs from 'fs';
 import sizeOf from 'image-size';
 import PDFDocument from 'pdfkit';
 
-export const imagesToPDF = (images: string[], path: string): void => {
+export const imagesToPDF = (images: string[], path: string): Promise<void> => new Promise((resolve, reject) => {
   const doc = new PDFDocument({
     autoFirstPage: false,
   });
@@ -20,6 +20,11 @@ export const imagesToPDF = (images: string[], path: string): void => {
     throw new Error('No images to convert');
   }
 
-  doc.pipe(fs.createWriteStream(path));
+  const stream = fs.createWriteStream(path);
+
+  stream.on('finish', resolve);
+  stream.on('error', reject);
+
+  doc.pipe(stream);
   doc.end();
-};
+});

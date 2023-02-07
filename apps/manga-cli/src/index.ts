@@ -132,7 +132,7 @@ async function main() {
 
   const outputPath = path.join(downloadPath, fileName);
 
-  imagesToPDF(filePaths, outputPath);
+  await imagesToPDF(filePaths, outputPath);
 
   if (options.clearCache) {
     await clearCache();
