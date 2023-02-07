@@ -5,7 +5,8 @@
     "files": "archivos",
     "downloadPath": "Dónde te gustaría guardar el manga descargado? (por defecto: directorio actual)",
     "openFile": "Opening file: ${filePath}",
-    "donation": "Si te gusta este proyecto, considera hacer una donación para ayudar a mantenerlo activo"
+    "donation": "Si te gusta este proyecto, considera hacer una donación para ayudar a mantenerlo activo",
+    "fileStored": "Archivo guardado: ${filePath}"
   },
   "prompt": {
     "searchManga": "Que manga te gustaría buscar?",
