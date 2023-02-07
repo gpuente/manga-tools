@@ -10,8 +10,8 @@
   "prompt": {
     "searchManga": "What manga do you want to download?",
     "mangaSelection": "Select the manga you want to download",
-    "fromChapter": "From which chapter do you want to download?",
-    "toChapter": "To which chapter do you want to download?"
+    "fromChapter": "What chapter would you like to start the download from?",
+    "toChapter": "Up to which chapter would you like to download?"
   },
   "spinners": {
     "searching": "Searching for \"${searchValue}\"...",
