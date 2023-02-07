@@ -1,8 +1,13 @@
 import fs from 'fs';
 import sizeOf from 'image-size';
 import PDFDocument from 'pdfkit';
+import { createSpinner } from 'nanospinner';
 
-export const imagesToPDF = (images: string[], path: string): void => {
+import { i18n } from '../i18n';
+
+export const imagesToPDF = (images: string[], path: string): Promise<void> => new Promise((resolve, reject) => {
+  const spinner = createSpinner(i18n.translate('spinners.generatePDF')).start();
+
   const doc = new PDFDocument({
     autoFirstPage: false,
   });
@@ -20,6 +25,22 @@ export const imagesToPDF = (images: string[], path: string): void => {
     throw new Error('No images to convert');
   }
 
-  doc.pipe(fs.createWriteStream(path));
+  const stream = fs.createWriteStream(path);
+
+  stream.on('finish', () => {
+    spinner.success();
+    resolve();
+  });
+  stream.on('error', (err) => {
+    spinner.error({ text: i18n.translate('spinners.generatePDFError') });
+
+    if (global.debugEnabled) {
+      console.error(`Error while generating PDF: ${err}`);
+    }
+
+    reject();
+  });
+
+  doc.pipe(stream);
   doc.end();
-};
+});
