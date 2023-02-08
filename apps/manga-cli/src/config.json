@@ -1,5 +1,9 @@
 {
   "cache": {
     "directory": "./.manga-cli-cache"
+  },
+  "requests": {
+    "default_timeout": 5000,
+    "attempts_per_file": 5
   }
 }
