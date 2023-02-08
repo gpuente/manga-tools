@@ -134,7 +134,7 @@ async function main() {
   }
 
   if (!options.skipOpen) {
-    openFile(outputPath);
+    openFile(path.resolve(downloadPath), false);
   }
 
   if (!global.debugEnabled) {
