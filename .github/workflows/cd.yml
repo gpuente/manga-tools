@@ -1,0 +1,72 @@
+name: Build, Create Release, and Upload Assets
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Install dependencies
+      run: yarn
+
+    - name: Build project
+      run: yarn build:cli
+
+    - name: Get version from package.json
+      run: echo "::set-env name=VERSION::$(jq -r '.version' package.json)"
+
+    - name: Get previous version
+      id: previous_version
+      run: |
+        echo "::set-output name=version::$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name' | cut -d 'v' -f 2)"
+
+    - name: Create a new GitHub release
+      if: env.VERSION != steps.previous_version.outputs.version
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ env.VERSION }}
+        release_name: Release v${{ env.VERSION }}
+
+    - name: Upload the build artifact linux to the release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./apps/manga-cli/dist/manga-linux
+        asset_name: manga-cli-linux-${{ env.VERSION }}
+        asset_content_type: application/octet-stream
+
+    - name: Upload the build artifact macos to the release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./apps/manga-cli/dist/manga-macos
+        asset_name: manga-cli-macos-${{ env.VERSION }}
+        asset_content_type: application/octet-stream
+
+    - name: Upload the build artifact windows to the release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./apps/manga-cli/dist/manga-win.exe
+        asset_name: manga-cli-win-${{ env.VERSION }}.exe
+        asset_content_type: application/octet-stream
