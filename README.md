@@ -6,7 +6,7 @@ A command line interface (CLI) tool to download mangas chapters from the interne
 
 &nbsp;
 
-[![Download for MacOS](https://drive.google.com/uc?id=1kOuYNOrlNFIVE2NcQpdvyfhHRmXDQ8A1)](https://github.com/gpuente/manga-tools/releases/download/v1.0.0/manga-cli-macos-1.0.0) &numsp;&numsp; [![Download for Windows](https://drive.google.com/uc?id=10D6M-ZiYxO58JVu3p4FNkWCVBk8uXNQ7)](https://github.com/gpuente/manga-tools/releases/download/v1.0.0/manga-cli-win-1.0.0.exe) &numsp;&numsp; [![Download for Linux](https://drive.google.com/uc?id=1kypzNOiAzgXG3TS4TmHkyxxlSCwF15Vh)](https://github.com/gpuente/manga-tools/releases/download/v1.0.0/manga-cli-linux-1.0.0)
+[![Download for MacOS](https://drive.google.com/uc?id=1kOuYNOrlNFIVE2NcQpdvyfhHRmXDQ8A1)](https://github.com/gpuente/manga-tools/releases/download/v1.0.1/manga-cli-macos-1.0.1) &numsp;&numsp; [![Download for Windows](https://drive.google.com/uc?id=10D6M-ZiYxO58JVu3p4FNkWCVBk8uXNQ7)](https://github.com/gpuente/manga-tools/releases/download/v1.0.1/manga-cli-win-1.0.1.exe) &numsp;&numsp; [![Download for Linux](https://drive.google.com/uc?id=1kypzNOiAzgXG3TS4TmHkyxxlSCwF15Vh)](https://github.com/gpuente/manga-tools/releases/download/v1.0.1/manga-cli-linux-1.0.1)
 
 &nbsp;
 
