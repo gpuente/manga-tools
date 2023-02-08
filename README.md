@@ -26,7 +26,8 @@ manga-cli [OPTIONS]
 
 ## Options:
 - `-h, --help`: Show this message and exit.
-- `-c, --clear-cache`: Clear cache after the download finishes.
+- `-c, --clear-cache`: Clear cache.
+- `--clear-after-download`: Clears the cache after the download finishes.
 - `-s, --skip-open`: Avoid open the generated pdf after download completes.
 - `-d, --debug`: Enable the debug mode.
 - `--lang [es|en]`:  Language for the CLI, either Spanish (es) or English (en). Default is English.
