@@ -31,12 +31,13 @@ const axiosGet = async (url: string, timeout: number, attempts: number): Promise
 export const downloadImage = async (url: string, filepath: string): Promise<string> => {
   const dirName = path.dirname(filepath);
 
+  if (config.cache.hideDirectory && !fs.existsSync(config.cache.directory)) {
+    fs.mkdirSync(config.cache.directory, { recursive: true });
+    winattr.setSync(config.cache.directory, { hidden: true });
+  }
+
   if (!fs.existsSync(dirName)) {
     fs.mkdirSync(dirName, { recursive: true });
-
-    if (config.cache.hideDirectory) {
-      winattr.setSync(dirName, { hidden: true });
-    }
   } else {
     const files = fs.readdirSync(dirName);
     const expectedFileName = path.basename(filepath, path.extname(filepath));
