@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import winattr from 'winattr';
 import axios, { AxiosResponse } from 'axios';
 
-import config from '../config.json';
+import config from '../config';
 
 const imageContentTypeToExtension = {
   'image/jpeg': '.jpg',
@@ -32,6 +33,10 @@ export const downloadImage = async (url: string, filepath: string): Promise<stri
 
   if (!fs.existsSync(dirName)) {
     fs.mkdirSync(dirName, { recursive: true });
+
+    if (config.cache.hideDirectory) {
+      winattr.setSync(dirName, { hidden: true });
+    }
   } else {
     const files = fs.readdirSync(dirName);
     const expectedFileName = path.basename(filepath, path.extname(filepath));
@@ -55,7 +60,7 @@ export const downloadImage = async (url: string, filepath: string): Promise<stri
     console.log(`Downloading image from ${url} to ${filepath}`);
   }
 
-  const res = await axiosGet(url, config.requests.default_timeout, config.requests.attempts_per_file);
+  const res = await axiosGet(url, config.requests.defaultTimeout, config.requests.attemptsPerFile);
 
   const contentType = res.headers['content-type'];
   const extension = imageContentTypeToExtension[contentType as keyof typeof imageContentTypeToExtension] || null;

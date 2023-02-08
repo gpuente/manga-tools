@@ -5,7 +5,7 @@
         "target": "es2020",
         "outDir": "./build",
         "resolveJsonModule": true,
-        "typeRoots": ["src/types.d.ts"]
+        "typeRoots": ["src/types.d.ts", "src/winattr.d.ts"]
     },
     "include": ["src/**/*", "node_modules/**/*"],
     "ts-node": {
