@@ -2,10 +2,15 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/U7U6IC8UC)
 
-A command line interface (CLI) project to download manga chapters from the internet and join them into a single PDF file. This CLI works on macOS, Linux, and Windows
+A command line interface (CLI) tool to download mangas chapters from the internet and join them into a single PDF file. This CLI works on macOS, Linux, and Windows 
 
+&nbsp;
 
-![](https://drive.google.com/uc?id=1rBUKryf7JsUnsm3FyBFSe5RO2K76gFlR)
+[![Download for MacOS](https://drive.google.com/uc?id=1kOuYNOrlNFIVE2NcQpdvyfhHRmXDQ8A1)](https://github.com/gpuente/manga-tools/releases/download/v1.0.0/manga-cli-macos-1.0.0) &numsp;&numsp; [![Download for Windows](https://drive.google.com/uc?id=10D6M-ZiYxO58JVu3p4FNkWCVBk8uXNQ7)](https://github.com/gpuente/manga-tools/releases/download/v1.0.0/manga-cli-win-1.0.0.exe) &numsp;&numsp; [![Download for Linux](https://drive.google.com/uc?id=1kypzNOiAzgXG3TS4TmHkyxxlSCwF15Vh)](https://github.com/gpuente/manga-tools/releases/download/v1.0.0/manga-cli-linux-1.0.0)
+
+&nbsp;
+
+![](https://drive.google.com/uc?id=14bs3m1MwDT8MMyhc0r_BVZstIpCabhDv)
 
 ## Features:
 
