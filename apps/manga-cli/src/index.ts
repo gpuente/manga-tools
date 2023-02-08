@@ -6,7 +6,7 @@ import figlet from 'figlet';
 import gradient from 'gradient-string';
 import path from 'path';
 
-import config from './config.json';
+import config from './config';
 import { i18n, I18N } from './i18n';
 import { getFileName, sleep } from './utils';
 import {

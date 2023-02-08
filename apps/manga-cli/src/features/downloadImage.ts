@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import winattr from 'winattr';
 import axios, { AxiosResponse } from 'axios';
 
-import config from '../config.json';
+import config from '../config';
 
 const imageContentTypeToExtension = {
   'image/jpeg': '.jpg',
@@ -30,6 +31,11 @@ const axiosGet = async (url: string, timeout: number, attempts: number): Promise
 export const downloadImage = async (url: string, filepath: string): Promise<string> => {
   const dirName = path.dirname(filepath);
 
+  if (config.cache.hideDirectory && !fs.existsSync(config.cache.directory)) {
+    fs.mkdirSync(config.cache.directory, { recursive: true });
+    winattr.setSync(config.cache.directory, { hidden: true });
+  }
+
   if (!fs.existsSync(dirName)) {
     fs.mkdirSync(dirName, { recursive: true });
   } else {
@@ -55,7 +61,7 @@ export const downloadImage = async (url: string, filepath: string): Promise<stri
     console.log(`Downloading image from ${url} to ${filepath}`);
   }
 
-  const res = await axiosGet(url, config.requests.default_timeout, config.requests.attempts_per_file);
+  const res = await axiosGet(url, config.requests.defaultTimeout, config.requests.attemptsPerFile);
 
   const contentType = res.headers['content-type'];
   const extension = imageContentTypeToExtension[contentType as keyof typeof imageContentTypeToExtension] || null;
