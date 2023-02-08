@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { createSpinner } from 'nanospinner';
 
-import config from '../config.json';
+import config from '../config';
 import { i18n } from '../i18n';
 
 export const clearCache = async (): Promise<void> => {

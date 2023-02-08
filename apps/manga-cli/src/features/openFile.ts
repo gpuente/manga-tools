@@ -3,13 +3,15 @@ import gradient from 'gradient-string';
 
 import { i18n } from '../i18n';
 
-export const openFile = (path: string): void => {
+export const openFile = (path: string, isFile = false): void => {
   if (global.debugEnabled) {
     console.log('Opening file...');
   }
 
   const logAndOpenFile = (command: string) => {
-    console.log(gradient.vice(i18n.translate('general.openFile', { filePath: path })));
+    const i18nKey = isFile ? 'general.openFile' : 'general.openFolder';
+
+    console.log(gradient.vice(i18n.translate(i18nKey, { filePath: path })));
     exec(`${command} ${path}`);
   };
 
@@ -19,7 +21,8 @@ export const openFile = (path: string): void => {
       break;
 
     case 'win32':
-      logAndOpenFile('start')
+      const command = isFile ? 'start' : 'explorer';
+      logAndOpenFile(command);
       break;
 
     case 'linux':

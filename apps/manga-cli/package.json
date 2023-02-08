@@ -1,6 +1,6 @@
 {
   "name": "manga-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -26,7 +26,8 @@
     "lodash.get": "^4.4.2",
     "lodash.template": "^4.5.0",
     "nanospinner": "^1.1.0",
-    "pdfkit": "0.7.2"
+    "pdfkit": "0.7.2",
+    "winattr": "^3.0.0"
   },
   "devDependencies": {
     "@types/cli-progress": "^3.11.0",

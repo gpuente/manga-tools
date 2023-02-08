@@ -6,7 +6,7 @@ import figlet from 'figlet';
 import gradient from 'gradient-string';
 import path from 'path';
 
-import config from './config.json';
+import config from './config';
 import { i18n, I18N } from './i18n';
 import { getFileName, sleep } from './utils';
 import {
@@ -28,6 +28,7 @@ const program = new Command();
 program
   .description('CLI tool to download mangas from internet and store them in PDF files')
   .option('-c, --clear-cache ', 'Clear downloaded chapters cache', false)
+  .option('--clear-after-download', 'Clear downloaded chapters cache after download completes', false)
   .option('-d, --debug', 'Enable debug mode')
   .option('-s, --skip-open', 'Skip open downloaded file after download completes', false)
   .option('--lang <language>', 'Set CLI language (available "en" and "es")')
@@ -39,6 +40,11 @@ async function main() {
 
   if (options.debug) {
     global.debugEnabled = true;
+  }
+
+  if (options.clearCache) {
+    await clearCache();
+    return;
   }
 
   figlet.text('Manga CLI', {
@@ -129,12 +135,12 @@ async function main() {
 
   await imagesToPDF(filePaths, outputPath);
 
-  if (options.clearCache) {
+  if (options.clearAfterDownload) {
     await clearCache();
   }
 
   if (!options.skipOpen) {
-    openFile(outputPath);
+    openFile(path.resolve(downloadPath), false);
   }
 
   if (!global.debugEnabled) {
