@@ -16,6 +16,7 @@
       "outputs": ["dist/**"]
     },
     "clean": {},
-    "clean:node_modules": {}
+    "clean:node_modules": {},
+    "test": {}
   }
 }

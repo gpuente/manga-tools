@@ -4,7 +4,11 @@
         "module": "commonjs",
         "target": "es2020",
         "outDir": "./build",
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "typeRoots": ["src/types.d.ts"]
     },
-    "include": ["src/**/*", "node_modules/**/*"]
+    "include": ["src/**/*", "node_modules/**/*"],
+    "ts-node": {
+      "files": true
+    }
 }

@@ -6,23 +6,30 @@ import figlet from 'figlet';
 import gradient from 'gradient-string';
 import path from 'path';
 
+import config from './config.json';
 import { i18n, I18N } from './i18n';
 import { getFileName, sleep } from './utils';
 import {
   openFile,
+  clearCache,
   imagesToPDF,
   downloadImage,
+  promptAndSearch,
   printDonationBox,
   getChaptersPrompt,
-  getSearchValuePrompt,
   getDownloadPathPrompt,
   getMangaSelectionPrompt,
 } from './features';
 
+global.debugEnabled = false;
+
 const program = new Command();
 
 program
-  .option('-i, --init', 'Start manga downloader assistant')
+  .description('CLI tool to download mangas from internet and store them in PDF files')
+  .option('-c, --clear-cache ', 'Clear downloaded chapters cache', false)
+  .option('-d, --debug', 'Enable debug mode')
+  .option('-s, --skip-open', 'Skip open downloaded file after download completes', false)
   .option('--lang <language>', 'Set CLI language (available "en" and "es")')
   .parse(process.argv);
 
@@ -30,6 +37,9 @@ program
 async function main() {
   const options = program.opts();
 
+  if (options.debug) {
+    global.debugEnabled = true;
+  }
 
   figlet.text('Manga CLI', {
     font: 'ANSI Regular',
@@ -50,12 +60,7 @@ async function main() {
 
   const inMangaSDK = new InMangaSDK();
 
-  const { searchValue } = await getSearchValuePrompt();
-
-  const spinner = createSpinner(i18n.translate('spinners.searching', { searchValue })).start();
-  const results = await inMangaSDK.search(searchValue);
-
-  spinner.success();
+  const results = await promptAndSearch(inMangaSDK);
 
   const { selectedManga } = await getMangaSelectionPrompt(results);
   const { id: mangaId } = selectedManga;
@@ -93,14 +98,16 @@ async function main() {
 
   const totalFiles = result.reduce((acc, chapter) => acc + chapter.pagesMetadata.length, 0);
 
-  bar.start(totalFiles, 0);
+  if (!global.debugEnabled) {
+    bar.start(totalFiles, 0);
+  }
 
   for (let chapterIndex = 0; chapterIndex < result.length; chapterIndex++) {
     const chapter = result[chapterIndex];
 
     for (let pageIndex = 0; pageIndex < chapter.pagesMetadata.length; pageIndex++) {
       const url = chapter.pagesMetadata[pageIndex].url;
-      const filepath = `./.cache/${mangaId}/${chapter.number}/${chapter.pagesMetadata[pageIndex].number}`;
+      const filepath = `${config.cache.directory}/${mangaId}/${chapter.number}/${chapter.pagesMetadata[pageIndex].number}`;
 
       const filePath = await downloadImage(url, filepath);
       bar.increment();
@@ -120,12 +127,19 @@ async function main() {
 
   const outputPath = path.join(downloadPath, fileName);
 
-  imagesToPDF(filePaths, outputPath);
+  await imagesToPDF(filePaths, outputPath);
 
-  console.log(gradient.vice(i18n.translate('general.openFile', { filePath: outputPath })));
+  if (options.clearCache) {
+    await clearCache();
+  }
 
-  openFile(outputPath);
-  printDonationBox();
+  if (!options.skipOpen) {
+    openFile(outputPath);
+  }
+
+  if (!global.debugEnabled) {
+    printDonationBox();
+  }
 };
 
 main();

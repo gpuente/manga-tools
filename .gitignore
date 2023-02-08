@@ -38,3 +38,7 @@ dist
 
 # cache
 .cache
+.manga-cli-cache
+
+# PDF
+*.pdf
