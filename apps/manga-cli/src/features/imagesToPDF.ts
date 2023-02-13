@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import sizeOf from 'image-size';
 import PDFDocument from 'pdfkit';
 import gradient from 'gradient-string';
 import { createSpinner } from 'nanospinner';
+import probe from 'probe-image-size';
 
 import { i18n } from '../i18n';
 
@@ -15,11 +15,14 @@ export const imagesToPDF = (images: string[], filePath: string): Promise<void> =
   });
 
   images.forEach((image) => {
-    const { width, height } = sizeOf(image);
+    const data = probe.sync(fs.readFileSync(image));
 
-    if (width && height) {
+    if (data) {
+      const { width, height } = data;
       doc.addPage({ size: [width, height] });
       doc.image(image, 0, 0, { width, height });
+    } else {
+      throw new Error(`unable to read image metdata for: ${image}`);
     }
   });
 

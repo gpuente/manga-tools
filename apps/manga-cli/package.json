@@ -20,13 +20,13 @@
     "commander": "^10.0.0",
     "figlet": "^1.5.2",
     "gradient-string": "^2.0.2",
-    "image-size": "^1.0.2",
     "in-manga-sdk": "*",
     "inquirer": "8.2.5",
     "lodash.get": "^4.4.2",
     "lodash.template": "^4.5.0",
     "nanospinner": "^1.1.0",
     "pdfkit": "0.7.2",
+    "probe-image-size": "^7.2.3",
     "winattr": "^3.0.0"
   },
   "devDependencies": {
@@ -37,6 +37,7 @@
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.template": "^4.5.1",
     "@types/pdfkit": "^0.12.8",
+    "@types/probe-image-size": "^7.2.0",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "pkg": "^5.8.0",
