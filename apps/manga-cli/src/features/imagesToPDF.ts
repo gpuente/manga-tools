@@ -22,7 +22,7 @@ export const imagesToPDF = (images: string[], filePath: string): Promise<void> =
       doc.addPage({ size: [width, height] });
       doc.image(image, 0, 0, { width, height });
     } else {
-      throw new Error(`unable to read image metdata for: ${image}`);
+      throw new Error(`unable to read image metadata for: ${image}`);
     }
   });
 
