@@ -3,11 +3,13 @@
     "chaptersAvailable": "${chapters} capítulo/s disponible/s",
     "progress": "Progreso",
     "files": "archivos",
+    "pages": "páginas",
     "downloadPath": "Dónde te gustaría guardar el manga descargado? (por defecto: directorio actual)",
     "openFile": "Abriendo archivo: ${filePath}",
     "openFolder": "Abriendo carpeta: ${filePath}",
     "donation": "Si te gusta este proyecto, considera hacer una donación para ayudar a mantenerlo activo",
-    "fileStored": "Archivo guardado: ${filePath}"
+    "fileStored": "Archivo guardado: ${filePath}",
+    "generatePDF": "Generando PDF..."
   },
   "prompt": {
     "searchManga": "Que manga te gustaría buscar?",
@@ -22,7 +24,7 @@
     "getChapterPages": "Obteniendo información de páginas...",
     "clearCache": "Limpiando cache...",
     "clearCacheError": "Error al limpiar cache (habilite el modo debug para más información)",
-    "generatePDF": "Generando PDF...",
-    "generatePDFError": "Error al generar PDF (habilite el modo debug para más información)"
+    "savePdfFile": "Guardando archivo PDF (esto puede tardar algunos minutos)",
+    "savePdfFileError": "Error al guardar el archivo PDF (habilite el modo debug para más información)"
   }
 }
