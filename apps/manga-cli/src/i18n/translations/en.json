@@ -3,6 +3,7 @@
     "chaptersAvailable": "${chapters} chapter/s available",
     "progress": "Progress",
     "files": "files",
+    "pages": "pages",
     "downloadPath": "Where would you like to download the manga? (default: current directory)",
     "openFile": "Opening file: ${filePath}",
     "openFolder": "Opening directory: ${filePath}",
