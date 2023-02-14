@@ -7,7 +7,8 @@
     "openFile": "Opening file: ${filePath}",
     "openFolder": "Opening directory: ${filePath}",
     "donation": "If you like this project, please consider donating to support it. Thank you!",
-    "fileStored": "File stored: ${filePath}"
+    "fileStored": "File stored: ${filePath}",
+    "generatePDF": "Generating PDF..."
   },
   "prompt": {
     "searchManga": "What manga do you want to download?",
@@ -22,7 +23,7 @@
     "getChapterPages": "Getting chapters pages...",
     "clearCache": "Clearing cache...",
     "clearCacheError": "Error while clearing cache (enable debug mode to see more details)",
-    "generatePDF": "Generating PDF...",
-    "generatePDFError": "Error while generating PDF (enable debug mode to see more details)"
+    "savePdfFile": "Saving PDF file (this can take a few minutes)",
+    "savePdfFileError": "Error while saving PDF (enable debug mode to see more details)"
   }
 }
