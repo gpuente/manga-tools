@@ -32,7 +32,10 @@
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vite-electron-plugin": "^0.7.4",
-    "vite-plugin-electron-renderer": "^0.12.1"
+    "vite-plugin-electron-renderer": "^0.12.1",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "tsconfig": "*"
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
