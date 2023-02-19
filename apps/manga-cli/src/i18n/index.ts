@@ -20,7 +20,8 @@ interface I18nConstructor {
 
 export class I18N {
   private selectedLanguage: AvailableLanguages;
-  static readonly AVAILABLE_LANGUAGES = AvailableLanguages
+
+  static readonly AVAILABLE_LANGUAGES = AvailableLanguages;
 
   constructor(props: I18nConstructor) {
     this.selectedLanguage = props.lang || AvailableLanguages.EN;
@@ -34,6 +35,7 @@ export class I18N {
     return this.selectedLanguage;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   translate(key: string, values?: object): any {
     let translation = get(availableLanguages[this.selectedLanguage], key);
 
@@ -53,6 +55,5 @@ export class I18N {
     return translation;
   }
 }
-
 
 export const i18n = new I18N({ lang: AvailableLanguages.EN });

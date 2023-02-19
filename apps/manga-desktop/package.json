@@ -1,0 +1,51 @@
+{
+  "name": "manga-desktop",
+  "version": "1.0.2",
+  "main": "dist-electron/main/index.js",
+  "description": "Desktop implementation of manga-cli",
+  "author": "Guillermo Puente <guillermo.ps09@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:electron-app": "tsc && vite build && electron-builder --mac --win --linux",
+    "preview": "vite preview",
+    "pree2e": "vite build --mode=test",
+    "e2e": "playwright test",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx, src electron e2e",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx, src electron e2e --fix",
+    "clean": "rimraf dist dist-electron release",
+    "clean:cache": "rimraf .turbo .cache",
+    "clean:node_modules": "rimraf node_modules",
+    "clean:full": "npm run clean && npm run clean:cache && npm run clean:node_modules"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.29.2",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.0.1",
+    "electron": "^22.0.3",
+    "electron-builder": "^23.6.0",
+    "sass": "^1.57.1",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vite-electron-plugin": "^0.7.4",
+    "vite-plugin-electron-renderer": "^0.12.1",
+    "eslint": "^8.2.0",
+    "eslint-config-custom": "*",
+    "tsconfig": "*"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  }
+}

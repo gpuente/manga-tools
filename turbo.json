@@ -6,7 +6,8 @@
       "outputs": ["build/**"]
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "dependsOn": ["^build"]
     },
     "dev": {
       "cache": false
@@ -16,7 +17,11 @@
       "outputs": ["dist/**"]
     },
     "clean": {},
+    "clean:full": {},
+    "clean:cache": {},
     "clean:node_modules": {},
-    "test": {}
+    "test": {
+      "dependsOn": ["^build"]
+    }
   }
 }

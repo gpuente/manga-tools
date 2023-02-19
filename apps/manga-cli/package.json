@@ -10,8 +10,12 @@
     "build": "tsc",
     "dev": "ts-node src/index.ts",
     "clean": "rimraf dist build",
+    "clean:cache": "rimraf .turbo .cache",
+    "clean:node_modules": "rimraf node_modules",
+    "clean:full": "npm run clean && npm run clean:cache && npm run clean:node_modules",
     "build:cli": "pkg . --output dist/manga",
-    "clean:node_modules": "rimraf node_modules"
+    "lint": "eslint src --ext .ts src",
+    "lint:fix": "eslint src --ext .ts src --fix"
   },
   "dependencies": {
     "axios": "0.27.2",
@@ -38,7 +42,7 @@
     "@types/lodash.template": "^4.5.1",
     "@types/pdfkit": "^0.12.8",
     "@types/probe-image-size": "^7.2.0",
-    "eslint": "^7.32.0",
+    "eslint": "^8.2.0",
     "eslint-config-custom": "*",
     "pkg": "^5.8.0",
     "tsconfig": "*"

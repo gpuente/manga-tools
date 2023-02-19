@@ -21,6 +21,7 @@ export const openFile = (path: string, isFile = false): void => {
       break;
 
     case 'win32':
+      // eslint-disable-next-line no-case-declarations
       const command = isFile ? 'start' : 'explorer';
       logAndOpenFile(command);
       break;

@@ -11,16 +11,22 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
+    "clean:cache": "turbo run clean:cache",
+    "clean:full": "turbo run clean:full && rimraf node_modules",
     "build:cli": "turbo run build:cli",
     "clean:node_modules": "turbo run clean:node_modules && rimraf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "test": "turbo run test"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx}\"",
+    "test": "turbo run test",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
     "eslint-config-custom": "*",
+    "husky": "^8.0.3",
     "jest": "^29.4.1",
-    "prettier": "latest",
+    "lint-staged": "^13.1.2",
+    "prettier": "2.8.4",
     "rimraf": "^4.1.2",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
@@ -30,6 +36,5 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
   "packageManager": "yarn@1.22.19"
 }

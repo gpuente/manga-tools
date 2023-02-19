@@ -5,11 +5,18 @@ import { getMangaStatus, normalizeText } from './utils';
 
 export class InMangaSDK {
   private PROVIDER_URL = 'https://inmanga.com';
+
   private PROVIDER_REFERER_URL = `${this.PROVIDER_URL}/manga/consult?suggestion={{search_value}}`;
+
   private SEARCH_URL = `${this.PROVIDER_URL}/manga/getMangasConsultResult`;
-  private SARCH_DATA_STRING = 'filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=10&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=';
+
+  private SARCH_DATA_STRING =
+    'filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=10&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=';
+
   private CHAPTERS_URL = `${this.PROVIDER_URL}/chapter/getall?mangaIdentification={{manga_id}}`;
+
   private CHAPTER_PAGES_URL = `${this.PROVIDER_URL}/chapter/chapterIndexControls?identification={{chapter_id}}`;
+
   private PAGE_URL = `${this.PROVIDER_URL}/page/getPageImage/?identification={{page_id}}`;
 
   private debug: boolean;
@@ -20,13 +27,19 @@ export class InMangaSDK {
 
   async search(searchValue: string): Promise<SearchResult[]> {
     const results: SearchResult[] = [];
-    const data = this.SARCH_DATA_STRING.replace('{{search_value}}', searchValue);
+    const data = this.SARCH_DATA_STRING.replace(
+      '{{search_value}}',
+      searchValue
+    );
 
     try {
       const res = await axios.post(this.SEARCH_URL, encodeURI(data), {
         headers: {
           origin: this.PROVIDER_URL,
-          referer: this.PROVIDER_REFERER_URL.replace('{{search_value}}', searchValue),
+          referer: this.PROVIDER_REFERER_URL.replace(
+            '{{search_value}}',
+            searchValue
+          ),
           'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
       });
@@ -37,7 +50,9 @@ export class InMangaSDK {
         const id = el.attribs.href.split('/').pop();
         const title = load(el)('h4.ellipsed-text').text();
         const chapters = load(el)('span.label.label-info.pull-right').text();
-        const status = load(el)('span.label.label-success.pull-right, span.label.label-danger.pull-right').text();
+        const status = load(el)(
+          'span.label.label-success.pull-right, span.label.label-danger.pull-right'
+        ).text();
 
         if (id) {
           results.push({
@@ -52,19 +67,22 @@ export class InMangaSDK {
       if (this.debug) {
         console.error(error);
       }
-    } finally {
-      return results;
     }
+
+    return results;
   }
 
   async getChaptersInfo(mangaId: string): Promise<Chapter[]> {
     const chapters: Chapter[] = [];
 
     try {
-      const res = await axios.get(this.CHAPTERS_URL.replace('{{manga_id}}', mangaId));
+      const res = await axios.get(
+        this.CHAPTERS_URL.replace('{{manga_id}}', mangaId)
+      );
 
       const chaptersData = JSON.parse(res.data.data);
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       chaptersData.result.forEach((chapter: any) => {
         if (chapter.Identification && chapter.PagesCount && chapter.Number) {
           chapters.push({
@@ -75,21 +93,22 @@ export class InMangaSDK {
           });
         }
       });
-
     } catch (error) {
       if (this.debug) {
         console.error(error);
       }
-    } finally {
-      return chapters.sort((a, b) => a.number - b.number);
     }
+
+    return chapters.sort((a, b) => a.number - b.number);
   }
 
   async getChapterPages(chapterId: string): Promise<Page[]> {
     const pages: Page[] = [];
 
     try {
-      const res = await axios.get(this.CHAPTER_PAGES_URL.replace('{{chapter_id}}', chapterId));
+      const res = await axios.get(
+        this.CHAPTER_PAGES_URL.replace('{{chapter_id}}', chapterId)
+      );
       const bodyResponse = load(res.data);
 
       bodyResponse('#PageList:first > option').each((index, el) => {
@@ -106,8 +125,8 @@ export class InMangaSDK {
       if (this.debug) {
         console.error(error);
       }
-    } finally {
-      return pages;
     }
+
+    return pages;
   }
 }

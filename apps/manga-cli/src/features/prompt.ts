@@ -20,64 +20,68 @@ interface DownloadPathAnswer {
   downloadPath: string;
 }
 
-export const getSearchValuePrompt = () => inquirer.prompt<SearchValueAnswer>([
-  {
-    type: 'input',
-    name: 'searchValue',
-    message: i18n.translate('prompt.searchManga'),
-  },
-]);
-
-export const getMangaSelectionPrompt = (mangaList: SearchResult[]) => inquirer.prompt<SelectedMangaAnswer>([
-  {
-    type: 'list',
-    name: 'selectedManga',
-    message: i18n.translate('prompt.mangaSelection'),
-    choices: mangaList.map((manga) => ({
-      name: `${manga.name} (${manga.status})`,
-      value: manga,
-    })),
-  },
-]);
-
-export const getChaptersPrompt = (totalChapters: number) => inquirer.prompt<ChaptersAnswers>([
-  {
-    type: 'number',
-    name: 'chaptersFrom',
-    message: i18n.translate('prompt.fromChapter'),
-    default: 1,
-    validate: (input: number) => {
-      if (input < 1 || input > totalChapters) {
-        return `Please enter a number between 1 and ${totalChapters}`;
-      }
-
-      return true;
+export const getSearchValuePrompt = () =>
+  inquirer.prompt<SearchValueAnswer>([
+    {
+      type: 'input',
+      name: 'searchValue',
+      message: i18n.translate('prompt.searchManga'),
     },
-  },
-  {
-    type: 'number',
-    name: 'chaptersTo',
-    message: i18n.translate('prompt.toChapter'),
-    default: totalChapters,
-    validate: (input: number, answers: ChaptersAnswers) => {
-      if (input < answers.chaptersFrom) {
-        return `Please enter a number greater than your previous selection: ${answers.chaptersFrom}`;
-      }
+  ]);
 
-      if (input > totalChapters) {
-        return `Please enter a number less than the total of chapters: ${totalChapters}`;
-      }
-
-      return true;
+export const getMangaSelectionPrompt = (mangaList: SearchResult[]) =>
+  inquirer.prompt<SelectedMangaAnswer>([
+    {
+      type: 'list',
+      name: 'selectedManga',
+      message: i18n.translate('prompt.mangaSelection'),
+      choices: mangaList.map((manga) => ({
+        name: `${manga.name} (${manga.status})`,
+        value: manga,
+      })),
     },
-  }
-]);
+  ]);
 
-export const getDownloadPathPrompt = () => inquirer.prompt<DownloadPathAnswer>([
-  {
-    type: 'input',
-    name: 'downloadPath',
-    message: i18n.translate('general.downloadPath'),
-    default: '.',
-  },
-]);
+export const getChaptersPrompt = (totalChapters: number) =>
+  inquirer.prompt<ChaptersAnswers>([
+    {
+      type: 'number',
+      name: 'chaptersFrom',
+      message: i18n.translate('prompt.fromChapter'),
+      default: 1,
+      validate: (input: number) => {
+        if (input < 1 || input > totalChapters) {
+          return `Please enter a number between 1 and ${totalChapters}`;
+        }
+
+        return true;
+      },
+    },
+    {
+      type: 'number',
+      name: 'chaptersTo',
+      message: i18n.translate('prompt.toChapter'),
+      default: totalChapters,
+      validate: (input: number, answers: ChaptersAnswers) => {
+        if (input < answers.chaptersFrom) {
+          return `Please enter a number greater than your previous selection: ${answers.chaptersFrom}`;
+        }
+
+        if (input > totalChapters) {
+          return `Please enter a number less than the total of chapters: ${totalChapters}`;
+        }
+
+        return true;
+      },
+    },
+  ]);
+
+export const getDownloadPathPrompt = () =>
+  inquirer.prompt<DownloadPathAnswer>([
+    {
+      type: 'input',
+      name: 'downloadPath',
+      message: i18n.translate('general.downloadPath'),
+      default: '.',
+    },
+  ]);

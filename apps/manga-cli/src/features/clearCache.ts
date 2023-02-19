@@ -12,7 +12,10 @@ export const clearCache = async (): Promise<void> => {
   const spinner = createSpinner(i18n.translate('spinners.clearCache')).start();
 
   try {
-    await fs.promises.rm(config.cache.directory, { recursive: true, force: true });
+    await fs.promises.rm(config.cache.directory, {
+      recursive: true,
+      force: true,
+    });
     spinner.success();
   } catch (error) {
     spinner.error({ text: i18n.translate('spinners.clearCacheError') });
@@ -20,4 +23,4 @@ export const clearCache = async (): Promise<void> => {
       console.error(`Error while clearing cache: ${error}`);
     }
   }
-}
+};
