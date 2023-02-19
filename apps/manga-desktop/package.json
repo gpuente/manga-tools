@@ -17,7 +17,16 @@
     "preview": "vite preview",
     "pree2e": "vite build --mode=test",
     "e2e": "playwright test",
-    "clean": "rimraf dist dist-electron release"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx, src electron e2e",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx, src electron e2e --fix",
+    "clean": "rimraf dist dist-electron release",
+    "clean:cache": "rimraf .turbo .cache",
+    "clean:node_modules": "rimraf node_modules",
+    "clean:full": "npm run clean && npm run clean:cache && npm run clean:node_modules"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.29.2",
@@ -26,14 +35,12 @@
     "@vitejs/plugin-react": "^3.0.1",
     "electron": "^22.0.3",
     "electron-builder": "^23.6.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "sass": "^1.57.1",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vite-electron-plugin": "^0.7.4",
     "vite-plugin-electron-renderer": "^0.12.1",
-    "eslint": "^7.32.0",
+    "eslint": "^8.2.0",
     "eslint-config-custom": "*",
     "tsconfig": "*"
   },

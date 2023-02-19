@@ -4,7 +4,7 @@ declare module 'winattr' {
     hidden?: boolean;
     readonly?: boolean;
     system?: boolean;
-  };
+  }
 
   export function setSync(path: string, attrs: WinAttrs): void;
 }

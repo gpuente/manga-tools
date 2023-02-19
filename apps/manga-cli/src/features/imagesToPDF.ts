@@ -8,9 +8,12 @@ import { createSpinner } from 'nanospinner';
 
 import { i18n } from '../i18n';
 
-export const imagesToPDF = (images: string[], filePath: string): Promise<void> => new Promise((resolve, reject) => {
+export const imagesToPDF = (
+  images: string[],
+  filePath: string,
+): Promise<void> => new Promise((resolve, reject) => {
   const bar = new SingleBar({
-    format: `${i18n.translate('general.generatePDF')} {bar} {percentage}%`
+    format: `${i18n.translate('general.generatePDF')} {bar} {percentage}%`,
   }, Presets.shades_classic);
 
   bar.start(images.length, 0);

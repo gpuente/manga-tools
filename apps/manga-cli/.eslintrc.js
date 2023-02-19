@@ -3,6 +3,7 @@ module.exports = {
   extends: ['custom'],
   rules: {
     'import/prefer-default-export': 'off',
-    'semi': ['error', 'always'],
+    'no-console': 'off',
+    'no-await-in-loop': 'off',
   },
 };

@@ -20,4 +20,4 @@ export const clearCache = async (): Promise<void> => {
       console.error(`Error while clearing cache: ${error}`);
     }
   }
-}
+};

@@ -28,7 +28,9 @@ export const getSearchValuePrompt = () => inquirer.prompt<SearchValueAnswer>([
   },
 ]);
 
-export const getMangaSelectionPrompt = (mangaList: SearchResult[]) => inquirer.prompt<SelectedMangaAnswer>([
+export const getMangaSelectionPrompt = (
+  mangaList: SearchResult[],
+) => inquirer.prompt<SelectedMangaAnswer>([
   {
     type: 'list',
     name: 'selectedManga',
@@ -70,7 +72,7 @@ export const getChaptersPrompt = (totalChapters: number) => inquirer.prompt<Chap
 
       return true;
     },
-  }
+  },
 ]);
 
 export const getDownloadPathPrompt = () => inquirer.prompt<DownloadPathAnswer>([

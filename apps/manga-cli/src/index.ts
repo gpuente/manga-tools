@@ -34,7 +34,6 @@ program
   .option('--lang <language>', 'Set CLI language (available "en" and "es")')
   .parse(process.argv);
 
-
 async function main() {
   const options = program.opts();
 
@@ -51,7 +50,7 @@ async function main() {
     font: 'ANSI Regular',
     horizontalLayout: 'default',
     verticalLayout: 'default',
-    width: 80
+    width: 80,
   }, (err, data) => {
     if (err) return;
     console.clear();
@@ -60,7 +59,10 @@ async function main() {
 
   await sleep(1000);
 
-  if (options.lang && Object.values(I18N.AVAILABLE_LANGUAGES).includes(options.lang.toLowerCase())) {
+  if (
+    options.lang
+    && Object.values(I18N.AVAILABLE_LANGUAGES).includes(options.lang.toLowerCase())
+  ) {
     i18n.changeLanguage(options.lang);
   }
 
@@ -81,7 +83,9 @@ async function main() {
   const { chaptersFrom, chaptersTo } = await getChaptersPrompt(chapters.length);
   const { downloadPath } = await getDownloadPathPrompt();
 
-  const chaptersToDownload = chapters.filter((chapter) => chapter.number >= chaptersFrom && chapter.number <= chaptersTo);
+  const chaptersToDownload = chapters.filter(
+    (chapter) => chapter.number >= chaptersFrom && chapter.number <= chaptersTo,
+  );
 
   const promises = chaptersToDownload.map(async (chapter): Promise<FullChapter> => {
     const pages = await inMangaSDK.getChapterPages(chapter.id);
@@ -112,7 +116,7 @@ async function main() {
     const chapter = result[chapterIndex];
 
     for (let pageIndex = 0; pageIndex < chapter.pagesMetadata.length; pageIndex++) {
-      const url = chapter.pagesMetadata[pageIndex].url;
+      const { url } = chapter.pagesMetadata[pageIndex];
       const filepath = `${config.cache.directory}/${mangaId}/${chapter.number}/${chapter.pagesMetadata[pageIndex].number}`;
 
       const filePath = await downloadImage(url, filepath);
@@ -130,7 +134,6 @@ async function main() {
     title: selectedManga.name,
   });
 
-
   const outputPath = path.join(downloadPath, fileName);
 
   await imagesToPDF(filePaths, outputPath);
@@ -146,6 +149,6 @@ async function main() {
   if (!global.debugEnabled) {
     printDonationBox();
   }
-};
+}
 
 main();

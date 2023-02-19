@@ -23,10 +23,10 @@ const axiosGet = async (url: string, timeout: number, attempts: number): Promise
       return axiosGet(url, timeout, attempts - 1);
     }
 
-    console.error(err)
+    console.error(err);
     throw new Error(`Request failed after 5 attempts for url: ${url}`);
   }
-}
+};
 
 export const downloadImage = async (url: string, filepath: string): Promise<string> => {
   const dirName = path.dirname(filepath);
@@ -42,8 +42,8 @@ export const downloadImage = async (url: string, filepath: string): Promise<stri
     const files = fs.readdirSync(dirName);
     const expectedFileName = path.basename(filepath, path.extname(filepath));
 
-    const file = files.find((file) => {
-      const existingFileName = path.basename(file, path.extname(file));
+    const file = files.find((_file) => {
+      const existingFileName = path.basename(_file, path.extname(_file));
       return existingFileName === expectedFileName;
     });
 
@@ -57,14 +57,16 @@ export const downloadImage = async (url: string, filepath: string): Promise<stri
     }
   }
 
-  if (debugEnabled) {
+  if (global.debugEnabled) {
     console.log(`Downloading image from ${url} to ${filepath}`);
   }
 
   const res = await axiosGet(url, config.requests.defaultTimeout, config.requests.attemptsPerFile);
 
   const contentType = res.headers['content-type'];
-  const extension = imageContentTypeToExtension[contentType as keyof typeof imageContentTypeToExtension] || null;
+  const extension = imageContentTypeToExtension[
+    contentType as keyof typeof imageContentTypeToExtension
+  ] || null;
 
   if (!extension) {
     throw new Error(`Unknown content type: ${contentType}`);

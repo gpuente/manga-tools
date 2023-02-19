@@ -1,4 +1,5 @@
 declare global {
+  // eslint-disable-next-line vars-on-top, no-var
   var debugEnabled = false;
 
   interface GlobalInterface {
@@ -10,4 +11,4 @@ declare global {
   }
 }
 
-export {}
+export {};

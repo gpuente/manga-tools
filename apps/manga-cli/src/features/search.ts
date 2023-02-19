@@ -10,12 +10,12 @@ export const promptAndSearch = async (inMangaSDK: InMangaSDK): Promise<SearchRes
 
   const results = await inMangaSDK.search(searchValue);
 
-
   if (results.length < 1) {
     spinner.error({ text: i18n.translate('spinners.searchingNotFound', { searchValue }) });
-    return await promptAndSearch(inMangaSDK);
+    const res = await promptAndSearch(inMangaSDK);
+    return res;
   }
 
   spinner.success();
   return results;
-}
+};

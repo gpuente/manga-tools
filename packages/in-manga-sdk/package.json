@@ -7,10 +7,14 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist coverage",
+    "clean:cache": "rimraf .turbo .cache",
     "clean:node_modules": "rimraf node_modules",
+    "clean:full": "npm run clean && npm run clean:cache && npm run clean:node_modules",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "eslint --ext .ts src --fix"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +23,7 @@
     "cheerio": "^1.0.0-rc.12"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
+    "eslint": "^8.2.0",
     "eslint-config-custom": "*",
     "jest-config": "*",
     "tsconfig": "*"

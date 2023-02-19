@@ -5,11 +5,17 @@ import { getMangaStatus, normalizeText } from './utils';
 
 export class InMangaSDK {
   private PROVIDER_URL = 'https://inmanga.com';
+
   private PROVIDER_REFERER_URL = `${this.PROVIDER_URL}/manga/consult?suggestion={{search_value}}`;
+
   private SEARCH_URL = `${this.PROVIDER_URL}/manga/getMangasConsultResult`;
+
   private SARCH_DATA_STRING = 'filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=10&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=';
+
   private CHAPTERS_URL = `${this.PROVIDER_URL}/chapter/getall?mangaIdentification={{manga_id}}`;
+
   private CHAPTER_PAGES_URL = `${this.PROVIDER_URL}/chapter/chapterIndexControls?identification={{chapter_id}}`;
+
   private PAGE_URL = `${this.PROVIDER_URL}/page/getPageImage/?identification={{page_id}}`;
 
   private debug: boolean;
@@ -52,9 +58,9 @@ export class InMangaSDK {
       if (this.debug) {
         console.error(error);
       }
-    } finally {
-      return results;
     }
+
+    return results;
   }
 
   async getChaptersInfo(mangaId: string): Promise<Chapter[]> {
@@ -65,6 +71,7 @@ export class InMangaSDK {
 
       const chaptersData = JSON.parse(res.data.data);
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       chaptersData.result.forEach((chapter: any) => {
         if (chapter.Identification && chapter.PagesCount && chapter.Number) {
           chapters.push({
@@ -75,14 +82,13 @@ export class InMangaSDK {
           });
         }
       });
-
     } catch (error) {
       if (this.debug) {
         console.error(error);
       }
-    } finally {
-      return chapters.sort((a, b) => a.number - b.number);
     }
+
+    return chapters.sort((a, b) => a.number - b.number);
   }
 
   async getChapterPages(chapterId: string): Promise<Page[]> {
@@ -106,8 +112,8 @@ export class InMangaSDK {
       if (this.debug) {
         console.error(error);
       }
-    } finally {
-      return pages;
     }
+
+    return pages;
   }
 }

@@ -1,4 +1,4 @@
-import { MangaStatus } from "../types";
+import { MangaStatus } from '../types';
 
 export const normalizeText = (text: string) => text.trim().replace(/\s+/g, ' ');
 
