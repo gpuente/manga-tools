@@ -3,12 +3,12 @@ declare global {
   var debugEnabled = false;
 
   interface GlobalInterface {
-    value: unknown
+    value: unknown;
   }
 
   type GlobalType = {
-    value: unknown
-  }
+    value: unknown;
+  };
 }
 
 export {};

@@ -12,13 +12,19 @@ const imageContentTypeToExtension = {
   'image/bmp': '.bmp',
 };
 
-const axiosGet = async (url: string, timeout: number, attempts: number): Promise<AxiosResponse> => {
+const axiosGet = async (
+  url: string,
+  timeout: number,
+  attempts: number
+): Promise<AxiosResponse> => {
   try {
     return await axios.get(url, { responseType: 'arraybuffer', timeout });
   } catch (err) {
     if (attempts > 0) {
       if (global.debugEnabled) {
-        console.log(`request failed: "${url}", retrying... (${attempts} attempts left)`);
+        console.log(
+          `request failed: "${url}", retrying... (${attempts} attempts left)`
+        );
       }
       return axiosGet(url, timeout, attempts - 1);
     }
@@ -28,7 +34,10 @@ const axiosGet = async (url: string, timeout: number, attempts: number): Promise
   }
 };
 
-export const downloadImage = async (url: string, filepath: string): Promise<string> => {
+export const downloadImage = async (
+  url: string,
+  filepath: string
+): Promise<string> => {
   const dirName = path.dirname(filepath);
 
   if (config.cache.hideDirectory && !fs.existsSync(config.cache.directory)) {
@@ -50,7 +59,9 @@ export const downloadImage = async (url: string, filepath: string): Promise<stri
     if (file) {
       const existingFileFullPath = path.resolve(path.join(dirName, file));
       if (global.debugEnabled) {
-        console.log(`File ${existingFileFullPath} already exists, skipping download`);
+        console.log(
+          `File ${existingFileFullPath} already exists, skipping download`
+        );
       }
 
       return existingFileFullPath;
@@ -61,12 +72,17 @@ export const downloadImage = async (url: string, filepath: string): Promise<stri
     console.log(`Downloading image from ${url} to ${filepath}`);
   }
 
-  const res = await axiosGet(url, config.requests.defaultTimeout, config.requests.attemptsPerFile);
+  const res = await axiosGet(
+    url,
+    config.requests.defaultTimeout,
+    config.requests.attemptsPerFile
+  );
 
   const contentType = res.headers['content-type'];
-  const extension = imageContentTypeToExtension[
-    contentType as keyof typeof imageContentTypeToExtension
-  ] || null;
+  const extension =
+    imageContentTypeToExtension[
+      contentType as keyof typeof imageContentTypeToExtension
+    ] || null;
 
   if (!extension) {
     throw new Error(`Unknown content type: ${contentType}`);

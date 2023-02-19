@@ -15,7 +15,7 @@
     "clean:full": "turbo run clean:full && rimraf node_modules",
     "build:cli": "turbo run build:cli",
     "clean:node_modules": "turbo run clean:node_modules && rimraf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
     "test": "turbo run test",
     "prepare": "husky install"
   },

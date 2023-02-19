@@ -10,7 +10,8 @@ export class InMangaSDK {
 
   private SEARCH_URL = `${this.PROVIDER_URL}/manga/getMangasConsultResult`;
 
-  private SARCH_DATA_STRING = 'filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=10&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=';
+  private SARCH_DATA_STRING =
+    'filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=10&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=';
 
   private CHAPTERS_URL = `${this.PROVIDER_URL}/chapter/getall?mangaIdentification={{manga_id}}`;
 
@@ -26,13 +27,19 @@ export class InMangaSDK {
 
   async search(searchValue: string): Promise<SearchResult[]> {
     const results: SearchResult[] = [];
-    const data = this.SARCH_DATA_STRING.replace('{{search_value}}', searchValue);
+    const data = this.SARCH_DATA_STRING.replace(
+      '{{search_value}}',
+      searchValue
+    );
 
     try {
       const res = await axios.post(this.SEARCH_URL, encodeURI(data), {
         headers: {
           origin: this.PROVIDER_URL,
-          referer: this.PROVIDER_REFERER_URL.replace('{{search_value}}', searchValue),
+          referer: this.PROVIDER_REFERER_URL.replace(
+            '{{search_value}}',
+            searchValue
+          ),
           'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
       });
@@ -43,7 +50,9 @@ export class InMangaSDK {
         const id = el.attribs.href.split('/').pop();
         const title = load(el)('h4.ellipsed-text').text();
         const chapters = load(el)('span.label.label-info.pull-right').text();
-        const status = load(el)('span.label.label-success.pull-right, span.label.label-danger.pull-right').text();
+        const status = load(el)(
+          'span.label.label-success.pull-right, span.label.label-danger.pull-right'
+        ).text();
 
         if (id) {
           results.push({
@@ -67,7 +76,9 @@ export class InMangaSDK {
     const chapters: Chapter[] = [];
 
     try {
-      const res = await axios.get(this.CHAPTERS_URL.replace('{{manga_id}}', mangaId));
+      const res = await axios.get(
+        this.CHAPTERS_URL.replace('{{manga_id}}', mangaId)
+      );
 
       const chaptersData = JSON.parse(res.data.data);
 
@@ -95,7 +106,9 @@ export class InMangaSDK {
     const pages: Page[] = [];
 
     try {
-      const res = await axios.get(this.CHAPTER_PAGES_URL.replace('{{chapter_id}}', chapterId));
+      const res = await axios.get(
+        this.CHAPTER_PAGES_URL.replace('{{chapter_id}}', chapterId)
+      );
       const bodyResponse = load(res.data);
 
       bodyResponse('#PageList:first > option').each((index, el) => {
