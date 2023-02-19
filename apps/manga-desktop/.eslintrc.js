@@ -6,6 +6,8 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'turbo/no-undeclared-env-vars': 'off',
-    '@next/next/no-img-element': 'off',
+  },
+  env: {
+    browser: true,
   },
 };

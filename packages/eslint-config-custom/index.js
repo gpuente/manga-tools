@@ -1,9 +1,16 @@
 module.exports = {
-  extends: ['next', 'turbo', 'prettier', 'plugin:react/jsx-runtime', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'airbnb', 'airbnb/hooks'],
+  extends: ['turbo', 'prettier', 'plugin:react/jsx-runtime', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'airbnb', 'airbnb/hooks'],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'jest'],
   env: {
     'jest/globals': true,
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
