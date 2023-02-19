@@ -1,5 +1,13 @@
 module.exports = {
-  extends: ['turbo', 'prettier', 'plugin:react/jsx-runtime', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'airbnb', 'airbnb/hooks'],
+  extends: [
+    'turbo',
+    'plugin:react/jsx-runtime',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'airbnb',
+    'airbnb/hooks',
+    'prettier',
+  ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'jest'],
   env: {
