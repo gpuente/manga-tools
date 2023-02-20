@@ -9,6 +9,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'turbo/no-undeclared-env-vars': 'off',
     'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': [
       'error',
       { namedComponents: 'arrow-function' },

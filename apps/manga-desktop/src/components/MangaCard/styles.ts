@@ -1,16 +1,35 @@
-import { createStyles } from '@utils';
+import { Styles } from '@types';
 
-export default createStyles({
-  actionArea: {
-    display: 'flex',
-    flexDirection: 'row',
+export const actionArea: Styles = {
+  display: 'flex',
+  flexDirection: 'row',
+  flex: 1,
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
+};
+
+export const cardMedia: Styles = {
+  maxWidth: 130,
+  height: 200,
+};
+
+export const card: Styles = {
+  width: 400,
+  height: 200,
+};
+
+export const content: Styles = {
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column',
+};
+
+export const title: Styles = {
+  marginBottom: '10px',
+};
+
+export const cardRowContainer: Styles = {
+  '& > *:not(:last-child)': {
+    marginBottom: '8px',
   },
-  cardMedia: {
-    maxWidth: 130,
-    height: 200,
-  },
-  card: {
-    width: 400,
-    height: 200,
-  },
-});
+};
