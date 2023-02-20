@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
+import Button from '@mui/material/Button';
+
 import nodeLogo from './assets/node.svg';
 import './App.scss';
 
@@ -31,9 +33,13 @@ function App() {
       </div>
       <h1>Electron + Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((_count) => _count + 1)} type="button">
+        <Button
+          variant="contained"
+          onClick={() => setCount((_count) => _count + 1)}
+          type="button"
+        >
           count is {count}
-        </button>
+        </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
