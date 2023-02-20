@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: [
     '../stories/**/*.stories.mdx',
@@ -9,4 +11,18 @@ module.exports = {
     '@storybook/addon-interactions',
   ],
   framework: '@storybook/react',
+  webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../apps/manga-desktop/src'),
+      '@components': path.resolve(
+        __dirname,
+        '../apps/manga-desktop/src/components'
+      ),
+      '@utils': path.resolve(__dirname, '../apps/manga-desktop/src/utils'),
+      '@types': path.resolve(__dirname, '../apps/manga-desktop/src/types'),
+    };
+
+    return config;
+  },
 };
