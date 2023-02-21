@@ -13,11 +13,8 @@ export default {
   argTypes: {
     title: { control: 'text' },
     thumbnail: { control: 'text' },
-    chapters: { control: 'number' },
     onClick: { action: 'clicked' },
-    frequency: { control: 'text' },
-    lastRelease: { control: 'text' },
-    status: { control: 'text' },
+    config: { control: 'object' },
   },
 } as ComponentMeta<typeof MangaCard>;
 
@@ -26,8 +23,26 @@ Default.args = {
   title: 'Hunter x Hunter',
   thumbnail:
     'https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/cbb55a6382682bf71e91f685c6473c5a.jpe',
-  chapters: 10,
-  frequency: 'Monthly',
-  lastRelease: '24/01/2023',
-  status: 'Finished',
+  config: {
+    status: {
+      label: 'Status:',
+      value: 'Finished',
+      color: '#52b69a',
+    },
+    lastRelesae: {
+      label: 'Last Release:',
+      value: '24/01/2023',
+      color: '#34a0a4',
+    },
+    frequency: {
+      label: 'Frequency:',
+      value: 'Monthly',
+      color: '#168aad',
+    },
+    chapters: {
+      label: 'Chapters:',
+      value: 10,
+      color: '#1a759f',
+    },
+  },
 };

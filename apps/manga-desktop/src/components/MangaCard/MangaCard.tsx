@@ -13,26 +13,25 @@ import RotateRightIcon from '@mui/icons-material/RotateRight';
 
 import * as styles from './styles';
 
+export interface RowProps {
+  label: string;
+  value?: React.ReactNode;
+  color?: string;
+}
 export interface MangaCardProps {
   title: string;
-  status?: string;
-  chapters?: number;
   thumbnail?: string;
-  frequency?: string;
-  lastRelease?: string;
   onClick: CardProps['onClick'];
+  config: {
+    status: RowProps;
+    lastRelesae: RowProps;
+    frequency: RowProps;
+    chapters: RowProps;
+  };
 }
 
 export const MangaCard: React.FC<MangaCardProps> = (props) => {
-  const {
-    title,
-    status,
-    onClick,
-    chapters,
-    thumbnail,
-    frequency,
-    lastRelease,
-  } = props;
+  const { title, config, onClick, thumbnail } = props;
 
   return (
     <Card onClick={onClick} sx={styles.card}>
@@ -52,27 +51,27 @@ export const MangaCard: React.FC<MangaCardProps> = (props) => {
           <Box sx={styles.cardRowContainer}>
             <MangaCardRow
               icon={<AssesmentIcon fontSize="small" />}
-              label="Status:"
-              color="#52b69a"
-              chipLabel={status}
+              label={config.status.label}
+              color={config.status.color || '#52b69a'}
+              chipLabel={config.status.value}
             />
             <MangaCardRow
               icon={<WatchLaterIcon fontSize="small" />}
-              label="Last Release:"
-              color="#34a0a4"
-              chipLabel={lastRelease}
+              label={config.lastRelesae.label}
+              color={config.lastRelesae.color || '#34a0a4'}
+              chipLabel={config.lastRelesae.value}
             />
             <MangaCardRow
               icon={<RotateRightIcon fontSize="small" />}
-              label="Frequency:"
-              color="#168aad"
-              chipLabel={frequency}
+              label={config.frequency.label}
+              color={config.frequency.color || '#168aad'}
+              chipLabel={config.frequency.value}
             />
             <MangaCardRow
               icon={<ArticleIcon fontSize="small" />}
-              label="Chapters:"
-              color="#1a759f"
-              chipLabel={chapters}
+              label={config.chapters.label}
+              color={config.chapters.color || '#1a759f'}
+              chipLabel={config.chapters.value}
             />
           </Box>
         </CardContent>

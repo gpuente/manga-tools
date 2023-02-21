@@ -1,0 +1,19 @@
+{
+  "hello": "hola mundo!",
+  "mangaResult": {
+    "status": "Estado:",
+    "lastRelease": "Última emisión:",
+    "frequency": "Frecuencia:",
+    "chapters": "Capítulos:"
+  },
+  "mangaStatus": {
+    "onGoing": "En emisión",
+    "finished": "Finalizado",
+    "canceled": "Cancelado"
+  },
+  "mangaFrequency": {
+    "daily": "Diario",
+    "monthly": "Mensual",
+    "yearly": "Anual"
+  }
+}

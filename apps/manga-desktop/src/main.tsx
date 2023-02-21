@@ -3,8 +3,9 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import './samples/node-api';
+import '../i18n';
 import './index.scss';
+import './samples/node-api';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
