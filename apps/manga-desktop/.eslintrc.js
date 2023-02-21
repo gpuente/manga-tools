@@ -10,10 +10,8 @@ module.exports = {
     'turbo/no-undeclared-env-vars': 'off',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'react/function-component-definition': [
-      'error',
-      { namedComponents: 'arrow-function' },
-    ],
+    'react/function-component-definition': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
   },
   env: {
     browser: true,

@@ -16,6 +16,10 @@
       "dependsOn": ["build"],
       "outputs": ["dist/**"]
     },
+    "build:electron-app": {
+      "dependsOn": ["build"],
+      "outputs": ["dist/**", "dist-electron/**", "release/**"]
+    },
     "clean": {},
     "clean:full": {},
     "clean:cache": {},

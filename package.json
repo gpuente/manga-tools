@@ -14,6 +14,7 @@
     "clean:cache": "turbo run clean:cache",
     "clean:full": "turbo run clean:full && rimraf node_modules",
     "build:cli": "turbo run build:cli",
+    "build:electron-app": "turbo run build:electron-app",
     "clean:node_modules": "turbo run clean:node_modules && rimraf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx}\"",

@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
+import { MangaCard } from '@components';
 
 import nodeLogo from './assets/node.svg';
 import './App.scss';
@@ -52,6 +53,15 @@ function App() {
         <code>/public</code> folder{' '}
         <img style={{ width: '5em' }} src={nodeLogo} alt="Node logo" />
       </div>
+      <MangaCard
+        title="Hunter x Hunter"
+        thumbnail="https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/cbb55a6382682bf71e91f685c6473c5a.jpe"
+        chapters={10}
+        frequency="Monthly"
+        lastRelease="24/01/2023"
+        status="Finished"
+        onClick={() => {}}
+      />
     </div>
   );
 }
