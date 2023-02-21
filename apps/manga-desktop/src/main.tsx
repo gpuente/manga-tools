@@ -4,7 +4,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import '../i18n';
-import './index.scss';
 import './samples/node-api';
 
 import React from 'react';
