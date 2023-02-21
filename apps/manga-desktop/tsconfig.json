@@ -14,10 +14,14 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
+      "@/*": ["src/*"],
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@types": ["src/types"],
+      "@types/*": ["src/types/*"],
+      "@utils": ["src/utils"],
+      "@utils/*": ["src/utils/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
