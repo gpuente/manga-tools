@@ -1,5 +1,9 @@
 {
   "hello": "hello world!",
+  "common": {
+    "appName": "Manga Desktop",
+    "searchPlaceholder": "Search..."
+  },
   "mangaResult": {
     "status": "Status:",
     "lastRelease": "Last Release:",
