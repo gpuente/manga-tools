@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import { MangaCard } from '@components';
+import { useTranslation } from 'react-i18next';
 
 import nodeLogo from './assets/node.svg';
 import './App.scss';
@@ -13,6 +14,14 @@ console.log(
 
 function App() {
   const [count, setCount] = useState(0);
+  const { t, i18n } = useTranslation();
+
+  const toggleLang = () => {
+    const currentLng = i18n.language.toLocaleLowerCase();
+    const lng = currentLng === 'en' || currentLng === 'en-us' ? 'es' : 'en';
+
+    i18n.changeLanguage(lng);
+  };
 
   const result = count + 3;
   console.log(result);
@@ -53,14 +62,29 @@ function App() {
         <code>/public</code> folder{' '}
         <img style={{ width: '5em' }} src={nodeLogo} alt="Node logo" />
       </div>
+      <div>{t('hello')}</div>
       <MangaCard
         title="Hunter x Hunter"
         thumbnail="https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/cbb55a6382682bf71e91f685c6473c5a.jpe"
-        chapters={10}
-        frequency="Monthly"
-        lastRelease="24/01/2023"
-        status="Finished"
-        onClick={() => {}}
+        onClick={toggleLang}
+        config={{
+          status: {
+            label: t('mangaResult.status'),
+            value: t('mangaStatus.onGoing'),
+          },
+          lastRelesae: {
+            label: t('mangaResult.lastRelease'),
+            value: '24/01/2023',
+          },
+          frequency: {
+            label: t('mangaResult.frequency'),
+            value: t('mangaFrequency.monthly'),
+          },
+          chapters: {
+            label: t('mangaResult.chapters'),
+            value: 10,
+          },
+        }}
       />
     </div>
   );
