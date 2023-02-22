@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
-import { MangaCard, AppBar } from '@components';
+import { MangaCard, AppBar } from '@ui';
 import { useTranslation } from 'react-i18next';
+import { useModal, ModalKey } from '@utils/hooks';
+import { Modal } from '@components/Modal';
 
 import nodeLogo from './assets/node.svg';
 
@@ -11,6 +13,7 @@ console.log(
 
 function App() {
   const { t, i18n } = useTranslation();
+  const { openModal } = useModal(ModalKey.Settings);
 
   const toggleLang = () => {
     const currentLng = i18n.language.toLocaleLowerCase();
@@ -20,10 +23,12 @@ function App() {
   };
   return (
     <div>
+      <Modal />
       <AppBar
         title={t('common.appName')}
         placeholder={t('common.searchPlaceholder') || ''}
         onSearch={(val) => console.log(val)}
+        onClickMenu={openModal}
       />
       <div>{t('hello')}</div>
       <MangaCard

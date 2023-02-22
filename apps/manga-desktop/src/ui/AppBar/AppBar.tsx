@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import MuiAppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import MuiAppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
+import SettingsIcon from '@mui/icons-material/Settings';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 
 import * as styles from './styles';
 
@@ -30,16 +30,6 @@ export const AppBar: React.FC<AppBarProps> = ({
     <Box sx={{ flexGrow: 1 }}>
       <MuiAppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            sx={{ mr: 2 }}
-            color="inherit"
-            onClick={onClickMenu}
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" component="div" noWrap sx={styles.title}>
             {title}
           </Typography>
@@ -59,6 +49,16 @@ export const AppBar: React.FC<AppBarProps> = ({
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+          <IconButton
+            size="large"
+            edge="end"
+            sx={{ ml: 2 }}
+            color="inherit"
+            onClick={onClickMenu}
+            aria-label="open drawer"
+          >
+            <SettingsIcon />
+          </IconButton>
         </Toolbar>
       </MuiAppBar>
     </Box>
