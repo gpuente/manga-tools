@@ -10,6 +10,7 @@ import { SettingsRow } from '@ui/SettingsRow';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Themes } from '@ui/Theme';
 import {
   ThemeToggleButton,
   ThemeToggleButtonProps,
@@ -28,6 +29,7 @@ export interface SettingsModalProps {
     value: string;
     isSelected?: boolean;
   }[];
+  selectedTheme: Themes;
   version?: string;
   texts?: {
     title: string;
@@ -52,6 +54,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   version,
   handleClose,
   open = false,
+  selectedTheme,
   handleLangChange,
   handleThemeChange,
   availableLanguages,
@@ -85,7 +88,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             description={texts?.theme.description}
           >
             <ThemeToggleButton
-              value="light"
+              value={selectedTheme}
               labels={texts?.theme.toggle}
               onChange={handleThemeChange}
             />

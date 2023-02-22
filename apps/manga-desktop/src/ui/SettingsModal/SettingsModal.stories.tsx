@@ -1,3 +1,4 @@
+import { Themes } from '@ui/Theme';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { SettingsModal } from './SettingsModal';
@@ -17,6 +18,11 @@ export default {
     availableLanguages: { control: 'object' },
     handleLangChange: { action: 'handleLangChange' },
     handleThemeChange: { action: 'handleThemeChange' },
+    selectedTheme: {
+      control: 'select',
+      options: [Themes.Light, Themes.System, Themes.Dark],
+      defaultValue: Themes.Light,
+    },
   },
 } as ComponentMeta<typeof SettingsModal>;
 
@@ -24,6 +30,7 @@ export const Default = Template.bind({});
 Default.args = {
   open: true,
   version: 'v1.0.2',
+  selectedTheme: Themes.Light,
   availableLanguages: [
     {
       id: 'en',
