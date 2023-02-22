@@ -21,6 +21,7 @@ export default defineConfig(({ command }) => {
         '@components': path.join(__dirname, 'src/components'),
         '@types': path.join(__dirname, 'src/types'),
         '@utils': path.join(__dirname, 'src/utils'),
+        '@ui': path.join(__dirname, 'src/ui'),
       },
     },
     plugins: [

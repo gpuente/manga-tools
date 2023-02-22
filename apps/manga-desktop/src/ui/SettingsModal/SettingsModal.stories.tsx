@@ -29,11 +29,13 @@ Default.args = {
       id: 'en',
       label: 'English',
       value: 'en',
+      isSelected: true,
     },
     {
       id: 'es',
       label: 'Español',
       value: 'es',
+      isSelected: false,
     },
   ],
   texts: {

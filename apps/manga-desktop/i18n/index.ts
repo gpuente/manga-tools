@@ -6,8 +6,16 @@ import translationEN from './locales/en.json';
 import translationES from './locales/es.json';
 
 const resources: Resource = {
-  en: { translation: translationEN },
-  es: { translation: translationES },
+  en: {
+    code: 'en',
+    name: 'English',
+    translation: translationEN,
+  },
+  es: {
+    code: 'es',
+    name: 'Español',
+    translation: translationES,
+  },
 };
 
 i18n

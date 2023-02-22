@@ -8,6 +8,7 @@ export const paper: Styles = {
   position: 'absolute',
   width: 'calc(100% - 120px)',
   transform: 'translate(-50%, -50%)',
+  overflow: 'auto',
 };
 
 export const topContainer: Styles = {

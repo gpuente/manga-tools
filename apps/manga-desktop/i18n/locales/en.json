@@ -2,7 +2,10 @@
   "hello": "hello world!",
   "common": {
     "appName": "Manga Desktop",
-    "searchPlaceholder": "Search..."
+    "searchPlaceholder": "Search...",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   },
   "mangaResult": {
     "status": "Status:",
@@ -19,5 +22,14 @@
     "daily": "Daily",
     "monthly": "Monthly",
     "yearly": "Yearly"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "themeDescription": "Changes the theme color for the app",
+    "language": "Language",
+    "languageDescription": "Changes the language for the app",
+    "version": "Version",
+    "versionDescription": "Current version of Manga Desktop"
   }
 }

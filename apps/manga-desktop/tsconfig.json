@@ -20,7 +20,9 @@
       "@types": ["src/types"],
       "@types/*": ["src/types/*"],
       "@utils": ["src/utils"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@ui": ["src/ui"],
+      "@ui/*": ["src/ui/*"]
     }
   },
   "include": ["src"],

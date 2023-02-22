@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import Card, { CardProps } from '@mui/material/Card';
 import ArticleIcon from '@mui/icons-material/Article';
-import { MangaCardRow } from '@components/MangaCardRow';
+import { MangaCardRow } from '@ui/MangaCardRow';
 import CardActionArea from '@mui/material/CardActionArea';
 import AssesmentIcon from '@mui/icons-material/Assessment';
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
