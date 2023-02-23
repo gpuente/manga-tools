@@ -10,7 +10,7 @@
     "clean:cache": "rimraf .turbo .cache",
     "clean:node_modules": "rimraf node_modules",
     "clean:full": "npm run clean && npm run clean:cache && npm run clean:node_modules",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint --ext .ts src",

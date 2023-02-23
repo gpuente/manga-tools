@@ -78,8 +78,14 @@ async function createWindow() {
     return { action: 'deny' };
   });
 
-  attachMessageHandler(win);
-  attachListeners(win);
+  const removeMessageHandler = attachMessageHandler(win);
+  const removeListeners = attachListeners(win);
+
+  win.on('closed', (event) => {
+    removeMessageHandler();
+    removeListeners();
+    event.preventDefault();
+  });
 }
 
 app.whenReady().then(createWindow);
