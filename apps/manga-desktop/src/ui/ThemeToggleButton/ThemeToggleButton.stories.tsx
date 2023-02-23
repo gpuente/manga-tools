@@ -1,3 +1,4 @@
+import { Themes } from '@ui/Theme';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeToggleButton } from './ThemeToggleButton';
@@ -14,7 +15,7 @@ export default {
   argTypes: {
     value: {
       control: 'select',
-      options: ['light', 'system', 'dark'],
+      options: [Themes.Light, Themes.System, Themes.Dark],
       defaultValue: 'light',
     },
     labels: { control: 'object' },
@@ -24,7 +25,7 @@ export default {
 
 export const Default = Template.bind({});
 Default.args = {
-  value: 'light',
+  value: Themes.Light,
   labels: {
     dark: 'Dark',
     light: 'Light',

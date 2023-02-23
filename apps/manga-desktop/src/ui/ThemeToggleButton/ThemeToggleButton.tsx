@@ -1,18 +1,17 @@
 import React from 'react';
+import { Themes } from '@ui/Theme';
+import Typography from '@mui/material/Typography';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import SettingsBrightnessOutlinedIcon from '@mui/icons-material/SettingsBrightnessOutlined';
-import Typography from '@mui/material/Typography';
 
 import * as styles from './styles';
 
-type OptionsType = 'light' | 'dark' | 'system';
-
 export interface ThemeToggleButtonProps {
-  value: OptionsType;
-  onChange?: (event: React.MouseEvent<HTMLElement>, value: OptionsType) => void;
+  value: Themes;
+  onChange?: (event: React.MouseEvent<HTMLElement>, value: Themes) => void;
   labels?: {
     dark: string;
     light: string;
@@ -34,19 +33,19 @@ export const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
     size="small"
     sx={styles.container}
   >
-    <ToggleButton value="light">
+    <ToggleButton value={Themes.Light}>
       <LightModeOutlinedIcon color="inherit" sx={styles.icon} />
       <Typography variant="inherit" color="inherit">
         {labels?.light}
       </Typography>
     </ToggleButton>
-    <ToggleButton value="system">
+    <ToggleButton value={Themes.System}>
       <SettingsBrightnessOutlinedIcon color="inherit" sx={styles.icon} />
       <Typography variant="inherit" color="inherit">
         {labels?.system}
       </Typography>
     </ToggleButton>
-    <ToggleButton value="dark">
+    <ToggleButton value={Themes.Dark}>
       <DarkModeOutlinedIcon color="inherit" sx={styles.icon} />
       <Typography variant="inherit" color="inherit">
         {labels?.dark}

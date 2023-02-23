@@ -1,3 +1,4 @@
+import { useTheme } from '@utils/hooks/theme';
 import { useTranslation } from 'react-i18next';
 import { useModal, ModalKey } from '@utils/hooks';
 import { SettingsModal, SettingsModalProps } from '@ui/SettingsModal';
@@ -7,6 +8,7 @@ import pkg from '../../../package.json';
 export const SettingsModalImpl = () => {
   const { t, i18n } = useTranslation();
   const { closeModal, open } = useModal(ModalKey.Settings);
+  const { theme, setTheme } = useTheme();
 
   const handleLangChange: SettingsModalProps['handleLangChange'] = (event) => {
     i18n.changeLanguage(event.target.value);
@@ -23,6 +25,15 @@ export const SettingsModalImpl = () => {
       isSelected: key === lng,
     }));
 
+  const handleThemeChange: SettingsModalProps['handleThemeChange'] = (
+    _,
+    value
+  ) => {
+    if (value) {
+      setTheme(value);
+    }
+  };
+
   return (
     <SettingsModal
       handleClose={closeModal}
@@ -30,7 +41,8 @@ export const SettingsModalImpl = () => {
       version={pkg.version}
       handleLangChange={handleLangChange}
       availableLanguages={availableLanguages}
-      handleThemeChange={() => {}}
+      handleThemeChange={handleThemeChange}
+      selectedTheme={theme}
       texts={{
         title: t('settings.title'),
         theme: {

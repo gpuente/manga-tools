@@ -2,6 +2,8 @@ import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { release } from 'node:os';
 import { join } from 'node:path';
 
+import { attachListeners, attachMessageHandler } from '../helpers';
+
 // The built directory structure
 //
 // ├─┬ dist-electron
@@ -74,6 +76,15 @@ async function createWindow() {
   win.webContents.setWindowOpenHandler(({ url: _url }) => {
     if (_url.startsWith('https:')) shell.openExternal(_url);
     return { action: 'deny' };
+  });
+
+  const removeMessageHandler = attachMessageHandler(win);
+  const removeListeners = attachListeners(win);
+
+  win.on('closed', (event) => {
+    removeMessageHandler();
+    removeListeners();
+    event.preventDefault();
   });
 }
 

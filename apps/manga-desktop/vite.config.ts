@@ -24,6 +24,14 @@ export default defineConfig(({ command }) => {
         '@ui': path.join(__dirname, 'src/ui'),
       },
     },
+    optimizeDeps: {
+      include: ['common-utils', 'in-manga-sdk'],
+    },
+    build: {
+      commonjsOptions: {
+        include: [/common-utils/, /in-manga-sdk/, /node_modules/],
+      },
+    },
     plugins: [
       react(),
       electron({
