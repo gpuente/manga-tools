@@ -2,9 +2,8 @@ import React, { createContext, useMemo, useEffect, useState } from 'react';
 import { lightTheme, darkTheme, Themes } from '@ui/Theme';
 import { ipcRenderer, IpcRendererEvent } from 'electron';
 import { useLocalStorage } from '@utils/hooks/localStorage';
+import { OSTheme, ReqMessage, ResMessage } from 'common-utils';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-
-import { ReqMessage, ResMessage, OSTheme } from '../../../electron/types';
 
 export const THEME_KEY = 'theme';
 

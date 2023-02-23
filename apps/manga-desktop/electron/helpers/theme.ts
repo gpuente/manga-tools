@@ -1,5 +1,5 @@
+import { OSTheme } from 'common-utils';
 import { nativeTheme } from 'electron';
-import { OSTheme } from '../types';
 
 export const getOSTheme = (): OSTheme => {
   let osTheme: OSTheme = 'light';

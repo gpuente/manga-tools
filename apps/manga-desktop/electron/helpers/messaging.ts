@@ -1,7 +1,7 @@
+import { ReqMessage, ResMessage } from 'common-utils';
 import { BrowserWindow, ipcMain, nativeTheme } from 'electron';
 
 import { getOSTheme } from './theme';
-import { ReqMessage, ResMessage } from '../types';
 
 export const attachMessageHandler = (win: BrowserWindow) => {
   ipcMain.on(ReqMessage.CheckOSTheme, () => {
