@@ -2,10 +2,11 @@
 /* eslint no-unused-vars: off */
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
-export type Channels = 'ipc-example';
+export type Channels = 'ipc-example' | 'os-theme' | 'check-os-theme';
 
 const electronHandler = {
   ipcRenderer: {
+    removeListener: ipcRenderer.removeListener,
     sendMessage(channel: Channels, args: unknown[]) {
       ipcRenderer.send(channel, args);
     },

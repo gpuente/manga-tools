@@ -12,8 +12,10 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import { attachListeners, attachMessageHandler } from './helpers';
 
 class AppUpdater {
   constructor() {
@@ -65,14 +67,15 @@ const createWindow = async () => {
     ? path.join(process.resourcesPath, 'assets')
     : path.join(__dirname, '../../assets');
 
-  const getAssetPath = (...paths: string[]): string => {
-    return path.join(RESOURCES_PATH, ...paths);
-  };
+  const getAssetPath = (...paths: string[]): string =>
+    path.join(RESOURCES_PATH, ...paths);
 
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
     height: 728,
+    minWidth: 600,
+    minHeight: 400,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: app.isPackaged
@@ -105,6 +108,14 @@ const createWindow = async () => {
   mainWindow.webContents.setWindowOpenHandler((edata) => {
     shell.openExternal(edata.url);
     return { action: 'deny' };
+  });
+
+  const removeMessageHandler = attachMessageHandler(mainWindow);
+  const removeListeners = attachListeners(mainWindow);
+
+  mainWindow.on('closed', () => {
+    removeMessageHandler();
+    removeListeners();
   });
 
   // Remove this if your app does not use auto updates

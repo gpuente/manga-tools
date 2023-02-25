@@ -2,6 +2,7 @@
  * Base webpack config used across other specific configs
  */
 
+import path from 'path';
 import webpack from 'webpack';
 import TsconfigPathsPlugins from 'tsconfig-paths-webpack-plugin';
 import webpackPaths from './webpack.paths';
@@ -43,6 +44,13 @@ const configuration: webpack.Configuration = {
    * Determine the array of extensions that should be used to resolve modules.
    */
   resolve: {
+    alias: {
+      '@': path.join(__dirname, '../../src/renderer'),
+      '@components': path.join(__dirname, '../../src/renderer/components'),
+      '@types': path.join(__dirname, '../../src/renderer/types'),
+      '@utils': path.join(__dirname, '../../src/renderer/utils'),
+      '@ui': path.join(__dirname, '../../src/renderer/ui'),
+    },
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [webpackPaths.srcPath, 'node_modules'],
     // There is no need to add aliases here, the paths in tsconfig get mirrored

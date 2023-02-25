@@ -1,40 +1,58 @@
+/* eslint-disable no-console */
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
-import './App.css';
+import { MangaCard, AppBar } from '@ui';
+import { useTranslation } from 'react-i18next';
+import { useModal, ModalKey } from '@utils/hooks';
+import { Modal } from '@components/Modal';
+
+import nodeLogo from '../../assets/node.svg';
 
 function Hello() {
+  const { t, i18n } = useTranslation();
+  const { openModal } = useModal(ModalKey.Settings);
+
+  const toggleLang = () => {
+    const currentLng = i18n.language.toLocaleLowerCase();
+    const lng = currentLng === 'en' || currentLng === 'en-us' ? 'es' : 'en';
+
+    i18n.changeLanguage(lng);
+  };
+
   return (
     <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
+      <Modal />
+      <AppBar
+        title={t('common.appName')}
+        placeholder={t('common.searchPlaceholder') || ''}
+        onSearch={(val) => console.log(val)}
+        onClickMenu={openModal}
+      />
+      <div>{t('hello')}</div>
+      <MangaCard
+        title="Hunter x Hunter"
+        thumbnail="https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/cbb55a6382682bf71e91f685c6473c5a.jpe"
+        onClick={toggleLang}
+        config={{
+          status: {
+            label: t('mangaResult.status'),
+            value: t('mangaStatus.onGoing'),
+          },
+          lastRelesae: {
+            label: t('mangaResult.lastRelease'),
+            value: '24/01/2023',
+          },
+          frequency: {
+            label: t('mangaResult.frequency'),
+            value: t('mangaFrequency.monthly'),
+          },
+          chapters: {
+            label: t('mangaResult.chapters'),
+            value: 10,
+          },
+        }}
+      />
+
+      <img style={{ width: '5em' }} src={nodeLogo} alt="Node logo" />
     </div>
   );
 }
