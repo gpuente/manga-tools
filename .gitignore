@@ -48,3 +48,5 @@ apps/manga-desktop-2/release/build
 
 # PDF
 *.pdf
+
+.erb/dll

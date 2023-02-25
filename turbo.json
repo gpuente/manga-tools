@@ -3,7 +3,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["build/**"]
+      "outputs": ["build/**", "release/app/**"]
     },
     "lint": {
       "outputs": [],
@@ -18,7 +18,7 @@
     },
     "build:electron-app": {
       "dependsOn": ["build"],
-      "outputs": ["dist/**", "dist-electron/**", "release/**"]
+      "outputs": ["release/build/**"]
     },
     "clean": {},
     "clean:full": {},

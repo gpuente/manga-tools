@@ -15,14 +15,20 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, '../apps/manga-desktop/src'),
+      '@': path.resolve(__dirname, '../apps/manga-desktop/src/renderer'),
       '@components': path.resolve(
         __dirname,
-        '../apps/manga-desktop/src/components'
+        '../apps/manga-desktop/src/renderer/components'
       ),
-      '@utils': path.resolve(__dirname, '../apps/manga-desktop/src/utils'),
-      '@types': path.resolve(__dirname, '../apps/manga-desktop/src/types'),
-      '@ui': path.resolve(__dirname, '../apps/manga-desktop/src/ui'),
+      '@utils': path.resolve(
+        __dirname,
+        '../apps/manga-desktop/src/renderer/utils'
+      ),
+      '@types': path.resolve(
+        __dirname,
+        '../apps/manga-desktop/src/renderer/types'
+      ),
+      '@ui': path.resolve(__dirname, '../apps/manga-desktop/src/renderer/ui'),
     };
 
     return config;
