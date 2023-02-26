@@ -1,5 +1,5 @@
-import { ReqMessage, ResMessage } from 'common-utils';
 import { BrowserWindow, ipcMain, nativeTheme } from 'electron';
+import { ReqMessage, ResMessage } from '../../common';
 
 import { getOSTheme } from './theme';
 

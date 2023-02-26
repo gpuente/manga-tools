@@ -29,6 +29,7 @@ module.exports = {
         '../apps/manga-desktop/src/renderer/types'
       ),
       '@ui': path.resolve(__dirname, '../apps/manga-desktop/src/renderer/ui'),
+      '@common': path.resolve(__dirname, '../apps/manga-desktop/src/common'),
     };
 
     return config;

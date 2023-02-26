@@ -11,6 +11,7 @@ module.exports = {
     '^@types(.*)$': '<rootDir>/src/renderer/types$1',
     '^@utils(.*)$': '<rootDir>/src/renderer/utils$1',
     '^@ui(.*)$': '<rootDir>/src/renderer/ui$1',
+    '^@common(.*)$': '<rootDir>/src/common$1',
   },
   setupFiles: ['./.erb/scripts/check-build-exists.ts'],
   testEnvironment: 'jsdom',

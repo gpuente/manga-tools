@@ -1,3 +1,4 @@
+/* eslint-disable import/no-relative-packages */
 /**
  * Base webpack config used across other specific configs
  */
@@ -5,6 +6,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import TsconfigPathsPlugins from 'tsconfig-paths-webpack-plugin';
+
 import webpackPaths from './webpack.paths';
 import { dependencies as externals } from '../../release/app/package.json';
 
@@ -50,6 +52,7 @@ const configuration: webpack.Configuration = {
       '@types': path.join(__dirname, '../../src/renderer/types'),
       '@utils': path.join(__dirname, '../../src/renderer/utils'),
       '@ui': path.join(__dirname, '../../src/renderer/ui'),
+      '@common': path.join(__dirname, '../../src/common'),
     },
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [webpackPaths.srcPath, 'node_modules'],

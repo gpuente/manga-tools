@@ -5,3 +5,5 @@ export enum ReqMessage {
 export enum ResMessage {
   OSTheme = 'os-theme',
 }
+
+export type OSTheme = 'dark' | 'light';
