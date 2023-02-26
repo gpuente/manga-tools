@@ -38,9 +38,15 @@ dist
 dist-electron
 release
 
+!apps/manga-desktop/release
+apps/manga-desktop/release/app/dist
+apps/manga-desktop/release/build
+
 # cache
 .cache
 .manga-cli-cache
 
 # PDF
 *.pdf
+
+*/**/.erb/dll

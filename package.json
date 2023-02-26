@@ -21,7 +21,8 @@
     "test": "turbo run test",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "postinstall": "turbo run build:dll"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

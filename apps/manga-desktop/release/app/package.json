@@ -1,0 +1,18 @@
+{
+  "name": "manga-desktop-app",
+  "version": "1.0.2",
+  "description": "Download mangas from internet and read them offline",
+  "license": "MIT",
+  "author": {
+    "name": "Guillermo Puente",
+    "email": "guillermo.ps09@gmail.com",
+    "url": "https://github.com/gpuente/manga-tools"
+  },
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "rebuild": "node -r ts-node/register ../../.erb/scripts/electron-rebuild.js",
+    "postinstall": "npm run rebuild && npm run link-modules",
+    "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts"
+  },
+  "dependencies": {}
+}
