@@ -1,7 +1,7 @@
 import React, { createContext, useMemo, useEffect, useState } from 'react';
+import { OSTheme, ReqMessage, ResMessage } from '@common';
 import { lightTheme, darkTheme, Themes } from '@ui/Theme';
 import { useLocalStorage } from '@utils/hooks/localStorage';
-import { OSTheme, ReqMessage, ResMessage } from 'common-utils';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 
 const { ipcRenderer } = window.electron;

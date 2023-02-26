@@ -23,7 +23,9 @@
       "@utils": ["renderer/utils"],
       "@utils/*": ["renderer/utils/*"],
       "@ui": ["renderer/ui"],
-      "@ui/*": ["renderer/ui/*"]
+      "@ui/*": ["renderer/ui/*"],
+      "@common": ["common"],
+      "@common/*": ["common/*"]
     }
   },
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"]
