@@ -1,12 +1,12 @@
 {
-  "name": "electron-react-boilerplate",
-  "version": "4.6.0",
-  "description": "A foundation for scalable desktop apps",
+  "name": "manga-desktop-app",
+  "version": "1.0.2",
+  "description": "Download mangas from internet and read them offline",
   "license": "MIT",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://github.com/electron-react-boilerplate"
+    "name": "Guillermo Puente",
+    "email": "guillermo.ps09@gmail.com",
+    "url": "https://github.com/gpuente/manga-tools"
   },
   "main": "./dist/main/main.js",
   "scripts": {

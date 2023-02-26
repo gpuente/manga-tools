@@ -20,6 +20,9 @@
       "dependsOn": ["build"],
       "outputs": ["release/build/**"]
     },
+    "build:dll": {
+      "dependsOn": ["^build"]
+    },
     "clean": {},
     "clean:full": {},
     "clean:cache": {},
