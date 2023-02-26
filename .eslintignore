@@ -20,8 +20,8 @@ node_modules
 # OSX
 .DS_Store
 
-apps/manga-desktop-2/release/app/dist
-apps/manga-desktop-2/release/build
+apps/manga-desktop/release/app/dist
+apps/manga-desktop/release/build
 */**/.erb
 
 .idea

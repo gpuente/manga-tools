@@ -38,9 +38,9 @@ dist
 dist-electron
 release
 
-!apps/manga-desktop-2/release
-apps/manga-desktop-2/release/app/dist
-apps/manga-desktop-2/release/build
+!apps/manga-desktop/release
+apps/manga-desktop/release/app/dist
+apps/manga-desktop/release/build
 
 # cache
 .cache

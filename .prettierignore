@@ -14,4 +14,4 @@ release
 node_modules
 stories
 
-apps/manga-desktop-2/.erb/dll
+apps/manga-desktop/.erb/dll
