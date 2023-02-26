@@ -26,7 +26,9 @@
     "clean": "rimraf release/build release/app/dist .erb/dll",
     "clean:cache": "rimraf .turbo .cache",
     "clean:node_modules": "rimraf node_modules src/node_modules release/app/node_modules",
-    "clean:full": "npm run clean && npm run clean:cache && npm run clean:node_modules"
+    "clean:full": "npm run clean && npm run clean:cache && npm run clean:node_modules",
+    "debug": "ts-node ./.erb/scripts/check-port-in-use.js && npm run start:renderer:debug",
+    "start:renderer:debug": "cross-env MAIN_ARGS=\"--inspect=5858 --remote-debugging-port=9223\" cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts"
   },
   "browserslist": [],
   "jest": {
