@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'turbo/no-undeclared-env-vars': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    'no-param-reassign': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

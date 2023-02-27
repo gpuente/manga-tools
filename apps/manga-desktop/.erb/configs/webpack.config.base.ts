@@ -53,6 +53,7 @@ const configuration: webpack.Configuration = {
       '@utils': path.join(__dirname, '../../src/renderer/utils'),
       '@ui': path.join(__dirname, '../../src/renderer/ui'),
       '@common': path.join(__dirname, '../../src/common'),
+      '@redux': path.join(__dirname, '../../src/renderer/redux'),
     },
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [webpackPaths.srcPath, 'node_modules'],
