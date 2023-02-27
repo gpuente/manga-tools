@@ -25,7 +25,9 @@
       "@ui": ["renderer/ui"],
       "@ui/*": ["renderer/ui/*"],
       "@common": ["common"],
-      "@common/*": ["common/*"]
+      "@common/*": ["common/*"],
+      "@redux": ["renderer/redux"],
+      "@redux/*": ["renderer/redux/*"]
     }
   },
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"]

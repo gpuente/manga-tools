@@ -1,4 +1,6 @@
 import React from 'react';
+import { store } from '@redux';
+import { Provider } from 'react-redux';
 
 import { ThemeProvider } from './ThemeProvider';
 import { ModalProvider } from './ModalProvider';
@@ -6,7 +8,9 @@ import { ModalProvider } from './ModalProvider';
 export const RootProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
-  <ThemeProvider>
-    <ModalProvider>{children}</ModalProvider>
-  </ThemeProvider>
+  <Provider store={store}>
+    <ThemeProvider>
+      <ModalProvider>{children}</ModalProvider>
+    </ThemeProvider>
+  </Provider>
 );

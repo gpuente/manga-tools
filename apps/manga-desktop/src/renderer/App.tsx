@@ -4,12 +4,19 @@ import { MangaCard, AppBar } from '@ui';
 import { useTranslation } from 'react-i18next';
 import { useModal, ModalKey } from '@utils/hooks';
 import { Modal } from '@components/Modal';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import { useSelector, useDispatch } from 'react-redux';
+import { counterSelector, counterActions } from '@redux';
 
 import nodeLogo from '../../assets/node.svg';
 
 function Hello() {
   const { t, i18n } = useTranslation();
   const { openModal } = useModal(ModalKey.Settings);
+  const counter = useSelector(counterSelector);
+  const dispatch = useDispatch();
 
   const toggleLang = () => {
     const currentLng = i18n.language.toLocaleLowerCase();
@@ -52,6 +59,26 @@ function Hello() {
         }}
       />
 
+      <Paper sx={{ margin: '10px', padding: '20px' }}>
+        <Typography variant="h6">counter: {counter}</Typography>
+        <Button
+          type="button"
+          color="primary"
+          variant="contained"
+          sx={{ marginRight: '10px' }}
+          onClick={() => dispatch(counterActions.increment())}
+        >
+          Increment
+        </Button>
+        <Button
+          type="button"
+          color="error"
+          variant="contained"
+          onClick={() => dispatch(counterActions.decrement())}
+        >
+          Decrement
+        </Button>
+      </Paper>
       <img style={{ width: '5em' }} src={nodeLogo} alt="Node logo" />
     </div>
   );
