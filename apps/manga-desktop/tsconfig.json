@@ -27,7 +27,9 @@
       "@common": ["common"],
       "@common/*": ["common/*"],
       "@redux": ["renderer/redux"],
-      "@redux/*": ["renderer/redux/*"]
+      "@redux/*": ["renderer/redux/*"],
+      "@rquery": ["renderer/rquery"],
+      "@rquery/*": ["renderer/rquery/*"]
     }
   },
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"]

@@ -1,22 +1,33 @@
 /* eslint-disable no-console */
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import Box from '@mui/material/Box';
 import { MangaCard, AppBar } from '@ui';
-import { useTranslation } from 'react-i18next';
-import { useModal, ModalKey } from '@utils/hooks';
+import Paper from '@mui/material/Paper';
 import { Modal } from '@components/Modal';
 import Button from '@mui/material/Button';
+import { useTranslation } from 'react-i18next';
+import { useQuery } from '@tanstack/react-query';
+import { useModal, ModalKey } from '@utils/hooks';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
+import { searchMangaByName } from '@rquery/queries';
 import { useSelector, useDispatch } from 'react-redux';
 import { counterSelector, counterActions } from '@redux';
+import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 
 import nodeLogo from '../../assets/node.svg';
 
 function Hello() {
-  const { t, i18n } = useTranslation();
-  const { openModal } = useModal(ModalKey.Settings);
-  const counter = useSelector(counterSelector);
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
+  const counter = useSelector(counterSelector);
+  const { openModal } = useModal(ModalKey.Settings);
+  const [searchValue, setSearchValue] = useState('');
+
+  const { data, isLoading, error } = useQuery(searchMangaByName(searchValue));
+
+  console.log('isLoading', isLoading);
+  console.log('error', error);
+  console.log('data', data);
 
   const toggleLang = () => {
     const currentLng = i18n.language.toLocaleLowerCase();
@@ -31,7 +42,7 @@ function Hello() {
       <AppBar
         title={t('common.appName')}
         placeholder={t('common.searchPlaceholder') || ''}
-        onSearch={(val) => console.log(val)}
+        onSearch={(val) => setSearchValue(val)}
         onClickMenu={openModal}
       />
       <div>{t('hello')}</div>
@@ -80,6 +91,8 @@ function Hello() {
         </Button>
       </Paper>
       <img style={{ width: '5em' }} src={nodeLogo} alt="Node logo" />
+
+      <Box component="pre">{JSON.stringify(data, null, 2)}</Box>
     </div>
   );
 }
