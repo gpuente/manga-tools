@@ -54,6 +54,7 @@ const configuration: webpack.Configuration = {
       '@ui': path.join(__dirname, '../../src/renderer/ui'),
       '@common': path.join(__dirname, '../../src/common'),
       '@redux': path.join(__dirname, '../../src/renderer/redux'),
+      '@rquery': path.join(__dirname, '../../src/renderer/rquery'),
     },
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [webpackPaths.srcPath, 'node_modules'],

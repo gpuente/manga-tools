@@ -21,6 +21,7 @@ module.exports = {
     'turbo/no-undeclared-env-vars': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     'no-param-reassign': 'off',
+    'react/no-unstable-nested-components': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,
