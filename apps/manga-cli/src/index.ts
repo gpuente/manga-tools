@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import cliProgress from 'cli-progress';
 import { createSpinner } from 'nanospinner';
-import { FullChapter, InMangaSDK } from 'in-manga-sdk';
+import { FullChapter, InMangaProvider } from 'manga-providers';
 import figlet from 'figlet';
 import gradient from 'gradient-string';
 import path from 'path';
@@ -80,9 +80,9 @@ async function main() {
     i18n.changeLanguage(options.lang);
   }
 
-  const inMangaSDK = new InMangaSDK();
+  const inMangaProvider = new InMangaProvider();
 
-  const results = await promptAndSearch(inMangaSDK);
+  const results = await promptAndSearch(inMangaProvider);
 
   const { selectedManga } = await getMangaSelectionPrompt(results);
   const { id: mangaId } = selectedManga;
@@ -90,7 +90,7 @@ async function main() {
   const chaptersSpinner = createSpinner(
     i18n.translate('spinners.getChaptersInfo')
   ).start();
-  const chapters = await inMangaSDK.getChaptersInfo(mangaId);
+  const chapters = await inMangaProvider.getChaptersInfo(mangaId);
 
   chaptersSpinner.success();
 
@@ -109,7 +109,7 @@ async function main() {
 
   const promises = chaptersToDownload.map(
     async (chapter): Promise<FullChapter> => {
-      const pages = await inMangaSDK.getChapterPages(chapter.id);
+      const pages = await inMangaProvider.getChapterPages(chapter.id);
 
       return {
         ...chapter,

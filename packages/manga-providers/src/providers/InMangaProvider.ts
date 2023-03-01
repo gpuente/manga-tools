@@ -1,42 +1,41 @@
 import axios from 'axios';
 import { load } from 'cheerio';
-import { Chapter, Page, SearchResult } from './types';
-import { getMangaStatus, normalizeText } from './utils';
 
-export class InMangaSDK {
-  private PROVIDER_URL = 'https://inmanga.com';
+import { Provider, Language } from '../base';
+import { Chapter, Page, SearchResult } from '../types';
+import { getMangaStatus, normalizeText } from '../utils';
 
-  private PROVIDER_REFERER_URL = `${this.PROVIDER_URL}/manga/consult?suggestion={{search_value}}`;
+const RESULTS_QTY = 30;
+const PROVIDER_URL = 'https://inmanga.com';
+const THUMBNAIL_URL = 'https://pack-yak.intomanga.com';
+const SEARCH_URL = `${PROVIDER_URL}/manga/getMangasConsultResult`;
+const PAGE_URL = `${PROVIDER_URL}/page/getPageImage/?identification={{page_id}}`;
+const CHAPTERS_URL = `${PROVIDER_URL}/chapter/getall?mangaIdentification={{manga_id}}`;
+const PROVIDER_REFERER_URL = `${PROVIDER_URL}/manga/consult?suggestion={{search_value}}`;
+const CHAPTER_PAGES_URL = `${PROVIDER_URL}/chapter/chapterIndexControls?identification={{chapter_id}}`;
+const SARCH_DATA_STRING = `filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=${RESULTS_QTY}&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=`;
 
-  private SEARCH_URL = `${this.PROVIDER_URL}/manga/getMangasConsultResult`;
-
-  private SARCH_DATA_STRING =
-    'filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=10&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=';
-
-  private CHAPTERS_URL = `${this.PROVIDER_URL}/chapter/getall?mangaIdentification={{manga_id}}`;
-
-  private CHAPTER_PAGES_URL = `${this.PROVIDER_URL}/chapter/chapterIndexControls?identification={{chapter_id}}`;
-
-  private PAGE_URL = `${this.PROVIDER_URL}/page/getPageImage/?identification={{page_id}}`;
-
-  private debug: boolean;
-
+export class InMangaProvider extends Provider {
   constructor(debug = false) {
-    this.debug = debug;
+    super({
+      debug,
+      id: 'in-manga',
+      name: 'InManga',
+      url: PROVIDER_URL,
+      languages: [Language.Spanish],
+      tags: ['inmanga', 'spanish', 'popular'],
+    });
   }
 
   async search(searchValue: string): Promise<SearchResult[]> {
     const results: SearchResult[] = [];
-    const data = this.SARCH_DATA_STRING.replace(
-      '{{search_value}}',
-      searchValue
-    );
+    const data = SARCH_DATA_STRING.replace('{{search_value}}', searchValue);
 
     try {
-      const res = await axios.post(this.SEARCH_URL, encodeURI(data), {
+      const res = await axios.post(SEARCH_URL, encodeURI(data), {
         headers: {
-          origin: this.PROVIDER_URL,
-          referer: this.PROVIDER_REFERER_URL.replace(
+          origin: PROVIDER_URL,
+          referer: PROVIDER_REFERER_URL.replace(
             '{{search_value}}',
             searchValue
           ),
@@ -50,6 +49,7 @@ export class InMangaSDK {
         const id = el.attribs.href.split('/').pop();
         const title = load(el)('h4.ellipsed-text').text();
         const chapters = load(el)('span.label.label-info.pull-right').text();
+        const thumbnailUrl = load(el)('img.img-responsive').attr('data-src');
         const status = load(el)(
           'span.label.label-success.pull-right, span.label.label-danger.pull-right'
         ).text();
@@ -60,6 +60,7 @@ export class InMangaSDK {
             name: normalizeText(title),
             status: getMangaStatus(normalizeText(status)),
             chapters: Number(normalizeText(chapters)),
+            ...(thumbnailUrl && { image: `${THUMBNAIL_URL}${thumbnailUrl}` }),
           });
         }
       });
@@ -77,7 +78,7 @@ export class InMangaSDK {
 
     try {
       const res = await axios.get(
-        this.CHAPTERS_URL.replace('{{manga_id}}', mangaId)
+        CHAPTERS_URL.replace('{{manga_id}}', mangaId)
       );
 
       const chaptersData = JSON.parse(res.data.data);
@@ -107,7 +108,7 @@ export class InMangaSDK {
 
     try {
       const res = await axios.get(
-        this.CHAPTER_PAGES_URL.replace('{{chapter_id}}', chapterId)
+        CHAPTER_PAGES_URL.replace('{{chapter_id}}', chapterId)
       );
       const bodyResponse = load(res.data);
 
@@ -118,7 +119,7 @@ export class InMangaSDK {
         pages.push({
           id,
           number: Number(number),
-          url: this.PAGE_URL.replace('{{page_id}}', id),
+          url: PAGE_URL.replace('{{page_id}}', id),
         });
       });
     } catch (error) {

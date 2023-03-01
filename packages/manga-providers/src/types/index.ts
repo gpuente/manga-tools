@@ -7,6 +7,7 @@ export enum MangaStatus {
 export interface SearchResult {
   id: string;
   name?: string;
+  image?: string;
   chapters?: number;
   status?: MangaStatus;
 }

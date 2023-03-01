@@ -1,4 +1,4 @@
-import { SearchResult } from 'in-manga-sdk';
+import { SearchResult } from 'manga-providers';
 import inquirer from 'inquirer';
 
 import { i18n } from '../i18n';
