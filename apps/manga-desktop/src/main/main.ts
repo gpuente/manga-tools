@@ -78,12 +78,26 @@ const createWindow = async () => {
     minHeight: 400,
     icon: getAssetPath('icon.png'),
     webPreferences: {
-      webSecurity: false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
   });
+
+  // Bypass CORS
+  mainWindow.webContents.session.webRequest.onBeforeSendHeaders((details, cb) =>
+    cb({ requestHeaders: { Origin: '*', ...details.requestHeaders } })
+  );
+
+  mainWindow.webContents.session.webRequest.onHeadersReceived((details, cb) =>
+    cb({
+      responseHeaders: {
+        'Access-Control-Allow-Origin': ['*'],
+        ...details.responseHeaders,
+      },
+    })
+  );
+  // END Bypass CORS
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
