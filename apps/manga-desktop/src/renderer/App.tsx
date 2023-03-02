@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import { MangaCard, AppBar } from '@ui';
 import Paper from '@mui/material/Paper';
 import { Modal } from '@components/Modal';
+import { ResultsGrid } from '@components/ResultsGrid';
 import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
@@ -11,7 +12,7 @@ import { useModal, ModalKey } from '@utils/hooks';
 import Typography from '@mui/material/Typography';
 import { searchMangaByName } from '@rquery/queries';
 import { useSelector, useDispatch } from 'react-redux';
-import { counterSelector, counterActions } from '@redux';
+import { counterSelector, counterActions, searchValueActions } from '@redux';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 
 import nodeLogo from '../../assets/node.svg';
@@ -42,7 +43,10 @@ function Hello() {
       <AppBar
         title={t('common.appName')}
         placeholder={t('common.searchPlaceholder') || ''}
-        onSearch={(val) => setSearchValue(val)}
+        onSearch={(val) => {
+          dispatch(searchValueActions.update(val));
+          setSearchValue(val);
+        }}
         onClickMenu={openModal}
       />
       <div>{t('hello')}</div>
@@ -69,6 +73,8 @@ function Hello() {
           },
         }}
       />
+
+      <ResultsGrid />
 
       <Paper sx={{ margin: '10px', padding: '20px' }}>
         <Typography variant="h6">counter: {counter}</Typography>

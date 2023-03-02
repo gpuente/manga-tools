@@ -28,7 +28,7 @@ export const AppBar: React.FC<AppBarProps> = ({
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <MuiAppBar position="static">
+      <MuiAppBar position="static" elevation={0}>
         <Toolbar>
           <Typography variant="h6" component="div" noWrap sx={styles.title}>
             {title}

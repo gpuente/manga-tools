@@ -34,7 +34,7 @@ export const MangaCard: React.FC<MangaCardProps> = (props) => {
   const { title, config, onClick, thumbnail } = props;
 
   return (
-    <Card onClick={onClick} sx={styles.card}>
+    <Card onClick={onClick} sx={styles.card} elevation={0}>
       <CardActionArea sx={styles.actionArea}>
         {thumbnail && (
           <CardMedia

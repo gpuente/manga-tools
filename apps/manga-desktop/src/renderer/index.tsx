@@ -4,6 +4,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import './i18n';
+import './fonts.css';
 import './styles.css';
 
 import { createRoot } from 'react-dom/client';
