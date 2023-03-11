@@ -12,6 +12,7 @@ module.exports = {
     '@storybook/addon-interactions',
   ],
   framework: '@storybook/react',
+  staticDirs: [{ from: '../apps/manga-desktop/assets', to: '/assets' }],
   webpackFinal: async (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

@@ -3,7 +3,10 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+import '@/fonts.css';
+
 import { useMemo } from 'react';
+import { lightTheme, darkTheme } from '@ui/Theme';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -35,8 +38,8 @@ export const globalTypes = {
 };
 
 const THEMES = {
-  light: createTheme({ palette: { mode: 'light' } }),
-  dark: createTheme({ palette: { mode: 'dark' } }),
+  light: lightTheme,
+  dark: darkTheme,
 };
 
 export const withMuiTheme = (Story, context) => {
