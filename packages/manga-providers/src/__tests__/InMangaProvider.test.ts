@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { InMangaProvider } from '../providers/InMangaProvider';
-import { MangaStatus } from '../types';
+import { MangaStatus, MangaReleaseFrequency } from '../types';
 import {
   CHAPTERS_RESPONSE,
   SEARCH_AXIOS_RESPONSE,
@@ -33,6 +33,10 @@ describe('InMangaProvider', () => {
     expect(result[0].name).toEqual('Dragon Ball Super');
     expect(result[0].status).toEqual(MangaStatus.OnGoing);
     expect(result[0].id).toEqual('8605de4e-e860-4f02-b5ff-154ed08fe6ef');
+    expect(result[0].releaseFrequency).toEqual(MangaReleaseFrequency.Monthly);
+    expect(result[0].lastRelease).toEqual(
+      new Date(Date.UTC(2023, 0, 19, 0, 0, 0, 0))
+    );
     expect(result[0].image).toEqual(
       'https://pack-yak.intomanga.com/thumbnails/manga/Dragon-Ball-Super/8605de4e-e860-4f02-b5ff-154ed08fe6ef'
     );
@@ -124,5 +128,41 @@ describe('InMangaProvider', () => {
     const result = await inMangaProvider.getChapterPages(chapterId);
 
     expect(result.length).toEqual(0);
+  });
+
+  it('should return a date from text', () => {
+    const date1 = InMangaProvider.getDateFromText('21/02/2023');
+    const date2 = InMangaProvider.getDateFromText('14/05/2017');
+    const date3 = InMangaProvider.getDateFromText('08/01/2018');
+
+    expect(date1).toEqual(new Date('2023-02-21'));
+    expect(date2).toEqual(new Date('2017-05-14'));
+    expect(date3).toEqual(new Date('2018-01-08'));
+  });
+
+  it('should return undefined for wrong date text', () => {
+    const date1 = InMangaProvider.getDateFromText('//');
+    const date2 = InMangaProvider.getDateFromText('1969/01/01');
+    const date3 = InMangaProvider.getDateFromText('2000/0/12');
+    const date4 = InMangaProvider.getDateFromText('2000/2/32');
+    const date5 = InMangaProvider.getDateFromText('2000/2/0');
+    const date6 = InMangaProvider.getDateFromText('');
+
+    expect(date1).toBeUndefined();
+    expect(date2).toBeUndefined();
+    expect(date3).toBeUndefined();
+    expect(date4).toBeUndefined();
+    expect(date5).toBeUndefined();
+    expect(date6).toBeUndefined();
+  });
+
+  it('should return valid manga frequency from text', () => {
+    const frequency1 = InMangaProvider.getReleaseFrequencyFromText(' Mensual');
+    const frequency2 = InMangaProvider.getReleaseFrequencyFromText('Semanal');
+    const frequency3 = InMangaProvider.getReleaseFrequencyFromText('');
+
+    expect(frequency1).toEqual(MangaReleaseFrequency.Monthly);
+    expect(frequency2).toEqual(MangaReleaseFrequency.Weekly);
+    expect(frequency3).toEqual(MangaReleaseFrequency.Unknown);
   });
 });
