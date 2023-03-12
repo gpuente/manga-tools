@@ -13,6 +13,7 @@ export enum MangaReleaseFrequency {
 
 export interface SearchResult {
   id: string;
+  url: string;
   name?: string;
   image?: string;
   chapters?: number;
@@ -36,4 +37,9 @@ export interface Page {
 
 export interface FullChapter extends Chapter {
   pagesMetadata: Page[];
+}
+
+export interface Manga extends SearchResult {
+  description?: string;
+  chapterList: FullChapter[];
 }

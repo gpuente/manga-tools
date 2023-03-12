@@ -1408,3 +1408,271 @@ export const CHAPTER_PAGES_NOT_FOUND_RESPONSE = `<!DOCTYPE html>
 </body>
 
 </html>`;
+
+export const AXIOS_MANGA_RESPONSE = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="manga Dragon Ball Super online, Dragon Ball Super online, Dragon Ball Super gratis, leer Dragon Ball Super, leer Dragon Ball Super online, leer Dragon Ball Super online gratis." />
+    <meta name="keywords" content="manga online espa&#195;&#177;ol, manga online, manga, manga gratis, manga online gratis, leer manga, ver manga, leer manga gratis, ver manga gratis , manga Dragon Ball Super online, Dragon Ball Super online, Dragon Ball Super gratis, leer Dragon Ball Super, leer Dragon Ball Super online, leer Dragon Ball Super online gratis" />
+    <meta name="author" content="InManga" />
+	<meta name="”robots”" content="”Index,Follow”">
+    <meta property="og:url" content="http://inmanga.com/ver/manga/Dragon-Ball-Super/8605de4e-e860-4f02-b5ff-154ed08fe6ef" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dragon Ball Super Manga Online - InManga" />
+    <meta property="og:description" content="manga Dragon Ball Super online, Dragon Ball Super online, Dragon Ball Super gratis, leer Dragon Ball Super, leer Dragon Ball Super online, leer Dragon Ball Super online gratis." />
+    <meta property="og:image" content="/thumbnails/manga/Dragon-Ball-Super/8605de4e-e860-4f02-b5ff-154ed08fe6ef" />
+    <meta property="fb:app_id" content="624459837722376" />
+
+    <title>Dragon Ball Super Manga Online - InManga</title>
+    <link rel="shortcut icon" href="https://pack-yak.intomanga.com/inmangafavicon.png">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300" />
+    <!-- =============== VENDOR STYLES ===============-->
+    <link rel="stylesheet" href="https://pack-yak.intomanga.com/bundles/fontawesome" />
+    <link rel="stylesheet" href="https://pack-yak.intomanga.com/bundles/simpleLineIcons" />
+    <link rel="stylesheet" href="https://pack-yak.intomanga.com/bundles/animatecss" />
+    <link rel="stylesheet" href="https://pack-yak.intomanga.com/bundles/whirl" />
+
+    <!-- =============== PAGE VENDOR STYLES =============== -->
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link rel="stylesheet" href="https://pack-yak.intomanga.com/Content/app/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://pack-yak.intomanga.com/Content/app/css/app.css" />
+    <link rel="stylesheet" href="https://pack-yak.intomanga.com/Content/mvc-override.css?ver=" 638141505682572191"  />
+    <link rel="stylesheet" href="https://pack-yak.intomanga.com/Content/toastr/toastr.min.css"  />
+
+
+    <script src="https://pack-yak.intomanga.com/bundles/jquery" type="309ed827d461e40962b95fb2-text/javascript"></script>
+
+
+</head>
+<body class="layout-h">
+
+    <div class="wrapper">
+        <!-- top navbar-->
+        <header class="topnavbar-wrapper">
+
+<!-- START Top Navbar-->
+<nav class="navbar topnavbar">
+    <!-- START navbar header-->
+    <div class="navbar-header">
+        <a href="/" class="navbar-brand">
+            <div class="brand-logo">
+                <img src="https://pack-yak.intomanga.com/Content/img/OnMangaLogo.png" alt="App Logo" class="img-responsive om-logo-img" style="position: absolute;top: -11px;height: 75px;width:90%" />
+            </div>
+        </a>
+    </div>
+    <!-- END navbar header-->
+    <!-- START Nav wrapper-->
+    <div class="nav-wrapper">
+        <!-- START Left navbar-->
+        <ul class="nav navbar-nav">
+            <li>
+                <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                <!-- END User avatar toggle-->
+                <!-- START lock screen-->
+            <li>
+                <a href="/manga/consult" title="Mangas">
+                    Mangas
+                </a>
+            </li>
+                        <!-- END lock screen-->
+        </ul>
+        <!-- END Left navbar-->
+        <!-- START Right Navbar-->
+        <ul class="nav navbar-nav navbar-right">
+            <!-- START lock screen-->
+            <!-- END lock screen-->
+            <!-- Search icon-->
+            <li>
+                <a href="#" data-search-open="">
+                    <em class="icon-magnifier"></em>
+                </a>
+            </li>
+            <!-- Fullscreen (only desktops)-->
+            <!-- START Alert menu-->
+                <li>
+                    <a href="javascript:layoutController.getLoginView(this)" title="Login">
+                        <div class="label label-success pull-right hidden">Nuevo</div><em class="icon-lock-open"></em>
+                    </a>
+                </li>
+
+
+            <!-- END Alert menu-->
+            <!-- START Contacts button-->
+            <!-- END Contacts menu-->
+        </ul>
+        <!-- END Right Navbar-->
+    </div>
+    <!-- END Nav wrapper-->
+    <!-- START Search form-->
+    <form role="search" action="/manga/consult" class="navbar-form">
+        <div class="form-group has-feedback custom-has-feedback">
+            <input type="text" id="QuickSearchInput" placeholder="Escriba el nombre y presione enter" class="form-control typeahead" />
+            <div data-search-dismiss="" class="fa fa-times form-control-feedback custom-form-control-feedback-close-button"></div>
+        </div>
+
+    </form>
+    <!-- END Search form-->
+</nav>
+<!-- END Top Navbar-->
+        </header>
+        <!-- sidebar-->
+
+        <!-- offsidebar-->
+        <!-- Main section-->
+        <section>
+            <!-- Page content-->
+            <div class="content-wrapper">
+                <div class="row">
+
+
+<input type="hidden" value="8605de4e-e860-4f02-b5ff-154ed08fe6ef" id="Identification" />
+<input type="hidden" value="2" id="publicationPeriodicityInput" />
+<input type="hidden" value="1" id="broadcastStatusInput" />
+<input type="hidden" value="False" id="IsAdultContent" />
+    <div class="col-xs-12 hidden-xs" style="width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    top: -20px;padding:0px">
+
+        <img alt="Dragon Ball Super Manga Online - InManga" src="/cover/manga/Dragon-Ball-Super/8605de4e-e860-4f02-b5ff-154ed08fe6ef" style="height: 450px;width: 100%;">
+    </div>
+<div class="col-md-3 col-sm-4  manga-index-detail-cover-photo-layout">
+    <!-- START widget-->
+    <div class="panel widget">
+        <div class="panel-heading visible-xs" style="text-align:center;">Dragon Ball Super</div>
+        <div class="text-center bg-center custom-bg-center">
+            <img alt="Dragon Ball Super Manga Online - InManga" src="/thumbnails/manga/Dragon-Ball-Super/8605de4e-e860-4f02-b5ff-154ed08fe6ef" style="height: 450px;width:100%" />
+        </div>
+
+        <div class="list-group">
+            <a href="javascript:void" class="list-group-item">
+                <span class="label label-success pull-right">En emisi&#243;n</span>
+                <em class="fa fa-fw icon-tag text-muted"></em> Estado
+            </a>
+            <a href="javascript:void" class="list-group-item">
+                <span class="label label-primary pull-right">15/06/2015</span>
+                <em class="fa fa-fw icon-clock text-muted"></em> Publicación
+            </a>
+            <a href="javascript:void" class="list-group-item">
+                <span class="label label-warning pull-right">Mensual</span>
+                <em class="fa fa-fw icon-reload text-muted"></em> Periodicidad
+            </a>
+                <a href="javascript:void" class="list-group-item nextChapterPublicationContainer" style="display:none">
+                    <span class="label label-warning pull-right nextChapterPublicationInput"></span>
+                    <em class="icon-info fa fa-fw text-muted"></em> Próximo capítulo
+                </a>
+
+            <a href="javascript:void" class="list-group-item" style="display:none">
+                <div class="checkbox c-checkbox pull-right custom-checkbox">
+                    <label>
+                        <input name="" id="favoriteManga" type="checkbox" value="false">
+                        <span class="fa fa-check"></span>
+                    </label>
+                </div>
+                <em class="fa fa-fw fa-heart-o red fa-3 favoriteManga text-muted" data-m-id="8605de4e-e860-4f02-b5ff-154ed08fe6ef" data-u-id="0" data-m-fv="false"></em> Favorito
+            </a>
+
+
+        </div>
+    </div>
+    <!-- END widget-->
+</div>
+
+<div class="col-md-9 col-sm-8 col-xs-12 manga-index-sinopsis-detail-cover-photo-layout">
+    <div class="panel widget">
+        <div class="panel-heading">
+
+            <h1>Dragon Ball Super</h1>
+
+            <p class="text-muted">
+            </p>
+
+        </div>
+        <div class="panel-body">
+            Dragon Ball Super es la secuela del Manga y anime de Dragon Ball Z despu&#233;s de la Saga de Majin Buu, y est&#225; enlazada con las pel&#237;culas Dragon Ball Z: La Batalla de los Dioses y Dragon Ball Z: La Resurrecci&#243;n de F.
+        </div>
+    </div>
+</div>
+
+<div class="col-md-9 col-sm-8 col-xs-12 manga-index-chapter-list-cover-photo-layout">
+    <div class="panel widget">
+        <div class="panel-heading">
+            <h4>Listado de capítulos</h4>
+
+        </div>
+        <div class="" data-height="345" data-scrollable="" id="ChaptersContainer">
+            <a href="javascript:void" data-c-number="-1" class="list-group-item custom-list-group-item" id="noSearchResultElement" style="display:none">
+                <div class="media-box">
+                    <div class="media-box-body clearfix">
+                        <span class="grey strong">Sin resultados ...</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="panel-footer clearfix">
+            <div class="input-group">
+                <input type="number" id="chapterSearchInput" placeholder="Buscar capítulo .." class="form-control input-sm">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default btn-sm">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-xs-12 text-center row homeAdsWidgetContainer">
+
+</div>
+
+
+
+                </div>
+            </div>
+        </section>
+        <!-- Page footer-->
+        <footer>
+            <span class="blue bolder">InManga</span>© 2023
+
+<span class="bigger-120">
+    <a href="/home/privacyPolicy">
+        <span class="blue bolder">Política de privacidad</span> |
+    </a>
+    <a href="/home/disclaimerPolicy">
+        <span class="blue bolder">Aviso legal</span> |
+    </a>
+    <a href="/home/termsOfUsage">
+        <span class="blue bolder">Términos de usabilidad</span> |
+    </a>
+    <a href="/suggestion">
+        <span class="blue bolder">Contáctanos</span> |
+    </a>
+    <a href="/home/aboutUs">
+        <span class="blue bolder">Sobre nosotros</span>
+    </a>
+</span>
+        </footer>
+        <div class="scroll-top-wrapper ">
+            <span class="scroll-top-inner">
+                <i class="fa fa-2x fa-arrow-circle-up"></i>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
+`;
+
+export const AXIOS_MANGA_CHAPTERS_RESPONSE = {
+  data: '{"message":"OK","success":true,"result":[{"PagesCount":17,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4114,"MangaId":26,"Number":1.00,"RegistrationDate":"2016-08-23T14:28:57.2844945","Description":null,"Pages":[],"Identification":"f873d067-96d6-4286-b7bc-97717edd2201","FeaturedChapter":false,"FriendlyChapterNumber":"01","FriendlyChapterNumberUrl":"1"},{"PagesCount":15,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4115,"MangaId":26,"Number":2.00,"RegistrationDate":"2016-08-23T14:29:07.5968571","Description":null,"Pages":[],"Identification":"712e5d99-8ed5-4c69-b2e2-e1a4673b41e4","FeaturedChapter":false,"FriendlyChapterNumber":"02","FriendlyChapterNumberUrl":"2"},{"PagesCount":15,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4116,"MangaId":26,"Number":3.00,"RegistrationDate":"2016-08-23T14:29:17.7998519","Description":null,"Pages":[],"Identification":"f5f74b4e-3503-40a7-a6c0-097dfd93a853","FeaturedChapter":false,"FriendlyChapterNumber":"03","FriendlyChapterNumberUrl":"3"},{"PagesCount":20,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4117,"MangaId":26,"Number":5.00,"RegistrationDate":"2016-08-23T14:29:40.7526635","Description":null,"Pages":[],"Identification":"978f42ce-a4e9-4b29-ba51-2c91af7c85d4","FeaturedChapter":false,"FriendlyChapterNumber":"05","FriendlyChapterNumberUrl":"5"},{"PagesCount":19,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4118,"MangaId":26,"Number":6.00,"RegistrationDate":"2016-08-23T14:29:54.7681023","Description":null,"Pages":[],"Identification":"d1d9e873-90a9-43c6-b240-81994b028109","FeaturedChapter":false,"FriendlyChapterNumber":"06","FriendlyChapterNumberUrl":"6"},{"PagesCount":19,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4119,"MangaId":26,"Number":7.00,"RegistrationDate":"2016-08-23T14:30:04.9398289","Description":null,"Pages":[],"Identification":"4ffe004f-fd6d-4ef8-88d9-1e2e56b08a8e","FeaturedChapter":false,"FriendlyChapterNumber":"07","FriendlyChapterNumberUrl":"7"},{"PagesCount":19,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4120,"MangaId":26,"Number":8.00,"RegistrationDate":"2016-08-23T14:30:19.7521408","Description":null,"Pages":[],"Identification":"ab9d34f9-c3f3-4fbe-a5f8-104aa88fb44c","FeaturedChapter":false,"FriendlyChapterNumber":"08","FriendlyChapterNumberUrl":"8"},{"PagesCount":22,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4121,"MangaId":26,"Number":11.00,"RegistrationDate":"2016-08-23T14:31:38.5323299","Description":null,"Pages":[],"Identification":"107b846f-a606-4960-b695-c60af77794f8","FeaturedChapter":false,"FriendlyChapterNumber":"11","FriendlyChapterNumberUrl":"11"},{"PagesCount":31,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4122,"MangaId":26,"Number":10.00,"RegistrationDate":"2016-08-23T14:31:50.8759038","Description":null,"Pages":[],"Identification":"6934f5a7-c118-4051-9cd3-c812c0532888","FeaturedChapter":false,"FriendlyChapterNumber":"10","FriendlyChapterNumberUrl":"10"},{"PagesCount":31,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4123,"MangaId":26,"Number":12.00,"RegistrationDate":"2016-08-23T14:32:10.1881509","Description":null,"Pages":[],"Identification":"07b1331c-4962-4e9a-a60f-b7d6829f9d36","FeaturedChapter":false,"FriendlyChapterNumber":"12","FriendlyChapterNumberUrl":"12"},{"PagesCount":39,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4124,"MangaId":26,"Number":13.00,"RegistrationDate":"2016-08-23T14:33:17.5153733","Description":null,"Pages":[],"Identification":"aba29eb5-c949-4414-b906-5e03636398c8","FeaturedChapter":false,"FriendlyChapterNumber":"13","FriendlyChapterNumberUrl":"13"},{"PagesCount":31,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4125,"MangaId":26,"Number":9.00,"RegistrationDate":"2016-08-23T14:33:22.9840423","Description":null,"Pages":[],"Identification":"f0b5ab81-716c-4e59-b912-6f88b83774a5","FeaturedChapter":false,"FriendlyChapterNumber":"09","FriendlyChapterNumberUrl":"9"},{"PagesCount":19,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4126,"MangaId":26,"Number":4.00,"RegistrationDate":"2016-08-23T14:34:27.4206831","Description":null,"Pages":[],"Identification":"66b33958-ff7d-4f6f-9a60-c4e6ab790729","FeaturedChapter":false,"FriendlyChapterNumber":"04","FriendlyChapterNumberUrl":"4"},{"PagesCount":39,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":4127,"MangaId":26,"Number":14.00,"RegistrationDate":"2016-08-23T14:37:53.2772904","Description":null,"Pages":[],"Identification":"3db635f4-c991-4462-913a-a15466a4673b","FeaturedChapter":false,"FriendlyChapterNumber":"14","FriendlyChapterNumberUrl":"14"},{"PagesCount":39,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":5512,"MangaId":26,"Number":15.00,"RegistrationDate":"2016-08-27T14:03:24.3873678","Description":null,"Pages":[],"Identification":"f11d73ce-135d-4d80-94c5-cf5166bb9871","FeaturedChapter":false,"FriendlyChapterNumber":"15","FriendlyChapterNumberUrl":"15"},{"PagesCount":39,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":5939,"MangaId":26,"Number":16.00,"RegistrationDate":"2016-09-25T23:40:00.0558507","Description":null,"Pages":[],"Identification":"72af4466-dcc0-482d-823f-7d0a63a120ce","FeaturedChapter":false,"FriendlyChapterNumber":"16","FriendlyChapterNumberUrl":"16"},{"PagesCount":39,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":6512,"MangaId":26,"Number":17.00,"RegistrationDate":"2016-10-22T18:41:57.673061","Description":null,"Pages":[],"Identification":"a11a464f-bf3f-48b3-9d91-c89898781a9b","FeaturedChapter":false,"FriendlyChapterNumber":"17","FriendlyChapterNumberUrl":"17"},{"PagesCount":39,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":7445,"MangaId":26,"Number":18.00,"RegistrationDate":"2016-11-26T21:29:58.6500741","Description":null,"Pages":[],"Identification":"d2c8240a-9ef0-46dc-9b9e-a462f4718908","FeaturedChapter":false,"FriendlyChapterNumber":"18","FriendlyChapterNumberUrl":"18"},{"PagesCount":39,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":7473,"MangaId":26,"Number":19.00,"RegistrationDate":"2016-12-21T18:09:44.0781358","Description":null,"Pages":[],"Identification":"885f3bfe-2612-40a1-b118-e34cd43c4c38","FeaturedChapter":false,"FriendlyChapterNumber":"19","FriendlyChapterNumberUrl":"19"},{"PagesCount":39,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":8420,"MangaId":26,"Number":20.00,"RegistrationDate":"2017-01-26T06:43:36.5195179","Description":null,"Pages":[],"Identification":"e72b44a0-f14c-4542-9969-fdfd6ebcf626","FeaturedChapter":false,"FriendlyChapterNumber":"20","FriendlyChapterNumberUrl":"20"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":9112,"MangaId":26,"Number":21.00,"RegistrationDate":"2017-02-22T18:49:20.3994629","Description":null,"Pages":[],"Identification":"4a582832-10b3-4d98-a90f-c420149ec160","FeaturedChapter":false,"FriendlyChapterNumber":"21","FriendlyChapterNumberUrl":"21"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":9165,"MangaId":26,"Number":22.00,"RegistrationDate":"2017-03-22T06:50:26.5187791","Description":null,"Pages":[],"Identification":"4e2d819a-d8cb-4f65-b98d-9c3e257bb005","FeaturedChapter":false,"FriendlyChapterNumber":"22","FriendlyChapterNumberUrl":"22"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":9245,"MangaId":26,"Number":23.00,"RegistrationDate":"2017-04-28T06:53:51.3918621","Description":"","Pages":[],"Identification":"18994296-2309-4bba-88a8-668d1ea3711e","FeaturedChapter":false,"FriendlyChapterNumber":"23","FriendlyChapterNumberUrl":"23"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":9947,"MangaId":26,"Number":24.00,"RegistrationDate":"2017-05-22T14:32:23.8046476","Description":"","Pages":[],"Identification":"03842a60-2917-4629-bc66-75ef907798d6","FeaturedChapter":false,"FriendlyChapterNumber":"24","FriendlyChapterNumberUrl":"24"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":13885,"MangaId":26,"Number":25.00,"RegistrationDate":"2017-06-18T14:11:36.6173414","Description":"","Pages":[],"Identification":"a465a7ac-566e-483b-8f1f-4f1cb33a03ee","FeaturedChapter":false,"FriendlyChapterNumber":"25","FriendlyChapterNumberUrl":"25"},{"PagesCount":44,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":15080,"MangaId":26,"Number":26.00,"RegistrationDate":"2017-07-24T01:27:14.9342064","Description":"","Pages":[],"Identification":"bb5fc51c-9e41-4c82-8310-a0b8cc719f0e","FeaturedChapter":false,"FriendlyChapterNumber":"26","FriendlyChapterNumberUrl":"26"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":16243,"MangaId":26,"Number":27.00,"RegistrationDate":"2017-08-26T20:05:07.9663319","Description":"","Pages":[],"Identification":"4cf22a84-a7b1-4f45-99a3-a3e0e0b6be92","FeaturedChapter":false,"FriendlyChapterNumber":"27","FriendlyChapterNumberUrl":"27"},{"PagesCount":44,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":17728,"MangaId":26,"Number":28.00,"RegistrationDate":"2017-09-26T13:04:30.0169994","Description":"","Pages":[],"Identification":"fde80365-8b70-40c3-99da-b2a870c1db63","FeaturedChapter":false,"FriendlyChapterNumber":"28","FriendlyChapterNumberUrl":"28"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18123,"MangaId":26,"Number":29.00,"RegistrationDate":"2017-10-23T23:46:12.8940206","Description":"","Pages":[],"Identification":"640ed32f-923a-4dad-837b-0f8105019f49","FeaturedChapter":false,"FriendlyChapterNumber":"29","FriendlyChapterNumberUrl":"29"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18197,"MangaId":26,"Number":30.00,"RegistrationDate":"2017-11-22T09:52:02.0949413","Description":"","Pages":[],"Identification":"87fd6cb5-4932-4da5-9668-5883429bbb09","FeaturedChapter":false,"FriendlyChapterNumber":"30","FriendlyChapterNumberUrl":"30"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18439,"MangaId":26,"Number":31.00,"RegistrationDate":"2017-12-17T01:31:15.8452211","Description":"","Pages":[],"Identification":"47976486-6db5-4eca-b660-4a84cba35204","FeaturedChapter":false,"FriendlyChapterNumber":"31","FriendlyChapterNumberUrl":"31"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18525,"MangaId":26,"Number":32.00,"RegistrationDate":"2018-01-21T00:51:45.7634993","Description":"","Pages":[],"Identification":"cfe7b180-3b71-4431-8ccd-6d2d37453995","FeaturedChapter":false,"FriendlyChapterNumber":"32","FriendlyChapterNumberUrl":"32"},{"PagesCount":43,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18606,"MangaId":26,"Number":33.00,"RegistrationDate":"2018-02-20T11:15:25.3759523","Description":"","Pages":[],"Identification":"329b93bd-ff82-4849-a512-f77bd390a013","FeaturedChapter":false,"FriendlyChapterNumber":"33","FriendlyChapterNumberUrl":"33"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18691,"MangaId":26,"Number":34.00,"RegistrationDate":"2018-03-21T01:37:05.8541852","Description":"","Pages":[],"Identification":"92f62b87-a7c0-45ae-bccb-591c73f4e1fc","FeaturedChapter":false,"FriendlyChapterNumber":"34","FriendlyChapterNumberUrl":"34"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18777,"MangaId":26,"Number":35.00,"RegistrationDate":"2018-04-23T00:41:04.9404012","Description":"","Pages":[],"Identification":"e8d899f9-447c-4681-a743-0129f226f7b9","FeaturedChapter":false,"FriendlyChapterNumber":"35","FriendlyChapterNumberUrl":"35"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18846,"MangaId":26,"Number":36.00,"RegistrationDate":"2018-05-22T23:09:05.979051","Description":"","Pages":[],"Identification":"80ead013-1692-427f-8fad-959c0fa905bd","FeaturedChapter":false,"FriendlyChapterNumber":"36","FriendlyChapterNumberUrl":"36"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18911,"MangaId":26,"Number":37.00,"RegistrationDate":"2018-06-21T00:42:50.441399","Description":"","Pages":[],"Identification":"245e655b-75cd-4975-877e-0a3a34177f4f","FeaturedChapter":false,"FriendlyChapterNumber":"37","FriendlyChapterNumberUrl":"37"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":18984,"MangaId":26,"Number":38.00,"RegistrationDate":"2018-07-21T23:11:15.5958565","Description":"","Pages":[],"Identification":"5f24064b-7e4f-47ab-8fd7-3a8f7127b9eb","FeaturedChapter":false,"FriendlyChapterNumber":"38","FriendlyChapterNumberUrl":"38"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":20718,"MangaId":26,"Number":39.00,"RegistrationDate":"2018-09-12T10:39:36.2362901","Description":"","Pages":[],"Identification":"f267ebf5-dbee-4eea-9ceb-a8b07e73a832","FeaturedChapter":false,"FriendlyChapterNumber":"39","FriendlyChapterNumberUrl":"39"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":20753,"MangaId":26,"Number":40.00,"RegistrationDate":"2018-09-22T00:00:00","Description":"","Pages":[],"Identification":"312c3db3-b833-4ec2-81f0-9c8ab32118c6","FeaturedChapter":false,"FriendlyChapterNumber":"40","FriendlyChapterNumberUrl":"40"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":20828,"MangaId":26,"Number":41.00,"RegistrationDate":"2018-10-19T00:00:00","Description":"","Pages":[],"Identification":"da3cb40f-54dc-4330-a38d-d71184b4c6ec","FeaturedChapter":false,"FriendlyChapterNumber":"41","FriendlyChapterNumberUrl":"41"},{"PagesCount":44,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":21018,"MangaId":26,"Number":42.00,"RegistrationDate":"2018-11-22T01:07:31.1108177","Description":"","Pages":[],"Identification":"aef28b1f-b88d-498c-a799-b151acdd6856","FeaturedChapter":false,"FriendlyChapterNumber":"42","FriendlyChapterNumberUrl":"42"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":21153,"MangaId":26,"Number":43.00,"RegistrationDate":"2018-12-21T19:58:26.2901398","Description":"","Pages":[],"Identification":"23ed9cd4-0c29-40c8-ba58-70d8ef8e09a3","FeaturedChapter":false,"FriendlyChapterNumber":"43","FriendlyChapterNumberUrl":"43"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":21245,"MangaId":26,"Number":44.00,"RegistrationDate":"2019-01-21T08:35:30.498907","Description":"","Pages":[],"Identification":"e55a37a9-47a4-4925-a86f-2ddafbd3eb00","FeaturedChapter":false,"FriendlyChapterNumber":"44","FriendlyChapterNumberUrl":"44"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":21324,"MangaId":26,"Number":45.00,"RegistrationDate":"2019-02-20T20:14:18.3419938","Description":"","Pages":[],"Identification":"92120682-b000-4077-b2a7-79ed7814d3f6","FeaturedChapter":true,"FriendlyChapterNumber":"45","FriendlyChapterNumberUrl":"45"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":21706,"MangaId":26,"Number":46.00,"RegistrationDate":"2019-03-19T18:33:05.6846078","Description":"","Pages":[],"Identification":"b52af727-24e9-4c2e-be21-8f46b007d9cc","FeaturedChapter":false,"FriendlyChapterNumber":"46","FriendlyChapterNumberUrl":"46"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":21876,"MangaId":26,"Number":47.00,"RegistrationDate":"2019-04-20T22:59:57.8079789","Description":"","Pages":[],"Identification":"56e59797-d128-4e5f-a529-12ec73713587","FeaturedChapter":true,"FriendlyChapterNumber":"47","FriendlyChapterNumberUrl":"47"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":22183,"MangaId":26,"Number":48.00,"RegistrationDate":"2019-05-20T13:34:01.6300316","Description":"","Pages":[],"Identification":"c3cf4076-3031-467b-bf4e-8acb6f0debad","FeaturedChapter":true,"FriendlyChapterNumber":"48","FriendlyChapterNumberUrl":"48"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":126800,"MangaId":26,"Number":49.00,"RegistrationDate":"2019-06-22T09:03:56.4814772","Description":"","Pages":[],"Identification":"4f0a6d7a-d22d-4a8a-ac8e-1f6bbfb04792","FeaturedChapter":false,"FriendlyChapterNumber":"49","FriendlyChapterNumberUrl":"49"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":126884,"MangaId":26,"Number":50.00,"RegistrationDate":"2019-07-19T17:29:33.6814445","Description":"","Pages":[],"Identification":"4f121a34-6d22-4ad1-89d0-c5c62a83fa81","FeaturedChapter":false,"FriendlyChapterNumber":"50","FriendlyChapterNumberUrl":"50"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":126967,"MangaId":26,"Number":51.00,"RegistrationDate":"2019-08-21T01:29:43.9760989","Description":"","Pages":[],"Identification":"0e227669-d275-4875-8562-4817a4056235","FeaturedChapter":false,"FriendlyChapterNumber":"51","FriendlyChapterNumberUrl":"51"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127040,"MangaId":26,"Number":52.00,"RegistrationDate":"2019-09-20T22:48:11.8490951","Description":"","Pages":[],"Identification":"c13337c2-5535-41ed-99d9-dd54c7d9af1c","FeaturedChapter":false,"FriendlyChapterNumber":"52","FriendlyChapterNumberUrl":"52"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127107,"MangaId":26,"Number":53.00,"RegistrationDate":"2019-10-21T01:07:30.7641957","Description":"","Pages":[],"Identification":"8fb3d7a2-e64f-49d6-a988-cf37da1c1049","FeaturedChapter":false,"FriendlyChapterNumber":"53","FriendlyChapterNumberUrl":"53"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127188,"MangaId":26,"Number":54.00,"RegistrationDate":"2019-11-21T12:03:46.3257188","Description":"","Pages":[],"Identification":"26d5159c-87ab-4c26-bf3f-b6b875e8cd43","FeaturedChapter":false,"FriendlyChapterNumber":"54","FriendlyChapterNumberUrl":"54"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127335,"MangaId":26,"Number":55.00,"RegistrationDate":"2019-12-21T14:12:50.0103955","Description":"","Pages":[],"Identification":"9122c220-1bf8-43a0-b9a7-f195e8402a5e","FeaturedChapter":false,"FriendlyChapterNumber":"55","FriendlyChapterNumberUrl":"55"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127437,"MangaId":26,"Number":56.00,"RegistrationDate":"2020-01-21T12:23:36.9505202","Description":"","Pages":[],"Identification":"da3e0ce0-3d05-40fe-aa3e-41561770f69e","FeaturedChapter":true,"FriendlyChapterNumber":"56","FriendlyChapterNumberUrl":"56"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127566,"MangaId":26,"Number":57.00,"RegistrationDate":"2020-02-24T14:26:11.9023024","Description":"","Pages":[],"Identification":"e0f3390b-a3a6-4770-b05c-38f3388961c6","FeaturedChapter":false,"FriendlyChapterNumber":"57","FriendlyChapterNumberUrl":"57"},{"PagesCount":44,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127643,"MangaId":26,"Number":58.00,"RegistrationDate":"2020-03-20T18:34:29.9316374","Description":"","Pages":[],"Identification":"cee4891b-b97f-4282-81fc-ca84b4742cf0","FeaturedChapter":false,"FriendlyChapterNumber":"58","FriendlyChapterNumberUrl":"58"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127706,"MangaId":26,"Number":59.00,"RegistrationDate":"2020-04-21T14:00:08.9895949","Description":"","Pages":[],"Identification":"1983b378-5b25-44f3-a816-7a187e26a50e","FeaturedChapter":false,"FriendlyChapterNumber":"59","FriendlyChapterNumberUrl":"59"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127764,"MangaId":26,"Number":60.00,"RegistrationDate":"2020-05-21T10:11:45.3261648","Description":"","Pages":[],"Identification":"241c1857-ccb6-4681-ad39-6ccf5ea28f7c","FeaturedChapter":false,"FriendlyChapterNumber":"60","FriendlyChapterNumberUrl":"60"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127804,"MangaId":26,"Number":61.00,"RegistrationDate":"2020-06-19T18:52:54.8551627","Description":"","Pages":[],"Identification":"ee1afdfa-cca1-4a67-8d78-3970a1d0321d","FeaturedChapter":false,"FriendlyChapterNumber":"61","FriendlyChapterNumberUrl":"61"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127892,"MangaId":26,"Number":62.00,"RegistrationDate":"2020-07-21T05:55:02.7818591","Description":"","Pages":[],"Identification":"a3184f1a-f0cd-4d36-aa1e-01e773b2463d","FeaturedChapter":false,"FriendlyChapterNumber":"62","FriendlyChapterNumberUrl":"62"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":127925,"MangaId":26,"Number":63.00,"RegistrationDate":"2020-08-21T08:28:10.5928049","Description":"","Pages":[],"Identification":"722fcdbf-63a2-4084-9c07-02ee0ce444c1","FeaturedChapter":false,"FriendlyChapterNumber":"63","FriendlyChapterNumberUrl":"63"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128033,"MangaId":26,"Number":64.00,"RegistrationDate":"2020-09-20T21:18:03.48272","Description":"","Pages":[],"Identification":"0f020893-72e2-4d87-b7c6-8dcbc91a8065","FeaturedChapter":false,"FriendlyChapterNumber":"64","FriendlyChapterNumberUrl":"64"},{"PagesCount":44,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128077,"MangaId":26,"Number":65.00,"RegistrationDate":"2020-10-21T05:46:13.1727073","Description":"","Pages":[],"Identification":"9dde02b3-8939-409f-8a23-379b36f112dd","FeaturedChapter":false,"FriendlyChapterNumber":"65","FriendlyChapterNumberUrl":"65"},{"PagesCount":44,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128114,"MangaId":26,"Number":66.00,"RegistrationDate":"2020-11-22T20:21:09.275116","Description":"","Pages":[],"Identification":"d13652f5-12df-4be3-9440-25a5bd74e938","FeaturedChapter":false,"FriendlyChapterNumber":"66","FriendlyChapterNumberUrl":"66"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128158,"MangaId":26,"Number":67.00,"RegistrationDate":"2020-12-23T17:20:30.3269434","Description":"","Pages":[],"Identification":"c3d76341-d4ff-4c69-a358-2f6861e82ece","FeaturedChapter":false,"FriendlyChapterNumber":"67","FriendlyChapterNumberUrl":"67"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128313,"MangaId":26,"Number":68.00,"RegistrationDate":"2021-01-20T09:09:17.0111415","Description":"","Pages":[],"Identification":"b8e430cf-f86a-4bd7-9320-08b3ae83d1b1","FeaturedChapter":false,"FriendlyChapterNumber":"68","FriendlyChapterNumberUrl":"68"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128378,"MangaId":26,"Number":69.00,"RegistrationDate":"2021-02-19T09:57:09.0865223","Description":"","Pages":[],"Identification":"209275c0-ff4f-436b-945b-175da440a9ae","FeaturedChapter":false,"FriendlyChapterNumber":"69","FriendlyChapterNumberUrl":"69"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128420,"MangaId":26,"Number":70.00,"RegistrationDate":"2021-03-18T13:19:46.7753922","Description":"","Pages":[],"Identification":"c272d335-dfd1-4af6-9402-852d758a2f93","FeaturedChapter":false,"FriendlyChapterNumber":"70","FriendlyChapterNumberUrl":"70"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128477,"MangaId":26,"Number":71.00,"RegistrationDate":"2021-04-20T17:04:40.4906921","Description":"","Pages":[],"Identification":"00947446-2525-4815-8824-5ddebbb4bd57","FeaturedChapter":false,"FriendlyChapterNumber":"71","FriendlyChapterNumberUrl":"71"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128525,"MangaId":26,"Number":72.00,"RegistrationDate":"2021-05-20T21:10:34.9527524","Description":"","Pages":[],"Identification":"b8ddc720-47ef-498e-9d0e-a0832476dd9b","FeaturedChapter":false,"FriendlyChapterNumber":"72","FriendlyChapterNumberUrl":"72"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128572,"MangaId":26,"Number":73.00,"RegistrationDate":"2021-06-22T05:40:41.1139303","Description":"","Pages":[],"Identification":"e1da7450-9d81-4ccb-8830-a1f06f0fe49a","FeaturedChapter":false,"FriendlyChapterNumber":"73","FriendlyChapterNumberUrl":"73"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128612,"MangaId":26,"Number":74.00,"RegistrationDate":"2021-07-20T21:12:56.4264672","Description":"","Pages":[],"Identification":"2f2356ea-4262-4428-8a2d-199d76e3cf03","FeaturedChapter":false,"FriendlyChapterNumber":"74","FriendlyChapterNumberUrl":"74"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":128735,"MangaId":26,"Number":75.00,"RegistrationDate":"2021-08-20T07:18:25.4502581","Description":"","Pages":[],"Identification":"4e0b6945-6d92-465d-b37d-c134a0e8063f","FeaturedChapter":false,"FriendlyChapterNumber":"75","FriendlyChapterNumberUrl":"75"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129028,"MangaId":26,"Number":76.00,"RegistrationDate":"2021-09-24T06:42:13.7677813","Description":"","Pages":[],"Identification":"50eebd23-9fea-4131-bf94-c83dc463f852","FeaturedChapter":false,"FriendlyChapterNumber":"76","FriendlyChapterNumberUrl":"76"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129085,"MangaId":26,"Number":77.00,"RegistrationDate":"2021-11-03T10:47:24.859762","Description":"","Pages":[],"Identification":"d9020068-8f3b-45e4-b65a-71ebdea0b21f","FeaturedChapter":true,"FriendlyChapterNumber":"77","FriendlyChapterNumberUrl":"77"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129180,"MangaId":26,"Number":78.00,"RegistrationDate":"2021-11-22T13:09:57.0638291","Description":"","Pages":[],"Identification":"00df33d8-0c76-4f8b-9215-70e9682b73a5","FeaturedChapter":false,"FriendlyChapterNumber":"78","FriendlyChapterNumberUrl":"78"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129240,"MangaId":26,"Number":79.00,"RegistrationDate":"2021-12-20T08:05:39.7444482","Description":"","Pages":[],"Identification":"6e32f1bd-0da9-4aaa-aca9-bd319a0d412c","FeaturedChapter":false,"FriendlyChapterNumber":"79","FriendlyChapterNumberUrl":"79"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129324,"MangaId":26,"Number":80.00,"RegistrationDate":"2022-02-20T14:43:15.0296951","Description":"","Pages":[],"Identification":"920a0ced-a5f4-419f-bf18-d0fcdab40ebc","FeaturedChapter":false,"FriendlyChapterNumber":"80","FriendlyChapterNumberUrl":"80"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129325,"MangaId":26,"Number":81.00,"RegistrationDate":"2022-02-20T19:34:28.5748091","Description":"","Pages":[],"Identification":"35f61a08-693b-4916-be3a-40405116de73","FeaturedChapter":false,"FriendlyChapterNumber":"81","FriendlyChapterNumberUrl":"81"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129358,"MangaId":26,"Number":82.00,"RegistrationDate":"2022-03-18T12:55:23.0729758","Description":"","Pages":[],"Identification":"a5249070-b34c-4bb3-bd17-ebb5da5b4092","FeaturedChapter":false,"FriendlyChapterNumber":"82","FriendlyChapterNumberUrl":"82"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129394,"MangaId":26,"Number":83.00,"RegistrationDate":"2022-04-21T07:00:01.8813125","Description":"","Pages":[],"Identification":"fab98e52-8f10-46de-b6fe-3f409cba8258","FeaturedChapter":false,"FriendlyChapterNumber":"83","FriendlyChapterNumberUrl":"83"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129415,"MangaId":26,"Number":84.00,"RegistrationDate":"2022-05-19T18:53:48.4044667","Description":"","Pages":[],"Identification":"d66a4b02-6d0c-4a76-acb4-f2881201fd0a","FeaturedChapter":false,"FriendlyChapterNumber":"84","FriendlyChapterNumberUrl":"84"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129467,"MangaId":26,"Number":85.00,"RegistrationDate":"2022-06-22T05:23:26.3516989","Description":"","Pages":[],"Identification":"6a424131-eec0-495e-826d-24c53a7fd001","FeaturedChapter":false,"FriendlyChapterNumber":"85","FriendlyChapterNumberUrl":"85"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129494,"MangaId":26,"Number":86.00,"RegistrationDate":"2022-07-20T18:07:27.7146339","Description":"","Pages":[],"Identification":"41da676f-1496-47e3-95de-1ff85093a58c","FeaturedChapter":false,"FriendlyChapterNumber":"86","FriendlyChapterNumberUrl":"86"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129561,"MangaId":26,"Number":87.00,"RegistrationDate":"2022-08-21T19:02:29.4408341","Description":"","Pages":[],"Identification":"f9659f48-6203-4cb3-8d63-224cac943e75","FeaturedChapter":false,"FriendlyChapterNumber":"87","FriendlyChapterNumberUrl":"87"},{"PagesCount":55,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129692,"MangaId":26,"Number":88.00,"RegistrationDate":"2022-12-20T19:59:22.3147235","Description":"","Pages":[],"Identification":"21214725-3009-4cdd-9c49-0d640b0e3e4f","FeaturedChapter":false,"FriendlyChapterNumber":"88","FriendlyChapterNumberUrl":"88"},{"PagesCount":45,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129731,"MangaId":26,"Number":89.00,"RegistrationDate":"2023-01-19T12:57:21.1385768","Description":"","Pages":[],"Identification":"bba80400-12c6-434e-ad4e-95595b6df0c3","FeaturedChapter":false,"FriendlyChapterNumber":"89","FriendlyChapterNumberUrl":"89"},{"PagesCount":47,"Watched":false,"MangaIdentification":"","MangaName":"","FriendlyMangaName":"","Id":129762,"MangaId":26,"Number":90.00,"RegistrationDate":"2023-02-21T04:59:06.8727829","Description":"","Pages":[],"Identification":"72da4db0-5200-414f-be1f-c8ff254ad8c2","FeaturedChapter":false,"FriendlyChapterNumber":"90","FriendlyChapterNumberUrl":"90"}],"statusCode":0,"errors":null}',
+};
