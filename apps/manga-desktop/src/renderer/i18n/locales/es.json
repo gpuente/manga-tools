@@ -16,12 +16,16 @@
   "mangaStatus": {
     "onGoing": "En emisión",
     "finished": "Finalizado",
-    "canceled": "Cancelado"
+    "canceled": "Cancelado",
+    "unknown": "Desconocido"
   },
   "mangaFrequency": {
     "daily": "Diario",
     "monthly": "Mensual",
-    "yearly": "Anual"
+    "weekly": "Mensual",
+    "yearly": "Anual",
+    "unknown": "Desconocido",
+    "na": "N/A"
   },
   "settings": {
     "title": "Configuración",

@@ -14,6 +14,7 @@ module.exports = {
     '^@common(.*)$': '<rootDir>/src/common$1',
     '^@redux(.*)$': '<rootDir>/src/renderer/redux$1',
     '^@rquery(.*)$': '<rootDir>/src/renderer/rquery$1',
+    '^@i18n(.*)$': '<rootDir>/src/renderer/i18n$1',
   },
   setupFiles: ['./.erb/scripts/check-build-exists.ts'],
   testEnvironment: 'jsdom',
