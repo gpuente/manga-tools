@@ -19,10 +19,12 @@ export interface RowProps {
   value?: React.ReactNode;
   color?: string;
 }
-export interface MangaCardProps {
+export interface MangaCardProps<T extends React.ElementType> {
   title: string;
   thumbnail?: string;
-  onClick: CardProps['onClick'];
+  onClick?: CardProps['onClick'];
+  component?: T;
+  componentProps?: React.ComponentProps<T>;
   config: {
     status: RowProps;
     lastRelesae: RowProps;
@@ -31,11 +33,20 @@ export interface MangaCardProps {
   };
 }
 
-export const MangaCard: React.FC<MangaCardProps> = (props) => {
-  const { title, config, onClick, thumbnail } = props;
+export const MangaCard = <T extends React.ElementType>(
+  props: MangaCardProps<T>
+) => {
+  const { title, config, onClick, thumbnail, component, componentProps } =
+    props;
 
   return (
-    <Card onClick={onClick} sx={styles.card} elevation={6}>
+    <Card
+      onClick={onClick}
+      sx={styles.card}
+      elevation={6}
+      {...(component && { component })}
+      {...componentProps}
+    >
       <CardActionArea sx={styles.actionArea}>
         {thumbnail && (
           <CardMedia

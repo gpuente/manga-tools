@@ -215,7 +215,7 @@ export class InMangaProvider extends Provider {
       'div.col-md-3.col-sm-4.manga-index-detail-cover-photo-layout img'
     ).attr('src');
     const status = bodyResponse(
-      'div.panel.widget span.label.label-success.pull-right'
+      'div.panel.widget a:nth-child(1) > span'
     ).text();
     const lastRelease = bodyResponse(
       'div.panel.widget span.label.label-primary.pull-right'

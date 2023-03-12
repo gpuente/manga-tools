@@ -4,13 +4,14 @@ import Box from '@mui/material/Box';
 import { MangaCard, AppBar } from '@ui';
 import Paper from '@mui/material/Paper';
 import { Modal } from '@components/Modal';
+import { MangaPage } from '@components/MangaPage';
 import { ResultsGrid } from '@components/ResultsGrid';
 import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { useModal, ModalKey } from '@utils/hooks';
 import Typography from '@mui/material/Typography';
-import { searchMangaByName, getMangaInfo } from '@rquery/queries';
+import { searchMangaByName } from '@rquery/queries';
 import { useSelector, useDispatch } from 'react-redux';
 import { counterSelector, counterActions, searchValueActions } from '@redux';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
@@ -25,11 +26,6 @@ function Hello() {
   const [searchValue, setSearchValue] = useState('');
 
   const { data, isLoading, error } = useQuery(searchMangaByName(searchValue));
-  useQuery(
-    getMangaInfo(
-      'https://inmanga.com/ver/manga/Dragon-Ball-Super/8605de4e-e860-4f02-b5ff-154ed08fe6ef'
-    )
-  );
 
   console.log('isLoading', isLoading);
   console.log('error', error);
@@ -113,6 +109,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Hello />} />
+        <Route path="/manga" element={<MangaPage />} />
       </Routes>
     </Router>
   );
