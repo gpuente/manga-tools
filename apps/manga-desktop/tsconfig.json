@@ -29,7 +29,9 @@
       "@redux": ["renderer/redux"],
       "@redux/*": ["renderer/redux/*"],
       "@rquery": ["renderer/rquery"],
-      "@rquery/*": ["renderer/rquery/*"]
+      "@rquery/*": ["renderer/rquery/*"],
+      "@i18n": ["renderer/i18n"],
+      "@i18n/*": ["renderer/i18n/*"]
     }
   },
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"]

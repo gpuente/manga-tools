@@ -15,12 +15,14 @@ export const cardMedia: Styles = {
 
 export const card: Styles = {
   height: 200,
+  display: 'flex',
 };
 
 export const content: Styles = {
   display: 'flex',
   flex: 1,
   flexDirection: 'column',
+  minWidth: 0,
 };
 
 export const title: Styles = {

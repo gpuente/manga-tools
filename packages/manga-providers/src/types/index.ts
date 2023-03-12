@@ -4,12 +4,21 @@ export enum MangaStatus {
   Unknown = 'Unknown',
 }
 
+export enum MangaReleaseFrequency {
+  NA = 'NA',
+  Weekly = 'Weekly',
+  Monthly = 'Monthly',
+  Unknown = 'Unknown',
+}
+
 export interface SearchResult {
   id: string;
   name?: string;
   image?: string;
   chapters?: number;
+  lastRelease?: Date;
   status?: MangaStatus;
+  releaseFrequency?: MangaReleaseFrequency;
 }
 
 export interface Chapter {

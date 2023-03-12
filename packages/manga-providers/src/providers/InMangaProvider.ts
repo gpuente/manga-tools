@@ -2,7 +2,13 @@ import axios from 'axios';
 import { load } from 'cheerio';
 
 import { Provider, Language } from '../base';
-import { Chapter, Page, SearchResult } from '../types';
+import {
+  Page,
+  Chapter,
+  MangaStatus,
+  SearchResult,
+  MangaReleaseFrequency,
+} from '../types';
 import { getMangaStatus, normalizeText } from '../utils';
 
 const RESULTS_QTY = 30;
@@ -49,16 +55,29 @@ export class InMangaProvider extends Provider {
         const id = el.attribs.href.split('/').pop();
         const title = load(el)('h4.ellipsed-text').text();
         const chapters = load(el)('span.label.label-info.pull-right').text();
+        const frequency = load(el)(
+          'span.label.label-warning.pull-right'
+        ).text();
+        const lastRelease = load(el)(
+          'span.label.label-primary.pull-right'
+        ).text();
         const thumbnailUrl = load(el)('img.img-responsive').attr('data-src');
         const status = load(el)(
           'span.label.label-success.pull-right, span.label.label-danger.pull-right'
         ).text();
 
+        const mangaStatus = getMangaStatus(normalizeText(status));
+
         if (id) {
           results.push({
             id,
             name: normalizeText(title),
-            status: getMangaStatus(normalizeText(status)),
+            status: mangaStatus,
+            lastRelease: InMangaProvider.getDateFromText(lastRelease),
+            releaseFrequency:
+              mangaStatus === MangaStatus.Finished
+                ? MangaReleaseFrequency.NA
+                : InMangaProvider.getReleaseFrequencyFromText(frequency),
             chapters: Number(normalizeText(chapters)),
             ...(thumbnailUrl && { image: `${THUMBNAIL_URL}${thumbnailUrl}` }),
           });
@@ -129,5 +148,42 @@ export class InMangaProvider extends Provider {
     }
 
     return pages;
+  }
+
+  static getDateFromText(text: string): Date | undefined {
+    const [_day, _month, _year] = normalizeText(text).split('/');
+
+    const year = Number(_year);
+    const month = Number(_month) - 1;
+    const day = Number(_day);
+
+    if (year < 1970) {
+      return undefined;
+    }
+
+    if (Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day)) {
+      return undefined;
+    }
+
+    if (month < 0 || month > 11) {
+      return undefined;
+    }
+
+    if (day < 1 || day > 31) {
+      return undefined;
+    }
+
+    return new Date(Date.UTC(year, month, day, 0, 0, 0, 0));
+  }
+
+  static getReleaseFrequencyFromText(text: string): MangaReleaseFrequency {
+    switch (normalizeText(text.toLowerCase())) {
+      case 'mensual':
+        return MangaReleaseFrequency.Monthly;
+      case 'semanal':
+        return MangaReleaseFrequency.Weekly;
+      default:
+        return MangaReleaseFrequency.Unknown;
+    }
   }
 }

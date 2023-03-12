@@ -1,11 +1,12 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import Tooltip from '@mui/material/Tooltip';
 import CardMedia from '@mui/material/CardMedia';
+import { MangaCardRow } from '@ui/MangaCardRow';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import Card, { CardProps } from '@mui/material/Card';
 import ArticleIcon from '@mui/icons-material/Article';
-import { MangaCardRow } from '@ui/MangaCardRow';
 import CardActionArea from '@mui/material/CardActionArea';
 import AssesmentIcon from '@mui/icons-material/Assessment';
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
@@ -34,7 +35,7 @@ export const MangaCard: React.FC<MangaCardProps> = (props) => {
   const { title, config, onClick, thumbnail } = props;
 
   return (
-    <Card onClick={onClick} sx={styles.card} elevation={0}>
+    <Card onClick={onClick} sx={styles.card} elevation={6}>
       <CardActionArea sx={styles.actionArea}>
         {thumbnail && (
           <CardMedia
@@ -45,9 +46,11 @@ export const MangaCard: React.FC<MangaCardProps> = (props) => {
           />
         )}
         <CardContent sx={styles.content}>
-          <Typography variant="h6" align="left" sx={styles.title}>
-            {title}
-          </Typography>
+          <Tooltip title={title} enterDelay={500} leaveDelay={200} arrow>
+            <Typography variant="h6" align="left" sx={styles.title} noWrap>
+              {title}
+            </Typography>
+          </Tooltip>
           <Box sx={styles.cardRowContainer}>
             <MangaCardRow
               icon={<AssesmentIcon fontSize="small" />}

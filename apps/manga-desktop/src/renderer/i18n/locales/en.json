@@ -16,12 +16,16 @@
   "mangaStatus": {
     "onGoing": "On going",
     "finished": "Finished",
-    "canceled": "Canceled"
+    "canceled": "Canceled",
+    "unknown": "Unknown"
   },
   "mangaFrequency": {
     "daily": "Daily",
     "monthly": "Monthly",
-    "yearly": "Yearly"
+    "weekly": "Weekly",
+    "yearly": "Yearly",
+    "unknown": "Unknown",
+    "na": "N/A"
   },
   "settings": {
     "title": "Settings",
