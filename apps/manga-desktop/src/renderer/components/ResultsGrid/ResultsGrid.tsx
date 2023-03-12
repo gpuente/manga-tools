@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { searchMangaByName } from '@rquery/queries';
 import { getMangaStatusKey, getMangaReleaseFrequencyKey } from '@i18n/utils';
+import { Link } from 'react-router-dom';
 
 import * as styles from './styles';
 
@@ -33,6 +34,13 @@ export const ResultsGrid: React.FC = () => {
         {data.map((result) => (
           <Grid key={result.id} item xl={4} lg={6} xs={12}>
             <MangaCard
+              component={Link}
+              componentProps={{
+                to: {
+                  pathname: '/manga',
+                  search: `?url=${encodeURI(result.url)}`,
+                },
+              }}
               thumbnail={result.image}
               title={result.name || ''}
               onClick={() => {}}

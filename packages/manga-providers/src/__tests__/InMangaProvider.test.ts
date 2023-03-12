@@ -202,6 +202,7 @@ describe('InMangaProvider', () => {
     expect(result.id).toEqual('8605de4e-e860-4f02-b5ff-154ed08fe6ef');
     expect(result.url).toEqual(url);
     expect(result.name).toEqual('Dragon Ball Super');
+    expect(result.status).toEqual(MangaStatus.OnGoing);
     expect(result.description).toEqual(
       'Dragon Ball Super es la secuela del Manga y anime de Dragon Ball Z después de la Saga de Majin Buu, y está enlazada con las películas Dragon Ball Z: La Batalla de los Dioses y Dragon Ball Z: La Resurrección de F.'
     );

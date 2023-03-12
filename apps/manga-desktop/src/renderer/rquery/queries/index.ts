@@ -16,10 +16,10 @@ export const searchMangaByName = (
 });
 
 export const getMangaInfo = (
-  url: string
+  url: string | null
 ): UseQueryOptions<Manga | null, Error> => ({
   queryKey: ['getMangaInfo', url],
-  enabled: url !== '',
+  enabled: url !== '' && url !== null,
   initialData: null,
   queryFn: async () => {
     const results = await inMangaProvider.getMangaInfo(url);
