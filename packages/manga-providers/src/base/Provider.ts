@@ -1,5 +1,5 @@
 import { Language } from './languages';
-import { Chapter, Page, SearchResult } from '../types';
+import { Chapter, Page, SearchResult, Manga } from '../types';
 
 export interface ProviderConfig {
   id: string;
@@ -50,4 +50,5 @@ export abstract class Provider {
   abstract search(searchValue: string): Promise<SearchResult[]>;
   abstract getChaptersInfo(mangaId: string): Promise<Chapter[]>;
   abstract getChapterPages(chapterId: string): Promise<Page[]>;
+  abstract getMangaInfo(url: string): Promise<Manga>;
 }

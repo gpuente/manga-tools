@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { useModal, ModalKey } from '@utils/hooks';
 import Typography from '@mui/material/Typography';
-import { searchMangaByName } from '@rquery/queries';
+import { searchMangaByName, getMangaInfo } from '@rquery/queries';
 import { useSelector, useDispatch } from 'react-redux';
 import { counterSelector, counterActions, searchValueActions } from '@redux';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
@@ -25,6 +25,11 @@ function Hello() {
   const [searchValue, setSearchValue] = useState('');
 
   const { data, isLoading, error } = useQuery(searchMangaByName(searchValue));
+  useQuery(
+    getMangaInfo(
+      'https://inmanga.com/ver/manga/Dragon-Ball-Super/8605de4e-e860-4f02-b5ff-154ed08fe6ef'
+    )
+  );
 
   console.log('isLoading', isLoading);
   console.log('error', error);

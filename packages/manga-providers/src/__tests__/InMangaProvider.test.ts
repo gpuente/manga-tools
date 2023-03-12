@@ -4,9 +4,11 @@ import { InMangaProvider } from '../providers/InMangaProvider';
 import { MangaStatus, MangaReleaseFrequency } from '../types';
 import {
   CHAPTERS_RESPONSE,
+  AXIOS_MANGA_RESPONSE,
   SEARCH_AXIOS_RESPONSE,
   CHAPTER_PAGES_RESPONSE,
   CHAPTERS_NOT_FOUND_RESPONSE,
+  AXIOS_MANGA_CHAPTERS_RESPONSE,
   SEARCH_AXIOS_NOT_FOUND_RESPONSE,
   CHAPTER_PAGES_NOT_FOUND_RESPONSE,
 } from './utils';
@@ -34,6 +36,9 @@ describe('InMangaProvider', () => {
     expect(result[0].status).toEqual(MangaStatus.OnGoing);
     expect(result[0].id).toEqual('8605de4e-e860-4f02-b5ff-154ed08fe6ef');
     expect(result[0].releaseFrequency).toEqual(MangaReleaseFrequency.Monthly);
+    expect(result[0].url).toEqual(
+      'https://inmanga.com/ver/manga/dragon-ball-super/8605de4e-e860-4f02-b5ff-154ed08fe6ef'
+    );
     expect(result[0].lastRelease).toEqual(
       new Date(Date.UTC(2023, 0, 19, 0, 0, 0, 0))
     );
@@ -164,5 +169,44 @@ describe('InMangaProvider', () => {
     expect(frequency1).toEqual(MangaReleaseFrequency.Monthly);
     expect(frequency2).toEqual(MangaReleaseFrequency.Weekly);
     expect(frequency3).toEqual(MangaReleaseFrequency.Unknown);
+  });
+
+  it('should return valid manga title string url', () => {
+    const string1 = InMangaProvider.titleToUrlString(
+      'Super Dragon Ball Heroes: Universe Mission!'
+    );
+    const string2 = InMangaProvider.titleToUrlString(
+      '  Fairy Tail: La misión de los 100 años   '
+    );
+
+    expect(string1).toEqual('super-dragon-ball-heroes-universe-mission');
+    expect(string2).toEqual('fairy-tail-la-misión-de-los-100-años');
+  });
+
+  it('should return manga data from url', async () => {
+    (axios.get as jest.Mock).mockResolvedValueOnce({
+      data: AXIOS_MANGA_RESPONSE,
+    });
+    (axios.get as jest.Mock).mockResolvedValueOnce({
+      data: AXIOS_MANGA_CHAPTERS_RESPONSE,
+    });
+    (axios.get as jest.Mock).mockResolvedValueOnce({
+      data: CHAPTER_PAGES_RESPONSE,
+    });
+
+    const url =
+      'https://inmanga.com/ver/manga/Dragon-Ball-Super/8605de4e-e860-4f02-b5ff-154ed08fe6ef';
+
+    const result = await inMangaProvider.getMangaInfo(url);
+
+    expect(result.id).toEqual('8605de4e-e860-4f02-b5ff-154ed08fe6ef');
+    expect(result.url).toEqual(url);
+    expect(result.name).toEqual('Dragon Ball Super');
+    expect(result.description).toEqual(
+      'Dragon Ball Super es la secuela del Manga y anime de Dragon Ball Z después de la Saga de Majin Buu, y está enlazada con las películas Dragon Ball Z: La Batalla de los Dioses y Dragon Ball Z: La Resurrección de F.'
+    );
+    expect(result.chapters).toEqual(90);
+    expect(result.chapterList[0].number).toEqual(1);
+    expect(result.chapterList[0].pagesMetadata.length).toEqual(43);
   });
 });

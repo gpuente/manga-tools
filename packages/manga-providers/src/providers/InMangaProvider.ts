@@ -4,8 +4,10 @@ import { load } from 'cheerio';
 import { Provider, Language } from '../base';
 import {
   Page,
+  Manga,
   Chapter,
   MangaStatus,
+  FullChapter,
   SearchResult,
   MangaReleaseFrequency,
 } from '../types';
@@ -20,6 +22,7 @@ const CHAPTERS_URL = `${PROVIDER_URL}/chapter/getall?mangaIdentification={{manga
 const PROVIDER_REFERER_URL = `${PROVIDER_URL}/manga/consult?suggestion={{search_value}}`;
 const CHAPTER_PAGES_URL = `${PROVIDER_URL}/chapter/chapterIndexControls?identification={{chapter_id}}`;
 const SARCH_DATA_STRING = `filter[generes][]=-1&filter[queryString]={{search_value}}&filter[skip]=0&filter[take]=${RESULTS_QTY}&filter[sortby]=1&filter[broadcastStatus]=0&filter[onlyFavorites]=false&d=`;
+const MANGA_URL = `${PROVIDER_URL}/ver/manga/{{manga_name}}/{{manga_id}}`;
 
 export class InMangaProvider extends Provider {
   constructor(debug = false) {
@@ -31,6 +34,50 @@ export class InMangaProvider extends Provider {
       languages: [Language.Spanish],
       tags: ['inmanga', 'spanish', 'popular'],
     });
+  }
+
+  static getDateFromText(text: string): Date | undefined {
+    const [_day, _month, _year] = normalizeText(text).split('/');
+
+    const year = Number(_year);
+    const month = Number(_month) - 1;
+    const day = Number(_day);
+
+    if (year < 1970) {
+      return undefined;
+    }
+
+    if (Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day)) {
+      return undefined;
+    }
+
+    if (month < 0 || month > 11) {
+      return undefined;
+    }
+
+    if (day < 1 || day > 31) {
+      return undefined;
+    }
+
+    return new Date(Date.UTC(year, month, day, 0, 0, 0, 0));
+  }
+
+  static getReleaseFrequencyFromText(text: string): MangaReleaseFrequency {
+    switch (normalizeText(text.toLowerCase())) {
+      case 'mensual':
+        return MangaReleaseFrequency.Monthly;
+      case 'semanal':
+        return MangaReleaseFrequency.Weekly;
+      default:
+        return MangaReleaseFrequency.Unknown;
+    }
+  }
+
+  static titleToUrlString(title: string): string {
+    const normalizedTitle = normalizeText(title.toLowerCase());
+    return normalizedTitle
+      .replace(/[^\p{L}\p{N}\p{M}\s]+/gu, '')
+      .replace(/\s/g, '-');
   }
 
   async search(searchValue: string): Promise<SearchResult[]> {
@@ -71,6 +118,10 @@ export class InMangaProvider extends Provider {
         if (id) {
           results.push({
             id,
+            url: MANGA_URL.replace(
+              '{{manga_name}}',
+              InMangaProvider.titleToUrlString(title)
+            ).replace('{{manga_id}}', id),
             name: normalizeText(title),
             status: mangaStatus,
             lastRelease: InMangaProvider.getDateFromText(lastRelease),
@@ -150,40 +201,59 @@ export class InMangaProvider extends Provider {
     return pages;
   }
 
-  static getDateFromText(text: string): Date | undefined {
-    const [_day, _month, _year] = normalizeText(text).split('/');
+  // eslint-disable-next-line class-methods-use-this
+  async getMangaInfo(url: string): Promise<Manga> {
+    const res = await axios.get(url);
+    const bodyResponse = load(res.data);
 
-    const year = Number(_year);
-    const month = Number(_month) - 1;
-    const day = Number(_day);
+    const id = bodyResponse('#Identification').attr('value');
+    const title = bodyResponse('div.panel-heading > h1').text();
+    const description = bodyResponse(
+      'div.manga-index-sinopsis-detail-cover-photo-layout > div > div.panel-body'
+    ).text();
+    const thumbnailUrl = bodyResponse(
+      'div.col-md-3.col-sm-4.manga-index-detail-cover-photo-layout img'
+    ).attr('src');
+    const status = bodyResponse(
+      'div.panel.widget span.label.label-success.pull-right'
+    ).text();
+    const lastRelease = bodyResponse(
+      'div.panel.widget span.label.label-primary.pull-right'
+    ).text();
+    const releaseFrequency = bodyResponse(
+      'div.panel.widget span.label.label-warning.pull-right'
+    ).text();
 
-    if (year < 1970) {
-      return undefined;
+    if (!id) {
+      throw new Error('Manga not found');
     }
 
-    if (Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day)) {
-      return undefined;
-    }
+    const chapters = await this.getChaptersInfo(id);
 
-    if (month < 0 || month > 11) {
-      return undefined;
-    }
+    const promises = chapters.map(async (chapter) => {
+      const pages = await this.getChapterPages(chapter.id);
+      const fullChapter: FullChapter = {
+        ...chapter,
+        pagesMetadata: pages,
+      };
 
-    if (day < 1 || day > 31) {
-      return undefined;
-    }
+      return fullChapter;
+    });
 
-    return new Date(Date.UTC(year, month, day, 0, 0, 0, 0));
-  }
+    const chapterList = await Promise.all(promises);
 
-  static getReleaseFrequencyFromText(text: string): MangaReleaseFrequency {
-    switch (normalizeText(text.toLowerCase())) {
-      case 'mensual':
-        return MangaReleaseFrequency.Monthly;
-      case 'semanal':
-        return MangaReleaseFrequency.Weekly;
-      default:
-        return MangaReleaseFrequency.Unknown;
-    }
+    return {
+      id,
+      url,
+      name: title,
+      status: getMangaStatus(normalizeText(status)),
+      lastRelease: InMangaProvider.getDateFromText(lastRelease),
+      releaseFrequency:
+        InMangaProvider.getReleaseFrequencyFromText(releaseFrequency),
+      chapters: chapterList.length,
+      description: normalizeText(description),
+      ...(thumbnailUrl && { image: `${THUMBNAIL_URL}${thumbnailUrl}` }),
+      chapterList,
+    };
   }
 }
