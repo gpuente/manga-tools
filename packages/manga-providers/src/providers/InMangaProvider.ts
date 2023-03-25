@@ -7,7 +7,6 @@ import {
   Manga,
   Chapter,
   MangaStatus,
-  FullChapter,
   SearchResult,
   MangaReleaseFrequency,
 } from '../types';
@@ -228,20 +227,6 @@ export class InMangaProvider extends Provider {
       throw new Error('Manga not found');
     }
 
-    const chapters = await this.getChaptersInfo(id);
-
-    const promises = chapters.map(async (chapter) => {
-      const pages = await this.getChapterPages(chapter.id);
-      const fullChapter: FullChapter = {
-        ...chapter,
-        pagesMetadata: pages,
-      };
-
-      return fullChapter;
-    });
-
-    const chapterList = await Promise.all(promises);
-
     return {
       id,
       url,
@@ -250,10 +235,8 @@ export class InMangaProvider extends Provider {
       lastRelease: InMangaProvider.getDateFromText(lastRelease),
       releaseFrequency:
         InMangaProvider.getReleaseFrequencyFromText(releaseFrequency),
-      chapters: chapterList.length,
       description: normalizeText(description),
       ...(thumbnailUrl && { image: `${THUMBNAIL_URL}${thumbnailUrl}` }),
-      chapterList,
     };
   }
 }

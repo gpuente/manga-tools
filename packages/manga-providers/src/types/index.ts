@@ -41,5 +41,4 @@ export interface FullChapter extends Chapter {
 
 export interface Manga extends SearchResult {
   description?: string;
-  chapterList: FullChapter[];
 }

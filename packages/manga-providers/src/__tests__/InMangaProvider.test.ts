@@ -206,8 +206,5 @@ describe('InMangaProvider', () => {
     expect(result.description).toEqual(
       'Dragon Ball Super es la secuela del Manga y anime de Dragon Ball Z después de la Saga de Majin Buu, y está enlazada con las películas Dragon Ball Z: La Batalla de los Dioses y Dragon Ball Z: La Resurrección de F.'
     );
-    expect(result.chapters).toEqual(90);
-    expect(result.chapterList[0].number).toEqual(1);
-    expect(result.chapterList[0].pagesMetadata.length).toEqual(43);
   });
 });
