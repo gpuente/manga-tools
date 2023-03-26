@@ -1,10 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Chapter } from 'manga-providers';
 
-import { ChaptersTable } from './ChaptersTable';
+import { SelectableTable } from './SelectableTable';
+import { ChapterTableRow } from '../ChapterTableRow';
 
-const Template: ComponentStory<typeof ChaptersTable> = (args) => (
-  <ChaptersTable {...args} />
+const Template: ComponentStory<typeof SelectableTable> = (args) => (
+  <SelectableTable {...args} />
 );
 
 const createChapter = (id: number): Chapter => ({
@@ -18,14 +19,15 @@ const generateChapters = (qty: number): Chapter[] =>
   [...Array(qty)].map((_, index) => createChapter(index + 1));
 
 export default {
-  title: 'Manga-Desktop/ChaptersTable',
-  component: ChaptersTable,
+  title: 'Manga-Desktop/SelectableTable',
+  component: SelectableTable,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    chapters: { control: 'object' },
+    data: { control: 'object' },
     headCells: { control: 'object' },
     initialPage: { control: 'number' },
     initialRowsPerPage: { control: 'number' },
+    RowComponent: { control: 'object' },
     initialOrder: {
       control: 'select',
       options: ['asc', 'desc'],
@@ -33,7 +35,7 @@ export default {
     },
     initialOrderBy: { control: 'text' },
   },
-} as ComponentMeta<typeof ChaptersTable>;
+} as ComponentMeta<typeof SelectableTable>;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -41,6 +43,7 @@ Default.args = {
   initialOrderBy: 'chapter',
   initialPage: 0,
   initialRowsPerPage: 10,
+  RowComponent: ChapterTableRow,
   headCells: [
     {
       id: 'id',
@@ -59,5 +62,5 @@ Default.args = {
       label: 'Pages',
     },
   ],
-  chapters: generateChapters(50),
+  data: generateChapters(50),
 };

@@ -1,15 +1,13 @@
 import React, { useState, useCallback } from 'react';
+import { Order } from '@types';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
-import TableContainer from '@mui/material/TableContainer';
-import { Order } from '@types';
-import { Chapter } from 'manga-providers';
-import TableBody from '@mui/material/TableBody';
-import { getComparator } from '@utils/sorting';
 import TableRow from '@mui/material/TableRow';
+import { getComparator } from '@utils/sorting';
+import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import Checkbox from '@mui/material/Checkbox';
+import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
 import {
@@ -22,25 +20,34 @@ const DEFAULT_PAGE = 0;
 const DEFAULT_ROWS_PER_PAGE = 50;
 const DEFAULT_ROWS_PER_PAGE_OPTIONS = [10, 30, 50];
 
-export interface ChaptersTableProps {
+export interface BaseRowComponent {
+  selected: boolean;
+  handleRowSelection: (id: React.Key) => void;
+}
+
+export interface SelectableTableProps<T extends { id: React.Key }> {
   initialPage?: number;
-  chapters: Chapter[];
+  data: T[];
   initialOrder?: Order;
   initialRowsPerPage?: number;
   initialOrderBy: React.Key;
   headCells: EnhancedTableHeadProps['cells'];
   rowsPerPageOptions?: number[];
+  RowComponent: React.ElementType;
 }
 
-export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
+export const SelectableTable = <T extends { id: React.Key }>(
+  props: SelectableTableProps<T>
+) => {
   const {
-    chapters,
+    data,
     headCells,
     initialOrder,
     initialOrderBy,
     initialPage = DEFAULT_PAGE,
     initialRowsPerPage = DEFAULT_ROWS_PER_PAGE,
     rowsPerPageOptions = DEFAULT_ROWS_PER_PAGE_OPTIONS,
+    RowComponent,
   } = props;
 
   const [page, setPage] = useState(initialPage);
@@ -58,10 +65,10 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
   );
 
   const selectAll = () => {
-    if (selected.length === chapters.length) {
+    if (selected.length === data.length) {
       setSelected([]);
     } else {
-      setSelected(chapters.map((chapter) => chapter.id));
+      setSelected(data.map((item) => item.id));
     }
   };
 
@@ -90,12 +97,12 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
     setOrderBy(id);
   };
 
-  const rows = chapters
+  const rows = data
     .sort(getComparator(order, orderBy))
     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - chapters.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
 
   return (
     <Box sx={styles.container}>
@@ -103,9 +110,9 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
         <TableContainer>
           <Table size={dense ? 'small' : 'medium'}>
             <EnhancedTableHead
-              checked={selected.length === chapters.length}
+              checked={selected.length === data.length}
               indeterminate={
-                selected.length > 0 && selected.length < chapters.length
+                selected.length > 0 && selected.length < data.length
               }
               onChange={selectAll}
               onRequestSort={handleRequestSort}
@@ -117,31 +124,12 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
               {rows.map((row) => {
                 const isRowSelected = isSelected(row.id);
                 return (
-                  <TableRow
-                    hover
-                    key={row.id}
-                    tabIndex={-1}
-                    role="checkbox"
+                  <RowComponent
+                    {...row}
                     selected={isRowSelected}
-                    sx={styles.cursorPointer}
-                    aria-checked={isRowSelected}
-                    onClick={() => handleRowSelection(row.id)}
-                  >
-                    <TableCell padding="checkbox">
-                      <Checkbox color="primary" checked={isRowSelected} />
-                    </TableCell>
-                    <TableCell
-                      component="th"
-                      id={row.id}
-                      scope="row"
-                      padding="none"
-                    >
-                      {row.id}
-                    </TableCell>
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.number}</TableCell>
-                    <TableCell>{row.pages}</TableCell>
-                  </TableRow>
+                    handleRowSelection={handleRowSelection}
+                    key={row.id}
+                  />
                 );
               })}
               {emptyRows > 0 && (
@@ -159,7 +147,7 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
         <TablePagination
           rowsPerPageOptions={rowsPerPageOptions}
           component="div"
-          count={chapters.length}
+          count={data.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={(event, newPage) => setPage(newPage)}
