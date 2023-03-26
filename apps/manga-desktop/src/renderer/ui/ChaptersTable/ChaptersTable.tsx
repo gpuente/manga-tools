@@ -10,6 +10,7 @@ import { getComparator } from '@utils/sorting';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import Checkbox from '@mui/material/Checkbox';
+import TablePagination from '@mui/material/TablePagination';
 
 import {
   EnhancedTableHead,
@@ -19,14 +20,16 @@ import * as styles from './styles';
 
 const DEFAULT_PAGE = 0;
 const DEFAULT_ROWS_PER_PAGE = 50;
+const DEFAULT_ROWS_PER_PAGE_OPTIONS = [10, 30, 50];
 
 export interface ChaptersTableProps {
-  page?: number;
+  initialPage?: number;
   chapters: Chapter[];
   initialOrder?: Order;
-  rowsPerPage?: number;
+  initialRowsPerPage?: number;
   initialOrderBy: React.Key;
   headCells: EnhancedTableHeadProps['cells'];
+  rowsPerPageOptions?: number[];
 }
 
 export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
@@ -35,13 +38,16 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
     headCells,
     initialOrder,
     initialOrderBy,
-    page = DEFAULT_PAGE,
-    rowsPerPage = DEFAULT_ROWS_PER_PAGE,
+    initialPage = DEFAULT_PAGE,
+    initialRowsPerPage = DEFAULT_ROWS_PER_PAGE,
+    rowsPerPageOptions = DEFAULT_ROWS_PER_PAGE_OPTIONS,
   } = props;
 
+  const [page, setPage] = useState(initialPage);
+  const [selected, setSelected] = useState<React.Key[]>([]);
   const [order, setOrder] = useState<Order>(initialOrder || 'asc');
   const [orderBy, setOrderBy] = useState<React.Key>(initialOrderBy);
-  const [selected, setSelected] = useState<React.Key[]>([]);
+  const [rowsPerPage, setRowsPerPage] = useState(initialRowsPerPage);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
   const [dense, setDense] = useState(false);
@@ -51,7 +57,13 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
     [selected]
   );
 
-  const selectAll = () => setSelected(chapters.map((chapter) => chapter.id));
+  const selectAll = () => {
+    if (selected.length === chapters.length) {
+      setSelected([]);
+    } else {
+      setSelected(chapters.map((chapter) => chapter.id));
+    }
+  };
 
   const handleRowSelection = useCallback(
     (id: React.Key) => {
@@ -82,14 +94,19 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
     .sort(getComparator(order, orderBy))
     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - chapters.length) : 0;
+
   return (
     <Box sx={styles.container}>
       <Paper sx={styles.paperContainer}>
         <TableContainer>
           <Table size={dense ? 'small' : 'medium'}>
             <EnhancedTableHead
-              checked={false}
-              indeterminate={false}
+              checked={selected.length === chapters.length}
+              indeterminate={
+                selected.length > 0 && selected.length < chapters.length
+              }
               onChange={selectAll}
               onRequestSort={handleRequestSort}
               orderBy={orderBy}
@@ -127,9 +144,30 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = (props) => {
                   </TableRow>
                 );
               })}
+              {emptyRows > 0 && (
+                <TableRow
+                  style={{
+                    height: (dense ? 33 : 53) * emptyRows,
+                  }}
+                >
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={rowsPerPageOptions}
+          component="div"
+          count={chapters.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={(event, newPage) => setPage(newPage)}
+          onRowsPerPageChange={(e) => {
+            setRowsPerPage(Number(e.target.value));
+            setPage(0);
+          }}
+        />
       </Paper>
     </Box>
   );

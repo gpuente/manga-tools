@@ -24,8 +24,8 @@ export default {
   argTypes: {
     chapters: { control: 'object' },
     headCells: { control: 'object' },
-    page: { control: 'number' },
-    rowsPerPage: { control: 'number' },
+    initialPage: { control: 'number' },
+    initialRowsPerPage: { control: 'number' },
     initialOrder: {
       control: 'select',
       options: ['asc', 'desc'],
@@ -39,8 +39,8 @@ export const Default = Template.bind({});
 Default.args = {
   initialOrder: 'desc',
   initialOrderBy: 'chapter',
-  page: 0,
-  rowsPerPage: 50,
+  initialPage: 0,
+  initialRowsPerPage: 10,
   headCells: [
     {
       id: 'id',
