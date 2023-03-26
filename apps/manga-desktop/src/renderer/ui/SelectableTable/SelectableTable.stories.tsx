@@ -27,6 +27,8 @@ export default {
     headCells: { control: 'object' },
     initialPage: { control: 'number' },
     initialRowsPerPage: { control: 'number' },
+    downloadHandler: { action: 'downloadHandler' },
+    i18n: { action: 'object' },
     RowComponent: { control: 'object' },
     initialOrder: {
       control: 'select',
@@ -43,6 +45,14 @@ Default.args = {
   initialOrderBy: 'chapter',
   initialPage: 0,
   initialRowsPerPage: 10,
+  i18n: {
+    title: 'Available Chapters',
+    download: 'Download',
+    selectedItems: {
+      singular: 'selected item',
+      plural: 'selected items',
+    },
+  },
   RowComponent: ChapterTableRow,
   headCells: [
     {

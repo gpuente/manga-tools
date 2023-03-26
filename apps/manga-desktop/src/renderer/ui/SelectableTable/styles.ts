@@ -5,6 +5,7 @@ export const container: Styles = {
 };
 
 export const paperContainer: Styles = {
-  width: '100%',
   mb: 2,
+  width: '100%',
+  overflow: 'hidden',
 };

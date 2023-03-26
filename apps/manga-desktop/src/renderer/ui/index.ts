@@ -7,3 +7,4 @@ export * from './ThemeToggleButton';
 export * from './Theme';
 export * from './EnhancedTableHead';
 export * from './SelectableTable';
+export * from './TableToolbar';

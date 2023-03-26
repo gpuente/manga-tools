@@ -14,6 +14,7 @@ import {
   EnhancedTableHead,
   EnhancedTableHeadProps,
 } from '../EnhancedTableHead';
+import { TableToolbar, TableToolbarProps } from '../TableToolbar';
 import * as styles from './styles';
 
 const DEFAULT_PAGE = 0;
@@ -34,16 +35,20 @@ export interface SelectableTableProps<T extends { id: React.Key }> {
   headCells: EnhancedTableHeadProps['cells'];
   rowsPerPageOptions?: number[];
   RowComponent: React.ElementType;
+  i18n: TableToolbarProps['i18n'];
+  downloadHandler: (items: T[]) => void;
 }
 
 export const SelectableTable = <T extends { id: React.Key }>(
   props: SelectableTableProps<T>
 ) => {
   const {
+    i18n,
     data,
     headCells,
     initialOrder,
     initialOrderBy,
+    downloadHandler,
     initialPage = DEFAULT_PAGE,
     initialRowsPerPage = DEFAULT_ROWS_PER_PAGE,
     rowsPerPageOptions = DEFAULT_ROWS_PER_PAGE_OPTIONS,
@@ -107,6 +112,13 @@ export const SelectableTable = <T extends { id: React.Key }>(
   return (
     <Box sx={styles.container}>
       <Paper sx={styles.paperContainer}>
+        <TableToolbar
+          i18n={i18n}
+          selectedItems={selected.length}
+          onDownloadHandler={() =>
+            downloadHandler(data.filter((item) => isSelected(item.id)))
+          }
+        />
         <TableContainer>
           <Table size={dense ? 'small' : 'medium'}>
             <EnhancedTableHead
