@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const baseConfig = require('jest-config');
 
 module.exports = {
   moduleDirectories: ['node_modules', 'release/app/node_modules', 'src'],
@@ -16,7 +17,7 @@ module.exports = {
     '^@rquery(.*)$': '<rootDir>/src/renderer/rquery$1',
     '^@i18n(.*)$': '<rootDir>/src/renderer/i18n$1',
   },
-  setupFiles: ['./.erb/scripts/check-build-exists.ts'],
+  // setupFiles: ['./.erb/scripts/check-build-exists.ts'],
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {
     url: 'http://localhost/',
@@ -25,4 +26,6 @@ module.exports = {
   transform: {
     '\\.(ts|tsx|js|jsx)$': 'ts-jest',
   },
+  roots: ['<rootDir>/src'],
+  ...baseConfig,
 };

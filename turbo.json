@@ -17,7 +17,7 @@
       "outputs": ["dist/**"]
     },
     "build:electron-app": {
-      "dependsOn": ["build"],
+      "dependsOn": ["^build"],
       "outputs": ["release/build/**"]
     },
     "build:dll": {
